@@ -9,9 +9,9 @@ public class DbConnect {
     public static java.sql.Connection connection = null;
 
     public static java.sql.Connection getConnection() {
-        String url = System.getenv("DB_NAME");
-        String username = System.getenv("DB_USERNAME");
-        String password = System.getenv("DB_PASSWORD");
+        String url = "jdbc:mysql://localhost:3306/cowork?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String username = "root";
+        String password = "root";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = java.sql.DriverManager.getConnection(url, username, password);

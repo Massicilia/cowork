@@ -27,9 +27,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     @Override
     public ClientFullDto getClient(java.util.UUID uuid_client) {
         mysqlConnection();
-        String uuidString;
 
-        java.util.UUID uuidClient = null;
         String nameClient=null;
         String surnameClient=null;
         String mail=null;
@@ -37,15 +35,13 @@ public class ClientRepositoryImpl implements ClientRepository {
 
 
 
-        String getClient = "SELECT client.UUID, client.name, client.surname, client.subscription, client.mail"+
+        String getClient = "SELECT client.name, client.surname, client.subscription, client.mail"+
                             "FROM client" +
-                            "WHERE client.UUID = " + "'" + uuid_client.toString() + "' ";
+                            "WHERE client.UUID = " + "'" + uuid_client + "' ";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getClient);
             if (resultset.next()) {
-                uuidString = resultset.getString("UUID");
-                uuidClient = java.util.UUID.fromString(uuidString);
                 surnameClient = resultset.getString("surname");
                 nameClient = resultset.getString("name");
                 mail = resultset.getString("mail");
@@ -56,7 +52,7 @@ public class ClientRepositoryImpl implements ClientRepository {
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-        ClientFullDto clientFullDto = new ClientFullDto(uuidClient, surnameClient, nameClient, mail, subscription);
+        ClientFullDto clientFullDto = new ClientFullDto(uuid_client, surnameClient, nameClient, mail, subscription);
 
         DbConnect.closeConnection(connection);
         return clientFullDto;
@@ -95,19 +91,19 @@ public class ClientRepositoryImpl implements ClientRepository {
     }
 
 
-   /* public ClientFullDto generateUUID(CandidateFullDto candidate) {
+    public ClientFullDto generateUUID(ClientFullDto client) {
         boolean uuidExist = true;
-        UUID uuidCandidate = UUID.randomUUID();
+        UUID uuidClient = UUID.randomUUID();
         while (uuidExist) {
-            uuidCandidate = UUID.randomUUID();
-            List<CandidateFullDto> candidateFullDtos = this.getCandidates();
-            uuidExist = candidateFullDtos.stream()
-                    .map(CandidateFullDto::getUuid)
-                    .anyMatch(uuidCandidate::equals);
+            uuidClient = UUID.randomUUID();
+            List<ClientFullDto> clientFullDtos = this.getClients();
+            uuidExist = clientFullDtos.stream()
+                    .map(ClientFullDto::getUuidClient)
+                    .anyMatch(uuidClient::equals);
         }
-        candidate.setUuid(uuidCandidate);
-        return candidate;
-    }*/
+        client.setUuidClient(uuidClient);
+        return client;
+    }
 
    @Override
     public java.util.List<ClientFullDto> getClients() {
@@ -120,11 +116,12 @@ public class ClientRepositoryImpl implements ClientRepository {
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getClients);
             while (resultset.next()) {
-                java.util.UUID uuid = java.util.UUID.fromString(resultset.getString("UUID"));
+
+                String uuidString = resultset.getString("UUID");
                 String name = resultset.getString("name");
                 String surname = resultset.getString("surname");
                 String mail = resultset.getString("mail");
-                clientFullDto = new ClientFullDto(uuid, name, surname, mail, true);
+                clientFullDto = new ClientFullDto(UUID.fromString(uuidString), name, surname, mail, true);
                 clientFullDtos.add(clientFullDto);
                 if (resultset == null) {
                     throw new ClientNotFoundException();
@@ -311,78 +308,6 @@ public class ClientRepositoryImpl implements ClientRepository {
         return work;
     }
 
-    public boolean insertCandidate(CandidateFullDto candidateFullDto) {
-        mysqlConnection();
-        boolean work = false;
-        String uuidCandidate = candidateFullDto.getUuid().toString();
-        String firstNameCandidate = candidateFullDto.getFirstName();
-        String lastName = candidateFullDto.getLastName();
-        String mail = candidateFullDto.getMail();
-        int experience = candidateFullDto.getExperience();
-        String id_enterprise = candidateFullDto.getEnterprise();
-        int newIdCandidate = 0;
-        ResultSet generatedKeys = null;
-        String insertCandidate = "INSERT INTO Person " +
-                "(uuidPerson,firstName, lastName, mail, experience, id_enterprise) " +
-                "VALUES (" + "'" + uuidCandidate + "', " +
-                "'" + firstNameCandidate + "', " +
-                "'" + lastName + "', " +
-                "'" + mail + "', " +
-                experience + ", " +
-                "'" + id_enterprise + "')";
-        try {
-            statement.execute(insertCandidate, statement.RETURN_GENERATED_KEYS);
-            generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                newIdCandidate = generatedKeys.getInt(1);
-                work = true;
-            }
-        } catch (SQLException e) {
-            work = false;
-            e.printStackTrace();
-        }
-
-        String insertProfil = "INSERT INTO Profile " +
-                "(idProfile, isCandidate, isRecruiter) " +
-                "VALUES (" + newIdCandidate + ", +" + 1 + ", +" + 0 + ")";
-        try {
-            statement.execute(insertProfil);
-            work = true;
-        } catch (SQLException e) {
-            work = false;
-            e.printStackTrace();
-        }
-
-        for (SkillFullDto skill : candidateFullDto.getSkills()) {
-            String insertSkills = "INSERT INTO SkillPersonConf " +
-                    "(idPerson, idSkill, isKeySkill) " +
-                    "VALUES (" + newIdCandidate + ", +" + skill.getIdSkill() + ", +" + 0 + ")";
-            try {
-                statement.execute(insertSkills);
-                work = true;
-            } catch (SQLException e) {
-                work = false;
-                e.printStackTrace();
-            }
-        }
-
-        for (SkillFullDto keySkill : candidateFullDto.getKeySkills()) {
-            String insertKeySkills = "INSERT INTO SkillPersonConf " +
-                    "(idPerson, idSkill, isKeySkill) " +
-                    "VALUES (" + newIdCandidate + ", +" + keySkill.getIdSkill() + ", +" + 1 + ")";
-            try {
-                statement.execute(insertKeySkills);
-                work = true;
-            } catch (SQLException e) {
-                work = false;
-                e.printStackTrace();
-            }
-        }
-
-
-        DbConnect.closeConnection(connection);
-        return work;
-    }
 
     public boolean updateCandidate(CandidateFullDto candidate) {
         if (candidate.getUuid() == null) {
@@ -482,5 +407,82 @@ public class ClientRepositoryImpl implements ClientRepository {
         }
         DbConnect.closeConnection(connection);
         return candidateFullDtos;
-    } */
+    }
+
+     public boolean insertCandidate(CandidateFullDto candidateFullDto) {
+        mysqlConnection();
+        boolean work = false;
+        String uuidCandidate = candidateFullDto.getUuid().toString();
+        String firstNameCandidate = candidateFullDto.getFirstName();
+        String lastName = candidateFullDto.getLastName();
+        String mail = candidateFullDto.getMail();
+        int experience = candidateFullDto.getExperience();
+        String id_enterprise = candidateFullDto.getEnterprise();
+        int newIdCandidate = 0;
+        ResultSet generatedKeys = null;
+        String insertCandidate = "INSERT INTO Person " +
+                "(uuidPerson,firstName, lastName, mail, experience, id_enterprise) " +
+                "VALUES (" + "'" + uuidCandidate + "', " +
+                "'" + firstNameCandidate + "', " +
+                "'" + lastName + "', " +
+                "'" + mail + "', " +
+                experience + ", " +
+                "'" + id_enterprise + "')";
+        try {
+            statement.execute(insertCandidate, statement.RETURN_GENERATED_KEYS);
+            generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                newIdCandidate = generatedKeys.getInt(1);
+                work = true;
+            }
+        } catch (SQLException e) {
+            work = false;
+            e.printStackTrace();
+        }
+
+        String insertProfil = "INSERT INTO Profile " +
+                "(idProfile, isCandidate, isRecruiter) " +
+                "VALUES (" + newIdCandidate + ", +" + 1 + ", +" + 0 + ")";
+        try {
+            statement.execute(insertProfil);
+            work = true;
+        } catch (SQLException e) {
+            work = false;
+            e.printStackTrace();
+        }
+
+        for (SkillFullDto skill : candidateFullDto.getSkills()) {
+            String insertSkills = "INSERT INTO SkillPersonConf " +
+                    "(idPerson, idSkill, isKeySkill) " +
+                    "VALUES (" + newIdCandidate + ", +" + skill.getIdSkill() + ", +" + 0 + ")";
+            try {
+                statement.execute(insertSkills);
+                work = true;
+            } catch (SQLException e) {
+                work = false;
+                e.printStackTrace();
+            }
+        }
+
+        for (SkillFullDto keySkill : candidateFullDto.getKeySkills()) {
+            String insertKeySkills = "INSERT INTO SkillPersonConf " +
+                    "(idPerson, idSkill, isKeySkill) " +
+                    "VALUES (" + newIdCandidate + ", +" + keySkill.getIdSkill() + ", +" + 1 + ")";
+            try {
+                statement.execute(insertKeySkills);
+                work = true;
+            } catch (SQLException e) {
+                work = false;
+                e.printStackTrace();
+            }
+        }
+
+
+        DbConnect.closeConnection(connection);
+        return work;
+    }
+
+
+
+     */
 }

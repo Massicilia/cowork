@@ -1,4 +1,4 @@
-package esgi.com.exposition.query;
+package esgi.com.exposition;
 
 import esgi.common.dto.ClientDto;
 import esgi.common.dto.ClientFullDto;
@@ -18,9 +18,20 @@ public class ClientController {
 	@org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @org.springframework.web.bind.annotation.ResponseBody
 	java.util.List<ClientFullDto> getClients() {
+
 		ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
+
 		return clientRepository.getClients();
 	}
+
+	@GetMapping("/{uuid}")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody ClientFullDto getClient(@PathVariable UUID uuid) {
+		ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
+		return clientRepository.getClient(uuid);
+	}
+
+
 
 /*	@GetMapping("/lessInterview")
 	@ResponseStatus(HttpStatus.OK)
@@ -30,12 +41,6 @@ public class ClientController {
 		return candidateRepository.getCandidatesLessInterview();
 	}
 
-	@GetMapping("/{uuid}")
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody CandidateFullDto getCandidate(@PathVariable UUID uuid) {
-		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
-		return candidateRepository.getCandidate(uuid);
-	}
 
 	@GetMapping("/sch/{uuid}")
 	@ResponseStatus(HttpStatus.OK)

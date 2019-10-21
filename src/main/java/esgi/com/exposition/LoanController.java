@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 //@org.springframework.web.bind.annotation.RequestMapping(method = {org.springframework.web.bind.annotation.RequestMethod.POST})
 public class LoanController {
 
+    //@org.springframework.web.bind.annotation.RequestMapping ("/")
    /* @org.springframework.web.bind.annotation.PostMapping("/request")
     @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
     public void LoanRegistration(EquipmentDto equipment, String nameClient, String surnameClient){
