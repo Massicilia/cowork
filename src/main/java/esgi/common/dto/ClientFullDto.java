@@ -10,7 +10,8 @@ public class ClientFullDto {
     private String mail;
     private boolean subscription;
 
-    public ClientFullDto(java.util.UUID uuidClient, String nameClient, String surnameClient, String mail, boolean subscription){
+    public ClientFullDto(java.util.UUID uuidClient, String nameClient,
+                         String surnameClient, String mail, boolean subscription){
         this.uuidClient = uuidClient;
         this.nameClient = nameClient;
         this.surnameClient = surnameClient;

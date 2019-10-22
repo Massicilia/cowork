@@ -58,7 +58,34 @@ public class ClientRepositoryImpl implements ClientRepository {
         return clientFullDto;
     }
 
+    @Override
+    public java.util.List<ClientFullDto> getClients() {
+        mysqlConnection();
+        java.util.List<ClientFullDto> clientFullDtos = new java.util.ArrayList<>();
+        ClientFullDto clientFullDto;
+        String getClients = "SELECT client.UUID, client.name, client.surname, client.mail "+
+                "FROM client " +
+                "WHERE client.subscription = " + 1;
+        try {
+            java.sql.ResultSet resultset = statement.executeQuery(getClients);
+            while (resultset.next()) {
 
+                String uuidString = resultset.getString("UUID");
+                String name = resultset.getString("name");
+                String surname = resultset.getString("surname");
+                String mail = resultset.getString("mail");
+                clientFullDto = new ClientFullDto(UUID.fromString(uuidString), name, surname, mail, true);
+                clientFullDtos.add(clientFullDto);
+                if (resultset == null) {
+                    throw new ClientNotFoundException();
+                }
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        DbConnect.closeConnection(connection);
+        return clientFullDtos;
+    }
 
     @Override
     public java.util.UUID getUuidClientByNameAndSurname(String nameClient, String surnameClient) {
@@ -105,35 +132,39 @@ public class ClientRepositoryImpl implements ClientRepository {
         return client;
     }
 
-   @Override
-    public java.util.List<ClientFullDto> getClients() {
-        mysqlConnection();
-        java.util.List<ClientFullDto> clientFullDtos = new java.util.ArrayList<>();
-        ClientFullDto clientFullDto;
-        String getClients = "SELECT client.UUID, client.name, client.surname, client.mail "+
-                "FROM client " +
-                "WHERE client.subscription = " + 1;
-        try {
-            java.sql.ResultSet resultset = statement.executeQuery(getClients);
-            while (resultset.next()) {
 
-                String uuidString = resultset.getString("UUID");
-                String name = resultset.getString("name");
-                String surname = resultset.getString("surname");
-                String mail = resultset.getString("mail");
-                clientFullDto = new ClientFullDto(UUID.fromString(uuidString), name, surname, mail, true);
-                clientFullDtos.add(clientFullDto);
-                if (resultset == null) {
-                    throw new ClientNotFoundException();
-                }
+    public boolean insertClient(ClientFullDto clientFullDto) {
+        mysqlConnection();
+        boolean ok = false;
+        String uuidClient = clientFullDto.getUuidClient().toString();
+        String surname = clientFullDto.getSurnameClient ();
+        String name = clientFullDto.getNameClient ();
+        String mail = clientFullDto.getMail();
+        boolean subscription = clientFullDto.getSubscription();
+        int newIdClient = 0;
+        ResultSet generatedKeys = null;
+        String insertClient = "INSERT INTO Client " +
+                "(uuidClient,name, surname, mail, subscription) " +
+                "VALUES (" + "'" + uuidClient + "', " +
+                "'" + surname + "', " +
+                "'" + name + "', " +
+                "'" + mail + "', " + "'" +
+                subscription +  "')";
+        try {
+            statement.execute(insertClient, statement.RETURN_GENERATED_KEYS);
+            generatedKeys = statement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                newIdClient = generatedKeys.getInt(1);
+                ok = true;
             }
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
+            ok = false;
             e.printStackTrace();
         }
-        DbConnect.closeConnection(connection);
-        return clientFullDtos;
-    }
 
+        DbConnect.closeConnection(connection);
+        return ok;
+    }
 /*     @Override
     public CandidateDto getCandidateForSchedule(UUID uuidCandidate) {
         mysqlConnection();
@@ -408,81 +439,5 @@ public class ClientRepositoryImpl implements ClientRepository {
         DbConnect.closeConnection(connection);
         return candidateFullDtos;
     }
-
-     public boolean insertCandidate(CandidateFullDto candidateFullDto) {
-        mysqlConnection();
-        boolean work = false;
-        String uuidCandidate = candidateFullDto.getUuid().toString();
-        String firstNameCandidate = candidateFullDto.getFirstName();
-        String lastName = candidateFullDto.getLastName();
-        String mail = candidateFullDto.getMail();
-        int experience = candidateFullDto.getExperience();
-        String id_enterprise = candidateFullDto.getEnterprise();
-        int newIdCandidate = 0;
-        ResultSet generatedKeys = null;
-        String insertCandidate = "INSERT INTO Person " +
-                "(uuidPerson,firstName, lastName, mail, experience, id_enterprise) " +
-                "VALUES (" + "'" + uuidCandidate + "', " +
-                "'" + firstNameCandidate + "', " +
-                "'" + lastName + "', " +
-                "'" + mail + "', " +
-                experience + ", " +
-                "'" + id_enterprise + "')";
-        try {
-            statement.execute(insertCandidate, statement.RETURN_GENERATED_KEYS);
-            generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                newIdCandidate = generatedKeys.getInt(1);
-                work = true;
-            }
-        } catch (SQLException e) {
-            work = false;
-            e.printStackTrace();
-        }
-
-        String insertProfil = "INSERT INTO Profile " +
-                "(idProfile, isCandidate, isRecruiter) " +
-                "VALUES (" + newIdCandidate + ", +" + 1 + ", +" + 0 + ")";
-        try {
-            statement.execute(insertProfil);
-            work = true;
-        } catch (SQLException e) {
-            work = false;
-            e.printStackTrace();
-        }
-
-        for (SkillFullDto skill : candidateFullDto.getSkills()) {
-            String insertSkills = "INSERT INTO SkillPersonConf " +
-                    "(idPerson, idSkill, isKeySkill) " +
-                    "VALUES (" + newIdCandidate + ", +" + skill.getIdSkill() + ", +" + 0 + ")";
-            try {
-                statement.execute(insertSkills);
-                work = true;
-            } catch (SQLException e) {
-                work = false;
-                e.printStackTrace();
-            }
-        }
-
-        for (SkillFullDto keySkill : candidateFullDto.getKeySkills()) {
-            String insertKeySkills = "INSERT INTO SkillPersonConf " +
-                    "(idPerson, idSkill, isKeySkill) " +
-                    "VALUES (" + newIdCandidate + ", +" + keySkill.getIdSkill() + ", +" + 1 + ")";
-            try {
-                statement.execute(insertKeySkills);
-                work = true;
-            } catch (SQLException e) {
-                work = false;
-                e.printStackTrace();
-            }
-        }
-
-
-        DbConnect.closeConnection(connection);
-        return work;
-    }
-
-
-
      */
 }

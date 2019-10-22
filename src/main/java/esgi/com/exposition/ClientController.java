@@ -31,6 +31,14 @@ public class ClientController {
 		return clientRepository.getClient(uuid);
 	}
 
+	@PostMapping("/insert")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody boolean insertClient(@RequestBody ClientFullDto client) {
+		ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
+		client = clientRepository.generateUUID(client);
+		return clientRepository.insertClient(client);
+	}
+
 
 
 /*	@GetMapping("/lessInterview")
