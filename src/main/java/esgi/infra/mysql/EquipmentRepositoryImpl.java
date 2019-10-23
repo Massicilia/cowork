@@ -57,34 +57,29 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
 
 
     @Override
-    public EquipmentDto getAvailableEquipmentByType(String typeEquipment){
+    public java.util.UUID getAvailableEquipmentByType(String typeEquipment){
         mysqlConnection();
         String uuidString;
         java.util.UUID uuidEquipment=null;
-        String type = null;
-        boolean available = true;
 
-        String getAvailableEquipmentByType = "SELECT equipment.UUID"+
+        String getAvailableEquipmentByType = "SELECT UUID"+
                 "FROM equipment" +
-                "WHERE equipment.type = " + "'" + typeEquipment + "' and equipment.available = true";
+                "WHERE type = " + "'" + typeEquipment + "' and available =" +1;
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getAvailableEquipmentByType);
             if (resultset.next()) {
                 uuidString = resultset.getString("UUID");
                 uuidEquipment = java.util.UUID.fromString(uuidString);
-                type = resultset.getString("type");
-                available = resultset.getBoolean("available");
             } else {
                 throw new EquipmentNotFoundException();
             }
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
         }
-        EquipmentDto equipmentDto = new EquipmentDto(uuidEquipment, type, available);
 
         DbConnect.closeConnection(connection);
-        return equipmentDto;
+        return uuidEquipment;
     }
 
 /*    @Override

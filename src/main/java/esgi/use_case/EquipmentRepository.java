@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface EquipmentRepository {
 
     EquipmentDto getEquipment(java.util.UUID uuidEquipment);
-    EquipmentDto getAvailableEquipmentByType (String typeEquipment);
+    java.util.UUID getAvailableEquipmentByType (String typeEquipment);
 
  /*
     boolean deleteEquipment(UUID uuidEquipment);

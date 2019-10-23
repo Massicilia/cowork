@@ -13,17 +13,16 @@ import org.springframework.web.bind.annotation.*;
 public class LoanController {
 
     //@org.springframework.web.bind.annotation.RequestMapping ("/")
-   /* @org.springframework.web.bind.annotation.PostMapping("/request")
+    @org.springframework.web.bind.annotation.PostMapping("/loanrequest")
     @org.springframework.web.bind.annotation.ResponseStatus(org.springframework.http.HttpStatus.OK)
-    public void LoanRegistration(EquipmentDto equipment, String nameClient, String surnameClient){
+    public void LoanRegistration(String typeEquipment, String nameClient){
 
-        String typeEquipment= equipment.getType();
+
         ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
-        EquipmentRepositoryImpl equipmentRepository = new EquipmentRepositoryImpl();
-        LoanRegistration loan = new LoanRegistration(clientRepository.getUuidClientByNameAndSurname( nameClient, surnameClient), equipmentRepository, typeEquipment);
+        LoanRegistration loan = new LoanRegistration(clientRepository.getUuidClientByNameAndSurname(nameClient), typeEquipment);
         loan.register();
 
-    }*/
+    }
 
     @org.springframework.web.bind.annotation.RequestMapping ("/")
     public String home() {

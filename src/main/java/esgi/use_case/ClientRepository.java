@@ -9,7 +9,7 @@ import java.util.UUID;
 public interface ClientRepository {
 
     ClientFullDto getClient(java.util.UUID uuid_client);
-    java.util.UUID getUuidClientByNameAndSurname (String nameClient, String surnameClient);
+    java.util.UUID getUuidClientByNameAndSurname (String nameClient);
     java.util.List<ClientFullDto> getClients ();
 
 /*   boolean setClientSubscriptionOn(UUID uuidClient);

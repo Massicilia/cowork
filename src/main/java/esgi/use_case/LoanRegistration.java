@@ -10,24 +10,21 @@ import java.util.UUID;
 public class LoanRegistration {
 
     public String typeEquipment;
-    public java.util.UUID UuidClient;
-    public EquipmentRepositoryImpl equipmentRepository;
+    public java.util.UUID uuidClient;
 
-    public LoanRegistration(java.util.UUID UuidClient, EquipmentRepositoryImpl equipmentRepository,
-                            String typeElement ){
-        this.UuidClient = UuidClient;
-        this.equipmentRepository = equipmentRepository;
+    public LoanRegistration(java.util.UUID uuidClient, String typeElement ){
+        this.uuidClient = uuidClient;
         this.typeEquipment = typeEquipment;
 
     }
 
     public void register() {
+        EquipmentRepositoryImpl equipmentRepository = new esgi.infra.mysql.EquipmentRepositoryImpl ();
         //avoir un equipment available de type x
-        EquipmentDto equipment = equipmentRepository.getAvailableEquipmentByType(typeEquipment);
-        //enregistrer un loan
-	    java.util.UUID uuidLoan = null;
+        UUID uuidEquipment = equipmentRepository.getAvailableEquipmentByType(typeEquipment);
+
         LoanRepositoryImpl loanRepository = new LoanRepositoryImpl();
-        loanRepository.saveLoan(uuidLoan, equipment.getUuidEquipment(), UuidClient);
+        loanRepository.saveLoan( uuidEquipment, uuidClient);
     }
 
 }

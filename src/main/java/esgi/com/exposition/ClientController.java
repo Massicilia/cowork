@@ -45,6 +45,12 @@ public class ClientController {
 		return clientRepository.insertClient(client);
 	}
 
+	/*@PutMapping("/update")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody boolean updateClientSubscription(@RequestBody ClientFullDto client) {
+		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
+		return candidateRepository.updateCandidate(candidate);
+	}*/
 
 
 /*	@GetMapping("/lessInterview")
@@ -70,20 +76,6 @@ public class ClientController {
 		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
 		return candidateRepository.deleteCandidate(uuid);
 	}
-
-	@PostMapping("/insert")
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean insertCandidate(@RequestBody CandidateFullDto candidate) {
-		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
-		candidate = candidateRepository.generateUUID(candidate);
-		return candidateRepository.insertCandidate(candidate);
-	}
-
-	@PutMapping("/update")
-	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean updateCandidate(@RequestBody CandidateFullDto candidate) {
-		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
-		return candidateRepository.updateCandidate(candidate);
-	}*/
+*/
 
 }

@@ -24,13 +24,58 @@ public class LoanRepositoryImpl implements LoanRepository {
     }
 
     @Override
-    public void saveLoan(java.util.UUID uuidLoan, java.util.UUID UuidEquipment, java.util.UUID UuidClient) {
+    public java.util.List<esgi.common.dto.LoanDto> getLoans() {
         mysqlConnection();
-        String uuidString;
+        java.util.List<esgi.common.dto.LoanDto> loanDtos = new java.util.ArrayList<>();
+        esgi.common.dto.LoanDto loanDto;
+        String getLoans = "SELECT UUID, type, client, equipment "+
+                "FROM request " ;
 
+        try {
+            java.sql.ResultSet resultset = statement.executeQuery(getLoans);
+            while (resultset.next()) {
+
+                String uuidString = resultset.getString("UUID");
+                String type = resultset.getString("type");
+                String client = resultset.getString("client");
+                String equipment = resultset.getString("equipment");
+                loanDto = new esgi.common.dto.LoanDto (UUID.fromString(uuidString), type,UUID.fromString(client), UUID.fromString(equipment));
+                loanDtos.add(loanDto);
+                if (resultset == null) {
+                    throw new esgi.common.exceptions.AnyLoanFoundException ();
+                }
+            }
+        } catch (java.sql.SQLException e) {
+            e.printStackTrace();
+        }
+        DbConnect.closeConnection(connection);
+        return loanDtos;
+    }
+
+
+    public esgi.common.dto.LoanDto generateUUID(esgi.common.dto.LoanDto loan) {
+        boolean uuidExist = true;
+        UUID uuidLoan = UUID.randomUUID();
+        while (uuidExist) {
+            uuidLoan = UUID.randomUUID();
+            java.util.List<esgi.common.dto.LoanDto> loanDtos = this.getLoans();
+            uuidExist = loanDtos.stream()
+                    .map(esgi.common.dto.LoanDto::getUuidLoan)
+                    .anyMatch(uuidLoan::equals);
+        }
+        loan.setUuidLoan(uuidLoan);
+        return loan;
+    }
+
+    @Override
+    public void saveLoan( java.util.UUID uuidEquipment, java.util.UUID uuidClient) {
+        mysqlConnection();
+        esgi.common.dto.LoanDto loanDto = new esgi.common.dto.LoanDto ();
+        loanDto = generateUUID(loanDto);
+        java.util.UUID uuidLoan = loanDto.getUuidLoan ();
         String postLoanRequest = "INSERT INTO request ( UUID, type, client, equipment)" +
-                " VALUES ( '" + 11 + "', 'loanrequest', '" + UuidClient.toString() + "', '"
-                + UuidEquipment.toString() + "')";
+                " VALUES ( '" + uuidLoan.toString () + "', 'loanrequest', '" + uuidClient.toString() + "', '"
+                + uuidEquipment.toString() + "')";
 
         try {
             statement.execute(postLoanRequest);
@@ -40,7 +85,7 @@ public class LoanRepositoryImpl implements LoanRepository {
 
         String setEquipmentNonAvailable = "UPDATE equipment" +
         "SET available = '0'"+
-        "WHERE equipment.UUID = '" + UuidEquipment.toString() + "'";
+        "WHERE UUID = '" + uuidEquipment.toString() + "'";
         try {
             statement.execute(setEquipmentNonAvailable);
         } catch (java.sql.SQLException e) {

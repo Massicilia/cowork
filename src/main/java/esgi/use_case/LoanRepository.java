@@ -13,6 +13,7 @@ import java.sql.ResultSet;
 public interface LoanRepository {
 
 
-    void saveLoan(java.util.UUID uuidLoan, java.util.UUID UuidEquipment, java.util.UUID UuidClient);
+    void saveLoan(java.util.UUID UuidEquipment, java.util.UUID UuidClient);
+    java.util.List<esgi.common.dto.LoanDto> getLoans();
 
 }

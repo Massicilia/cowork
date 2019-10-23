@@ -77,7 +77,7 @@ public class ClientRepositoryImpl implements ClientRepository {
                 clientFullDto = new ClientFullDto(UUID.fromString(uuidString), name, surname, mail, true);
                 clientFullDtos.add(clientFullDto);
                 if (resultset == null) {
-                    throw new ClientNotFoundException();
+                    throw new esgi.common.exceptions.AnyClientFoundException ();
                 }
             }
         } catch (java.sql.SQLException e) {
@@ -88,7 +88,7 @@ public class ClientRepositoryImpl implements ClientRepository {
     }
 
     @Override
-    public java.util.UUID getUuidClientByNameAndSurname(String nameClient, String surnameClient) {
+    public java.util.UUID getUuidClientByNameAndSurname(String nameClient) {
         mysqlConnection();
         String uuidString;
 
@@ -96,10 +96,9 @@ public class ClientRepositoryImpl implements ClientRepository {
 
 
 
-        String getClientByNameAndSurname = "SELECT client.UUID"+
+        String getClientByNameAndSurname = "SELECT UUID"+
                 "FROM client" +
-                "WHERE client.name = " + "'" + nameClient + "' and client.surname = '" + surnameClient +
-                "'";
+                "WHERE CONCAT(name , surname) = " + "'" + nameClient + "'";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getClientByNameAndSurname);
