@@ -19,6 +19,8 @@ public class ClientFullDto {
         this.subscription = subscription;
     }
 
+    public ClientFullDto(){   }
+
     public java.util.UUID getUuidClient() {
         return uuidClient;
     }

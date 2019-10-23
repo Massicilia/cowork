@@ -33,9 +33,15 @@ public class ClientController {
 
 	@PostMapping("/insert")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean insertClient(@RequestBody ClientFullDto client) {
+	public @ResponseBody boolean insertClient(@RequestBody String name, String surname,
+	                                          String mail, boolean subscription) {
 		ClientRepositoryImpl clientRepository = new ClientRepositoryImpl();
-		client = clientRepository.generateUUID(client);
+		ClientFullDto client = new esgi.common.dto.ClientFullDto ();
+		client	=	clientRepository.generateUUID(client);
+		client.setNameClient (name);
+		client.setSurnameClient (surname);
+		client.setMail (mail);
+		client.setSubscription (subscription);
 		return clientRepository.insertClient(client);
 	}
 

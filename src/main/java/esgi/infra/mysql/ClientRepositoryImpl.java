@@ -35,9 +35,9 @@ public class ClientRepositoryImpl implements ClientRepository {
 
 
 
-        String getClient = "SELECT client.name, client.surname, client.subscription, client.mail"+
-                            "FROM client" +
-                            "WHERE client.UUID = " + "'" + uuid_client + "' ";
+        String getClient = "SELECT c.name, c.surname, c.mail, c.subscription " +
+		        "FROM client c " +
+		        "WHERE c.UUID = " + "'" + uuid_client.toString() + "' ";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getClient);
@@ -140,17 +140,17 @@ public class ClientRepositoryImpl implements ClientRepository {
         String surname = clientFullDto.getSurnameClient ();
         String name = clientFullDto.getNameClient ();
         String mail = clientFullDto.getMail();
-        boolean subscription = clientFullDto.getSubscription();
+        int subscription = clientFullDto.getSubscription() ? 1 : 0;
         int newIdClient = 0;
         ResultSet generatedKeys = null;
-        String insertClient = "INSERT INTO Client " +
-                "(uuidClient,name, surname, mail, subscription) " +
-                "VALUES (" + "'" + uuidClient + "', " +
-                "'" + surname + "', " +
-                "'" + name + "', " +
-                "'" + mail + "', " + "'" +
-                subscription +  "')";
-        try {
+        String insertClient = "INSERT INTO client" +
+		        "(UUID, name, surname, subscription, mail)" +
+		        "VALUES (" + "'" + uuidClient + "', '" + name + "', '" + surname + "', '" + subscription + "', '" + mail + "')";
+
+
+
+
+	    try {
             statement.execute(insertClient, statement.RETURN_GENERATED_KEYS);
             generatedKeys = statement.getGeneratedKeys();
             if (generatedKeys.next()) {
