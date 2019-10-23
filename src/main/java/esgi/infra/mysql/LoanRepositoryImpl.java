@@ -1,14 +1,7 @@
 package esgi.infra.mysql;
 
-import esgi.use_case.ClientRepository;
 import esgi.use_case.LoanRepository;
-import esgi.common.dto.ClientFullDto;
-import esgi.common.exceptions.ClientNotFoundException;
-import java.sql.Statement;
-import java.sql.Connection;
 import java.util.UUID;
-import java.sql.SQLException;
-import java.sql.ResultSet;
 
 public class LoanRepositoryImpl implements LoanRepository {
     public java.sql.Statement statement = null;
@@ -28,18 +21,20 @@ public class LoanRepositoryImpl implements LoanRepository {
         mysqlConnection();
         java.util.List<esgi.common.dto.LoanDto> loanDtos = new java.util.ArrayList<>();
         esgi.common.dto.LoanDto loanDto;
-        String getLoans = "SELECT UUID, type, client, equipment "+
-                "FROM request " ;
+        String getLoans = "SELECT UUID, uuiduser, uuidequipment, dateLoanBegin, dateLoanEnd "+
+                "FROM loan " ;
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getLoans);
             while (resultset.next()) {
 
                 String uuidString = resultset.getString("UUID");
-                String type = resultset.getString("type");
-                String client = resultset.getString("client");
-                String equipment = resultset.getString("equipment");
-                loanDto = new esgi.common.dto.LoanDto (UUID.fromString(uuidString), type,UUID.fromString(client), UUID.fromString(equipment));
+                String uuiduser = resultset.getString("uuiduser");
+                String uuidequipment = resultset.getString("uuidequipment");
+                java.util.Date dateLoanBegin =resultset.getDate ("dateLoanBegin");
+                java.util.Date dateLoanEnd =resultset.getDate ("dateLoanEnd");
+                loanDto = new esgi.common.dto.LoanDto (UUID.fromString(uuidString), UUID.fromString(uuiduser),
+                        UUID.fromString(uuidequipment), dateLoanBegin, dateLoanEnd);
                 loanDtos.add(loanDto);
                 if (resultset == null) {
                     throw new esgi.common.exceptions.AnyLoanFoundException ();
@@ -68,14 +63,15 @@ public class LoanRepositoryImpl implements LoanRepository {
     }
 
     @Override
-    public void saveLoan( java.util.UUID uuidEquipment, java.util.UUID uuidClient) {
+    public void saveLoan(java.util.UUID uuidEquipment, java.util.UUID uuidUser,
+                         java.util.Date dateLoanBegin, java.util.Date dateLoanEnd) {
         mysqlConnection();
         esgi.common.dto.LoanDto loanDto = new esgi.common.dto.LoanDto ();
         loanDto = generateUUID(loanDto);
         java.util.UUID uuidLoan = loanDto.getUuidLoan ();
-        String postLoanRequest = "INSERT INTO request ( UUID, type, client, equipment)" +
-                " VALUES ( '" + uuidLoan.toString () + "', 'loanrequest', '" + uuidClient.toString() + "', '"
-                + uuidEquipment.toString() + "')";
+        String postLoanRequest = "INSERT INTO request ( UUID, uuiduser, uuidequipment, dateLoanBegin, dateLoanEnd)" +
+                " VALUES ( '" + uuidLoan.toString () + "', 'loanrequest', '" + uuidUser.toString() + "', '"
+                + uuidEquipment.toString() + dateLoanBegin + "', '" + dateLoanEnd + "')";
 
         try {
             statement.execute(postLoanRequest);
@@ -85,6 +81,9 @@ public class LoanRepositoryImpl implements LoanRepository {
 
         String setEquipmentNonAvailable = "UPDATE equipment" +
         "SET available = '0'"+
+        "AND dateAvailibility = '" + dateLoanEnd + "'" +
+        "AND uuidLoanRequester = '" + uuidUser + "'" +
+        "AND statut = NOT AVAILABLE" +
         "WHERE UUID = '" + uuidEquipment.toString() + "'";
         try {
             statement.execute(setEquipmentNonAvailable);

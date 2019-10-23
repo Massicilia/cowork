@@ -1,10 +1,6 @@
 package esgi.use_case;
 
-import esgi.common.dto.ClientDto;
 import esgi.common.dto.EquipmentDto;
-
-import java.util.List;
-import java.util.UUID;
 
 public interface EquipmentRepository {
 

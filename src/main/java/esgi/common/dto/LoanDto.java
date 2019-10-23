@@ -5,15 +5,17 @@ import java.util.UUID;
 public class LoanDto {
 
     private java.util.UUID uuidLoan;
-    private String loanType;
     private java.util.UUID uuidEquipment;
-    private java.util.UUID uuidClient;
+    private java.util.UUID uuidUser;
+    private java.util.Date dateLoanBegin;
+    private java.util.Date dateLoanEnd;
 
-    public LoanDto(java.util.UUID uuidLoan, String loanType, java.util.UUID uuidEquipment, java.util.UUID uuidClient){
+    public LoanDto(java.util.UUID uuidLoan, java.util.UUID uuidEquipment, java.util.UUID uuidUser, java.util.Date dateLoanBegin, java.util.Date dateLoanEnd){
         this.uuidLoan = uuidLoan;
-        this.loanType = loanType;
         this.uuidEquipment = uuidEquipment;
-        this.uuidClient = uuidClient;
+        this.uuidUser = uuidUser;
+        this.dateLoanBegin = dateLoanBegin;
+        this.dateLoanEnd = dateLoanEnd;
     }
 
     public LoanDto(){}

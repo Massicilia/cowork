@@ -1,20 +1,22 @@
 package esgi.use_case;
 
-import esgi.infra.mysql.ClientRepositoryImpl;
 import esgi.infra.mysql.EquipmentRepositoryImpl;
 import esgi.infra.mysql.LoanRepositoryImpl;
-import esgi.common.dto.EquipmentDto;
-import esgi.common.dto.LoanDto;
 import java.util.UUID;
 
 public class LoanRegistration {
 
     public String typeEquipment;
-    public java.util.UUID uuidClient;
+    public java.util.UUID uuidUser;
+    java.util.Date dateLoanBegin;
+    java.util.Date dateLoanEnd;
 
-    public LoanRegistration(java.util.UUID uuidClient, String typeElement ){
-        this.uuidClient = uuidClient;
+    public LoanRegistration(java.util.UUID uuidUser, String typeEquipment,
+                            java.util.Date dateLoanBegin, java.util.Date dateLoanEnd){
+        this.uuidUser = uuidUser;
         this.typeEquipment = typeEquipment;
+        this.dateLoanBegin = dateLoanBegin;
+        this.dateLoanEnd = dateLoanEnd;
 
     }
 
@@ -24,7 +26,7 @@ public class LoanRegistration {
         UUID uuidEquipment = equipmentRepository.getAvailableEquipmentByType(typeEquipment);
 
         LoanRepositoryImpl loanRepository = new LoanRepositoryImpl();
-        loanRepository.saveLoan( uuidEquipment, uuidClient);
+        loanRepository.saveLoan( uuidEquipment, uuidUser, dateLoanBegin, dateLoanEnd);
     }
 
 }
