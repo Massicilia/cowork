@@ -11,16 +11,49 @@ public class UserFullDto {
     private String mail;
     private LocalDate dateEndSubscription;
     private int subscription;
+    private String identifiant;
+    private String password;
 
-    public UserFullDto (UUID uuidUser, String name,
-                        String surname, String mail,
-                        LocalDate dateEndSubscription, int subscription){
+    public int getSubscription () {
+        return subscription;
+    }
+
+    public String getIdentifiant () {
+        return identifiant;
+    }
+
+    public void setIdentifiant (final String identifiant) {
+        this.identifiant = identifiant;
+    }
+
+    public String getPassword () {
+        return password;
+    }
+
+    public void setPassword (final String password) {
+        this.password = password;
+    }
+
+    public String getType () {
+        return type;
+    }
+
+    public void setType (final String type) {
+        this.type = type;
+    }
+
+    private String type;
+
+    public UserFullDto (final java.util.UUID uuidUser, final String name, final String surname, final String mail, final java.time.LocalDate dateEndSubscription, final int subscription, final String identifiant, final String password, final String type) {
         this.uuidUser = uuidUser;
         this.name = name;
         this.surname = surname;
         this.mail = mail;
         this.dateEndSubscription = dateEndSubscription;
         this.subscription = subscription;
+        this.identifiant = identifiant;
+        this.password = password;
+        this.type = type;
     }
 
     public UserFullDto (){   }

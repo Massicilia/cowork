@@ -11,7 +11,7 @@ public class CoworkApplication
 	public static void main( String[] args )
 	{
 		Logger logger = LoggerFactory.getLogger(CoworkApplication.class);
-		
+
 		SpringApplication.run(CoworkApplication.class, args);
 	}
 	//testgithub

@@ -1,26 +1,36 @@
 package esgi.infra.mysql;
 
+import esgi.common.dto.UserFullDto;
+import esgi.use_case.UserRepository;
+import esgi.common.exceptions.UserNotFoundException;
+import esgi.common.exceptions.AnyUserFoundException;
 import java.util.UUID;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 import java.util.List;
+import java.time.LocalDate;
+import java.sql.Statement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.sql.Connection;
+import java.util.ArrayList;
 
-public class UserRepositoryImpl implements esgi.use_case.UserRepository {
-    public java.sql.Statement statement = null;
-    java.sql.Connection connection;
-	org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(esgi.infra.mysql.UserRepositoryImpl.class);
+public class UserRepositoryImpl implements UserRepository {
+    public Statement statement = null;
+    Connection connection;
+	Logger logger = LoggerFactory.getLogger(esgi.infra.mysql.UserRepositoryImpl.class);
 
     void mysqlConnection() {
         connection = DbConnect.getConnection();
         try {
             statement = connection.createStatement();
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     @Override
-    public esgi.common.dto.UserFullDto getUser(java.util.UUID uuid_user) {
+    public UserFullDto getUser(UUID uuid_user) {
         mysqlConnection();
 
         String name=null;
@@ -28,12 +38,15 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         String mail=null;
         java.time.LocalDate dateEndSubscription = null;
         int subscription=0;
+        String identifiant = null;
+        String password = null;
+        String type = null;
 
 
 
-        String getUser = "SELECT u.name, u.surname, u.mail, u.dayEndSubscription, u.monthEndSubscription, u.yearEndSubscription, u.subscription " +
-		        "FROM user u " +
-		        "WHERE u.UUID = " + "'" + uuid_user.toString() + "' ";
+        String getUser = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
+		        "FROM user " +
+		        "WHERE UUID = " + "'" + uuid_user.toString() + "' ";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUser);
@@ -41,29 +54,32 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
                 surname = resultset.getString("surname");
                 name = resultset.getString("name");
                 mail = resultset.getString("mail");
+                identifiant = resultset.getString("identifiant");
+                password = resultset.getString("password");
+                type = resultset.getString("type");
                 String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
                 //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-                dateEndSubscription = java.time.LocalDate.parse(dateEndSubscriptionString);//, format);
+                dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);//, format);
 
                 subscription = resultset.getInt("subscription");
             } else {
-                throw new esgi.common.exceptions.UserNotFoundException ();
+                throw new UserNotFoundException ();
             }
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        esgi.common.dto.UserFullDto userFullDto = new esgi.common.dto.UserFullDto (uuid_user, surname, name, mail, dateEndSubscription, subscription);
+        UserFullDto userFullDto = new UserFullDto (uuid_user, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type);
 
         DbConnect.closeConnection(connection);
         return userFullDto;
     }
 
     @Override
-    public java.util.List<esgi.common.dto.UserFullDto> getUsers() {
+    public List<UserFullDto> getUsers() {
         mysqlConnection();
-        java.util.List<esgi.common.dto.UserFullDto> userFullDtos = new java.util.ArrayList<>();
-        esgi.common.dto.UserFullDto userFullDto;
-        String getUsers = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription " +
+        List<UserFullDto> userFullDtos = new ArrayList<> ();
+        UserFullDto userFullDto;
+        String getUsers = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
                 "FROM user " +
                 "WHERE subscription = " + 1;
         try {
@@ -75,15 +91,17 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
                 String surname = resultset.getString("surname");
                 String mail = resultset.getString("mail");
                 String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
-                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-                java.time.LocalDate dateEndSubscription = java.time.LocalDate.parse(dateEndSubscriptionString);//, format);
-                userFullDto = new esgi.common.dto.UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1);
+                LocalDate dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);//, format);
+	            String identifiant = resultset.getString("identifiant");
+	            String password = resultset.getString("password");
+	            String type = resultset.getString("type");
+	            userFullDto = new UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1, identifiant, password, type);
                 userFullDtos.add(userFullDto);
                 if (resultset == null) {
-                    throw new esgi.common.exceptions.AnyUserFoundException ();
+                    throw new AnyUserFoundException ();
                 }
             }
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         DbConnect.closeConnection(connection);
@@ -91,27 +109,24 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
     }
 
     @Override
-    public java.util.UUID getUuidUserByNameAndSurname(String name, String surname) {
+    public UUID getUuidUserByNameAndSurname(String name, String surname) {
         mysqlConnection();
 
-        logger.debug ("USERREPOSITORYIMPL GETUSERBYNAMEANDSURNAME");
         String uuidString;
 
-        java.util.UUID uuidUser = null;
-
-
+        UUID uuidUser = null;
 
         String getUserByNameAndSurname = "SELECT UUID FROM user WHERE name  = " + "'" + name + "' AND surname = " + "'" + surname + "'";
 
         try {
-            java.sql.ResultSet resultset = statement.executeQuery(getUserByNameAndSurname);
+            ResultSet resultset = statement.executeQuery(getUserByNameAndSurname);
             if (resultset.next()) {
                 uuidString = resultset.getString("UUID");
-                uuidUser = java.util.UUID.fromString(uuidString);
+                uuidUser = UUID.fromString(uuidString);
             } else {
-                throw new esgi.common.exceptions.UserNotFoundException ();
+                throw new UserNotFoundException ();
             }
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -119,8 +134,31 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         return uuidUser;
     }
 
+    @Override
+    public String getUserAuth(String identifiant, String password){
+	    mysqlConnection();
 
-    public esgi.common.dto.UserFullDto generateUUID(esgi.common.dto.UserFullDto user) {
+		String type = null;
+
+	    String getUserAuth = "SELECT type FROM user WHERE identifiant  = " + "'" + identifiant + "' AND password = " + "'" + password + "'";
+
+	    try {
+		    ResultSet resultset = statement.executeQuery(getUserAuth);
+		    if (resultset.next()) {
+			    type = resultset.getString("type");
+		    } else {
+			    throw new UserNotFoundException ();
+		    }
+	    } catch (SQLException e) {
+		    e.printStackTrace();
+	    }
+
+	    DbConnect.closeConnection(connection);
+	    return type;
+    }
+
+
+    public UserFullDto generateUUID(UserFullDto user) {
         boolean uuidExist = true;
         UUID uuidUser = UUID.randomUUID();
         while (uuidExist) {
@@ -135,7 +173,7 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
     }
 
 
-    public boolean insertUser(esgi.common.dto.UserFullDto userFullDto) {
+    public boolean insertUser(UserFullDto userFullDto) {
         mysqlConnection();
         boolean ok = false;
         String uuidUser = userFullDto.getUuidUser().toString();
@@ -144,21 +182,24 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         String mail = userFullDto.getMail();
         java.time.LocalDate dateEndSubscription = userFullDto.getDateEndSubscription ();
         int subscription = userFullDto.isSubscription ();
+	    String identifiant = userFullDto.getIdentifiant();
+	    String password = userFullDto.getIdentifiant();
+	    String type = userFullDto.getType();
+	    String formatDateEndSubscription = dateEndSubscription.toString ();
 
-        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-        String formatDateEndSubscription = dateEndSubscription.format(formatter);
+
         int newIdUser = 0;
         ResultSet generatedKeys = null;
         String insertUser = "INSERT INTO user" +
-		        "(UUID, name, surname, mail, dateEndSubscription, subscription)" +
+		        "(UUID, name, surname, mail, dateEndSubscription, subscription, identifiant, password, type)" +
 		        "VALUES (" + "'" + uuidUser + "', '" +
                 name + "', '" +
                 surname + "', '" +
                 mail + "', '" +
-                Integer.parseInt(formatDateEndSubscription.substring (8, 9)) + "', '" +
-                Integer.parseInt(formatDateEndSubscription.substring (5, 6)) + "', '" +
-                Integer.parseInt(formatDateEndSubscription.substring (0, 3)) + "', '" +
-                + subscription + "')";
+                Integer.parseInt(formatDateEndSubscription.substring (8, 10)) + "', '" +
+                Integer.parseInt(formatDateEndSubscription.substring (5, 7)) + "', '" +
+                Integer.parseInt(formatDateEndSubscription.substring (0, 4)) + "', '" +
+                + subscription + "', '" + identifiant + "', '" + password + "', '" + type + "')";
 
 
 	    try {

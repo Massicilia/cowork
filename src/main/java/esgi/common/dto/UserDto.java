@@ -4,28 +4,30 @@ import java.util.UUID;
 
 public class UserDto {
 
-    private UUID uuidUser;
-    private boolean subscription;
+    private String identifiant;
+    private String password;
 
-    public UserDto (UUID uuidUser, boolean subscription){
-
-        this.uuidUser = uuidUser;
-        this.subscription = subscription;
+    public UserDto (final String identifiant, final String password) {
+        this.identifiant = identifiant;
+        this.password = password;
     }
 
-    public UUID getUuidUser() {
-        return uuidUser;
+    public UserDto () {
     }
 
-    public boolean getSubscription() {
-        return subscription;
+    public String getIdentifiant () {
+        return identifiant;
     }
 
-    public void setUuidUser (final UUID uuidUser) {
-        this.uuidUser = uuidUser;
+    public void setIdentifiant (final String identifiant) {
+        this.identifiant = identifiant;
     }
 
-    public void setSubscription(boolean subscription) {
-        this.subscription = subscription;
+    public String getPassword () {
+        return password;
+    }
+
+    public void setPassword (final String password) {
+        this.password = password;
     }
 }
