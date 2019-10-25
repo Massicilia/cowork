@@ -4,16 +4,16 @@ import java.util.UUID;
 
 public class UserDto {
 
-    private java.util.UUID uuidUser;
+    private UUID uuidUser;
     private boolean subscription;
 
-    public UserDto (java.util.UUID uuidUser, boolean subscription){
+    public UserDto (UUID uuidUser, boolean subscription){
 
         this.uuidUser = uuidUser;
         this.subscription = subscription;
     }
 
-    public java.util.UUID getUuidUser() {
+    public UUID getUuidUser() {
         return uuidUser;
     }
 
@@ -21,7 +21,7 @@ public class UserDto {
         return subscription;
     }
 
-    public void setUuidUser (final java.util.UUID uuidUser) {
+    public void setUuidUser (final UUID uuidUser) {
         this.uuidUser = uuidUser;
     }
 

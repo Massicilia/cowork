@@ -2,15 +2,22 @@ package esgi.infra.mysql;
 import esgi.use_case.EquipmentRepository;
 import esgi.common.dto.EquipmentDto;
 import esgi.common.exceptions.EquipmentNotFoundException;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.UUID;
 import java.sql.SQLException;
-import java.sql.ResultSet;
+import java.time.LocalDate;
+
+import static javax.swing.UIManager.getInt;
 
 public class EquipmentRepositoryImpl implements EquipmentRepository {
-    public java.sql.Statement statement = null;
-    java.sql.Connection connection;
+    public Statement statement = null;
+    Connection connection;
+
+    Logger logger = LoggerFactory.getLogger(esgi.infra.mysql.EquipmentRepositoryImpl.class);
 
     void mysqlConnection() {
         connection = DbConnect.getConnection();
@@ -22,20 +29,24 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
     }
 
     @Override
-    public EquipmentDto getEquipment(java.util.UUID uuid_equipment){
+    public EquipmentDto getEquipment(UUID uuid_equipment){
         mysqlConnection();
         String uuidString;
         String uuidLoanRequesterString;
         java.util.UUID uuidEquipment=null;
         String type=null;
         int available=0;
-        java.util.Date dateAvailability = null;
-        String dateAvailabilityString = null;
         java.util.UUID uuidLoanRequester = null;
         String statut = null;
 
+        //AVAILABILITYDATE
+        int dayAvailability = 0;
+        int monthAvailability = 0;
+        int yearAvailability = 0;
+	    LocalDate dateAvailability = null;
 
-        String getEquipment = "SELECT equipment.UUID, equipment.type, equipment.available, equipment.dateAvailability, equipment.dateAvailability, equipment.uuidLoanRequester, equipment.statut"+
+
+        String getEquipment = "SELECT equipment.UUID, equipment.type, equipment.available, equipment.dayAvailability, equipment.monthAvailability, equipment.yearAvailability, equipment.uuidLoanRequester, equipment.statut"+
                             "FROM equipment" +
                             "WHERE equipment.UUID = " + "'" + uuid_equipment.toString() + "' ";
 
@@ -49,7 +60,12 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
                 uuidLoanRequesterString = resultset.getString ("uuidLoanRequester");
                 uuidLoanRequester = java.util.UUID.fromString(uuidLoanRequesterString);
                 statut = resultset.getString ("statut");
-                dateAvailability =resultset.getDate ("dateAvailability");
+                dayAvailability =resultset.getInt("dayAvailability");
+                monthAvailability =resultset.getInt("monthAvailability");
+                yearAvailability =resultset.getInt("yearAvailability");
+                String dateString = yearAvailability + "-" + monthAvailability + "-" + dayAvailability; ;
+                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
+	            dateAvailability = java.time.LocalDate.parse(dateString);//, format);
 
             } else {
                 throw new EquipmentNotFoundException();
@@ -67,24 +83,25 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
 
 
     @Override
-    public java.util.UUID getAvailableEquipmentByType(String typeEquipment){
+    public UUID getAvailableEquipmentByType(String typeEquipment){
         mysqlConnection();
         String uuidString;
-        java.util.UUID uuidEquipment=null;
+        UUID uuidEquipment= new java.util.UUID (0, 0);
 
-        String getAvailableEquipmentByType = "SELECT UUID"+
-                "FROM equipment" +
-                "WHERE type = " + "'" + typeEquipment + "' and available =" +1;
+        logger.debug("EQUIPMENTREPOSITORYIMPL GETAVAILABLEQUIPMENTBYTYPE");
+        String getAvailableEquipmentByType = "SELECT UUID FROM equipment WHERE type = '" + typeEquipment + "' and available =" +1;
 
         try {
-            java.sql.ResultSet resultset = statement.executeQuery(getAvailableEquipmentByType);
+            ResultSet resultset = statement.executeQuery(getAvailableEquipmentByType);
             if (resultset.next()) {
-                uuidString = resultset.getString("UUID");
-                uuidEquipment = java.util.UUID.fromString(uuidString);
+                uuidString = resultset.getString ("UUID");
+                logger.debug ("UUIDSTRING " + uuidString);
+                uuidEquipment = UUID.fromString(uuidString);
+                logger.debug ("UUIDEQUIPMENT " + uuidEquipment);
             } else {
                 throw new EquipmentNotFoundException();
             }
-        } catch (java.sql.SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 

@@ -8,6 +8,7 @@ import java.util.List;
 public class UserRepositoryImpl implements esgi.use_case.UserRepository {
     public java.sql.Statement statement = null;
     java.sql.Connection connection;
+	org.slf4j.Logger logger = org.slf4j.LoggerFactory.getLogger(esgi.infra.mysql.UserRepositoryImpl.class);
 
     void mysqlConnection() {
         connection = DbConnect.getConnection();
@@ -25,14 +26,14 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         String name=null;
         String surname=null;
         String mail=null;
-        java.util.Date dateEndSubscription = null;
+        java.time.LocalDate dateEndSubscription = null;
         int subscription=0;
 
 
 
-        String getUser = "SELECT u.name, u.surname, u.mail, u.dateEndSubscription, u.subscription " +
+        String getUser = "SELECT u.name, u.surname, u.mail, u.dayEndSubscription, u.monthEndSubscription, u.yearEndSubscription, u.subscription " +
 		        "FROM user u " +
-		        "WHERE c.UUID = " + "'" + uuid_user.toString() + "' ";
+		        "WHERE u.UUID = " + "'" + uuid_user.toString() + "' ";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUser);
@@ -40,7 +41,10 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
                 surname = resultset.getString("surname");
                 name = resultset.getString("name");
                 mail = resultset.getString("mail");
-                dateEndSubscription = resultset.getDate ("dateEndSubscription");
+                String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
+                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
+                dateEndSubscription = java.time.LocalDate.parse(dateEndSubscriptionString);//, format);
+
                 subscription = resultset.getInt("subscription");
             } else {
                 throw new esgi.common.exceptions.UserNotFoundException ();
@@ -59,9 +63,9 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         mysqlConnection();
         java.util.List<esgi.common.dto.UserFullDto> userFullDtos = new java.util.ArrayList<>();
         esgi.common.dto.UserFullDto userFullDto;
-        String getUsers = "SELECT user.UUID, user.name, user.surname, user.mail, user.dateEndSubscription "+
+        String getUsers = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription " +
                 "FROM user " +
-                "WHERE user.subscription = " + 1;
+                "WHERE subscription = " + 1;
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUsers);
             while (resultset.next()) {
@@ -70,7 +74,9 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
                 String name = resultset.getString("name");
                 String surname = resultset.getString("surname");
                 String mail = resultset.getString("mail");
-                java.util.Date dateEndSubscription = resultset.getDate ("dateEndSubscription");
+                String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
+                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
+                java.time.LocalDate dateEndSubscription = java.time.LocalDate.parse(dateEndSubscriptionString);//, format);
                 userFullDto = new esgi.common.dto.UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1);
                 userFullDtos.add(userFullDto);
                 if (resultset == null) {
@@ -85,17 +91,17 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
     }
 
     @Override
-    public java.util.UUID getUuidUserByNameAndSurname(String name) {
+    public java.util.UUID getUuidUserByNameAndSurname(String name, String surname) {
         mysqlConnection();
+
+        logger.debug ("USERREPOSITORYIMPL GETUSERBYNAMEANDSURNAME");
         String uuidString;
 
         java.util.UUID uuidUser = null;
 
 
 
-        String getUserByNameAndSurname = "SELECT UUID"+
-                "FROM user" +
-                "WHERE CONCAT(name , surname) = " + "'" + name + "'";
+        String getUserByNameAndSurname = "SELECT UUID FROM user WHERE name  = " + "'" + name + "' AND surname = " + "'" + surname + "'";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUserByNameAndSurname);
@@ -136,13 +142,23 @@ public class UserRepositoryImpl implements esgi.use_case.UserRepository {
         String surname = userFullDto.getSurname ();
         String name = userFullDto.getName ();
         String mail = userFullDto.getMail();
-        java.util.Date dateEndSubscription = userFullDto.getDateEndSubscription ();
+        java.time.LocalDate dateEndSubscription = userFullDto.getDateEndSubscription ();
         int subscription = userFullDto.isSubscription ();
+
+        java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
+        String formatDateEndSubscription = dateEndSubscription.format(formatter);
         int newIdUser = 0;
         ResultSet generatedKeys = null;
         String insertUser = "INSERT INTO user" +
 		        "(UUID, name, surname, mail, dateEndSubscription, subscription)" +
-		        "VALUES (" + "'" + uuidUser + "', '" + name + "', '" + surname + "', '" + mail + "', '" + "', '" + dateEndSubscription + "', '" + subscription + "')";
+		        "VALUES (" + "'" + uuidUser + "', '" +
+                name + "', '" +
+                surname + "', '" +
+                mail + "', '" +
+                Integer.parseInt(formatDateEndSubscription.substring (8, 9)) + "', '" +
+                Integer.parseInt(formatDateEndSubscription.substring (5, 6)) + "', '" +
+                Integer.parseInt(formatDateEndSubscription.substring (0, 3)) + "', '" +
+                + subscription + "')";
 
 
 	    try {

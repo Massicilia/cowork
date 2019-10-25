@@ -1,19 +1,20 @@
 package esgi.common.dto;
 
 import java.util.UUID;
+import java.time.LocalDate;
 
 public class UserFullDto {
 
-    private java.util.UUID uuidUser;
+    private UUID uuidUser;
     private String name;
     private String surname;
     private String mail;
-    private java.util.Date dateEndSubscription;
+    private LocalDate dateEndSubscription;
     private int subscription;
 
-    public UserFullDto (java.util.UUID uuidUser, String name,
+    public UserFullDto (UUID uuidUser, String name,
                         String surname, String mail,
-                        java.util.Date dateEndSubscription, int subscription){
+                        LocalDate dateEndSubscription, int subscription){
         this.uuidUser = uuidUser;
         this.name = name;
         this.surname = surname;
@@ -24,11 +25,11 @@ public class UserFullDto {
 
     public UserFullDto (){   }
 
-    public java.util.UUID getUuidUser () {
+    public UUID getUuidUser () {
         return uuidUser;
     }
 
-    public void setUuidUser (final java.util.UUID uuidUser) {
+    public void setUuidUser (final UUID uuidUser) {
         this.uuidUser = uuidUser;
     }
 
@@ -56,11 +57,11 @@ public class UserFullDto {
         this.mail = mail;
     }
 
-    public java.util.Date getDateEndSubscription () {
+    public LocalDate getDateEndSubscription () {
         return dateEndSubscription;
     }
 
-    public void setDateEndSubscription (final java.util.Date dateEndSubscription) {
+    public void setDateEndSubscription (final LocalDate dateEndSubscription) {
         this.dateEndSubscription = dateEndSubscription;
     }
 
