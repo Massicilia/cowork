@@ -88,16 +88,15 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
         String uuidString;
         UUID uuidEquipment= new java.util.UUID (0, 0);
 
-        logger.debug("EQUIPMENTREPOSITORYIMPL GETAVAILABLEQUIPMENTBYTYPE");
+
         String getAvailableEquipmentByType = "SELECT UUID FROM equipment WHERE type = '" + typeEquipment + "' and available =" +1;
 
         try {
             ResultSet resultset = statement.executeQuery(getAvailableEquipmentByType);
             if (resultset.next()) {
                 uuidString = resultset.getString ("UUID");
-                logger.debug ("UUIDSTRING " + uuidString);
                 uuidEquipment = UUID.fromString(uuidString);
-                logger.debug ("UUIDEQUIPMENT " + uuidEquipment);
+
             } else {
                 throw new EquipmentNotFoundException();
             }

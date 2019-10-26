@@ -25,7 +25,6 @@ public class LoanController {
     @ResponseStatus(org.springframework.http.HttpStatus.OK)
     public void LoanRegistration(@RequestBody LoanRequestDto loanRequestDto){
 
-        logger.debug ("LOANCONTROLLER STEP");
         UserRepositoryImpl userRepository = new UserRepositoryImpl ();
         LoanRegistration loan = new LoanRegistration(userRepository.getUuidUserByNameAndSurname(loanRequestDto.getNameUser (), loanRequestDto.getSurnameUser ()), loanRequestDto.getTypeEquipment (), loanRequestDto.getDateLoanBegin (), loanRequestDto.getDateLoanEnd () );
         loan.register();

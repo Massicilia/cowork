@@ -89,17 +89,17 @@ public class LoanRepositoryImpl implements LoanRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-	    logger.debug ("LOANREPOSITORYIMPL SAVELOAN AFTER SAVING LOAN");
+
 
         String setEquipmentNonAvailable = "UPDATE equipment SET available ='" + "0" + "' AND dayAvailability = '" + Integer.parseInt(formatDateLoanEnd.substring (8, 10)) + "' AND monthAvailability = '" + Integer.parseInt(formatDateLoanEnd.substring (5, 7)) + "' AND yearAvailability = '" + Integer.parseInt(formatDateLoanEnd.substring (0, 4)) + "' AND uuidLoanRequester = '" + uuidUser + "' AND statut = '" + "NOT AVAILABLE" + "' WHERE UUID = '" + uuidEquipment.toString() + "'";
 
-        logger.debug ("SETEQUIPMENTNONAVAILABLE : " + setEquipmentNonAvailable);
+
         try {
             statement.execute(setEquipmentNonAvailable);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-	    logger.debug ("LOANREPOSITORYIMPL SAVELOAN AFTER UPDATING EQUIPMENT");
+
         DbConnect.closeConnection(connection);
     }
 

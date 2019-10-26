@@ -29,10 +29,14 @@ public class UserRepositoryImpl implements UserRepository {
         }
     }
 
+
+
     @Override
     public UserFullDto getUser(UUID uuid_user) {
         mysqlConnection();
 
+        String uuidString;
+        UUID uuid = null;
         String name=null;
         String surname=null;
         String mail=null;
@@ -44,22 +48,34 @@ public class UserRepositoryImpl implements UserRepository {
 
 
 
-        String getUser = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
-		        "FROM user " +
-		        "WHERE UUID = " + "'" + uuid_user.toString() + "' ";
+        String getUser = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type FROM user WHERE UUID = '" + uuid_user.toString() + "' ";
+
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUser);
+
             if (resultset.next()) {
+                logger.debug ("RESULTSET TRUE " );
+                uuidString = resultset.getString("UUID");
+                logger.debug ("uuidString : " + uuidString);
+                uuid = UUID.fromString(uuidString);
+                logger.debug ("UUID : " + uuid);
+
                 surname = resultset.getString("surname");
                 name = resultset.getString("name");
                 mail = resultset.getString("mail");
                 identifiant = resultset.getString("identifiant");
                 password = resultset.getString("password");
                 type = resultset.getString("type");
-                String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
-                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-                dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);//, format);
+                logger.debug ("DATAS GETTING ");
+
+                if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
+
+                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
+                    logger.debug ("dateEndSubscriptionString" + dateEndSubscriptionString);
+                    dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
+                }
+
 
                 subscription = resultset.getInt("subscription");
             } else {
@@ -68,7 +84,7 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        UserFullDto userFullDto = new UserFullDto (uuid_user, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type);
+        UserFullDto userFullDto = new UserFullDto (uuid, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type);
 
         DbConnect.closeConnection(connection);
         return userFullDto;
@@ -219,4 +235,35 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
 
+    public boolean isEmployee(java.util.UUID uuid){
+
+        mysqlConnection();
+        boolean ok = false;
+        String type = null;
+
+        String getType = "SELECT type FROM user WHERE UUID = " + "'" + uuid.toString() + "' ";
+
+        logger.debug ("UUID " + uuid);
+        logger.debug ("TYPE USER " + getType);
+        try {
+            java.sql.ResultSet resultset = statement.executeQuery(getType);
+
+            if (resultset.next()) {
+                logger.debug ("IN RESULTSET NEXT ");
+                type = resultset.getString("type");
+                logger.debug ("TYPE " + type);
+                if(type.equals ("employee")){
+                    ok = true;
+                    logger.debug ("OK " + ok);
+                }
+            } else {
+                throw new UserNotFoundException ();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+        return ok;
+    }
 }

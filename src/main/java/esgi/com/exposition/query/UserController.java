@@ -14,7 +14,7 @@ import java.util.UUID;
 import java.util.List;
 
 @RestController
-//@RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
+@RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class UserController {
 
 	Logger logger = LoggerFactory.getLogger(esgi.com.exposition.query.UserController.class);
