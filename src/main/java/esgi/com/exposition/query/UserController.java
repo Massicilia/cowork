@@ -51,7 +51,7 @@ public class UserController {
 		return userRepository.insertUser(user);
 	}
 
-	@org.springframework.web.bind.annotation.GetMapping ("/auth")
+	@GetMapping ("/auth")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public String getUserAuth(@RequestBody esgi.common.dto.UserDto user) {
 
@@ -60,15 +60,11 @@ public class UserController {
 		return type;
 	}
 
-
-
-
-
-	/*@PutMapping("/update")
+	@PutMapping("/update")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody boolean updateClientSubscription(@RequestBody UserFullDto client) {
-		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
-		return candidateRepository.updateCandidate(candidate);
+		//CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
+		//return candidateRepository.updateCandidate(candidate);
 	}*/
 
 }
