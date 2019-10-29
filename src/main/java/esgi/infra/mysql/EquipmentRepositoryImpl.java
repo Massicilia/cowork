@@ -63,9 +63,8 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
                 dayAvailability =resultset.getInt("dayAvailability");
                 monthAvailability =resultset.getInt("monthAvailability");
                 yearAvailability =resultset.getInt("yearAvailability");
-                String dateString = yearAvailability + "-" + monthAvailability + "-" + dayAvailability; ;
-                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-	            dateAvailability = java.time.LocalDate.parse(dateString);//, format);
+                String dateString = yearAvailability + "-" + monthAvailability + "-" + dayAvailability;
+	            dateAvailability = java.time.LocalDate.parse(dateString);
 
             } else {
                 throw new EquipmentNotFoundException();

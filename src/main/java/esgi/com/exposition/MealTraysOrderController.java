@@ -24,16 +24,24 @@ public class MealTrayOrderController {
     public void MealTrayOrderRegistration(@RequestBody MealTrayOrderDto mealTrayOrderDto){
 
         MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
-        mealTrayOrderRepository.saveOrder(mealTrayOrderDto.getUuid(), mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus(),);
+        mealTrayOrderRepository.saveOrder(mealTrayOrderDto.getUuid(), mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus());
     }
 
 
-    @GetMapping("/{uuid}")
+    @GetMapping("/{date}")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    MealTrayOrderDto getMealTrayOrder(@PathVariable UUID uuid) {
-        MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderImpl ();
-        return mealTrayOrderRepository.getOrder(uuid);
+    List<MealTrayOrderDto> getMealTrayOrder(@PathVariable LocalDate dateOrder) {
+        MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
+        return mealTrayOrderRepository.getOrderOfTheDay(LocalDate dateOrder);
+    }
+
+    @GetMapping("/updatestatus/{status}")
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody
+    List<MealTrayOrderDto> getMealTrayOrder(@RequestBody MealTrayOrderDto mealTrayOrderDto) {
+        MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
+        return mealTrayOrderRepository.UpdateStatusOrder(mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus(), mealTrayOrderDto.dateOrder);
     }
 
     @GetMapping("/orders")

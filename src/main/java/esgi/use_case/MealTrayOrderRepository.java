@@ -8,7 +8,7 @@ import java.util.List;
 public interface MealTrayOrderRepository {
 
 
-    esgi.common.dto.MealTrayOrderDto getUser(java.util.UUID uuid_order);
+    List<MealTrayOrderDto> getOrderOfTheDay(LocalDate dateOrder);
     java.util.List<esgi.common.dto.MealTrayOrderDto> getOrders();
     void saveOrder(UUID uuid_order, UUID UuidUser, String status);
 

@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-//@org.springframework.web.bind.annotation.CrossOrigin()
+
 @RestController
-//@org.springframework.web.bind.annotation.RequestMapping(method = {org.springframework.web.bind.annotation.RequestMethod.POST})
 public class LoanController {
 
     Logger logger = LoggerFactory.getLogger(esgi.com.exposition.LoanController.class);
 
-    //@org.springframework.web.bind.annotation.RequestMapping ("/")
+
     @PostMapping ("/loanrequest")
     @ResponseStatus(org.springframework.http.HttpStatus.OK)
     public void LoanRegistration(@RequestBody LoanRequestDto loanRequestDto){
