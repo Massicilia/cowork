@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 //@org.springframework.web.bind.annotation.CrossOrigin()
 @RestController
+@org.springframework.web.bind.annotation.CrossOrigin ()
 //@org.springframework.web.bind.annotation.RequestMapping(method = {org.springframework.web.bind.annotation.RequestMethod.POST})
 public class LoanController {
 

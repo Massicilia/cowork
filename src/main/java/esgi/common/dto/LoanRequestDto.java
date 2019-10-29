@@ -21,7 +21,6 @@ public class LoanRequestDto {
         this.surnameUser = surnameUser;
         this.dateLoanBegin = dateLoanBegin;
         this.dateLoanEnd = dateLoanEnd;
-        logger.debug ("LOANREQUESTDTO");
     }
 
 
