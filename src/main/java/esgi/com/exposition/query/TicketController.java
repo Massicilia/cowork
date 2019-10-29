@@ -61,7 +61,7 @@ public class TicketController {
 
 	}
 
-	@GetMapping("/ticket/assigned/{uuid}")
+	@GetMapping("/assigned/{uuid}")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
 	List<TicketFullDto> getTicketByAssigneeUuid(@PathVariable UUID uuid) {
@@ -69,7 +69,7 @@ public class TicketController {
 		return ticketRepository.getTicketsByAssigneeUUID (uuid);
 	}
 
-	@GetMapping("/ticket/creator/{uuid}")
+	@GetMapping("/creator/{uuid}")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
 	List<TicketFullDto> getTicketByCreatorUuid(@PathVariable UUID uuid) {
