@@ -98,10 +98,11 @@ public class UserRepositoryImpl implements UserRepository {
         String getUsers = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
                 "FROM user " +
                 "WHERE subscription = " + 1;
+        logger.debug ("GETUSERS BEFORE EXECUTION");
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUsers);
             while (resultset.next()) {
-
+                logger.debug ("GETUSERS AFTER EXECUTION");
                 String uuidString = resultset.getString("UUID");
                 String name = resultset.getString("name");
                 String surname = resultset.getString("surname");
@@ -111,6 +112,7 @@ public class UserRepositoryImpl implements UserRepository {
 	            String identifiant = resultset.getString("identifiant");
 	            String password = resultset.getString("password");
 	            String type = resultset.getString("type");
+                logger.debug ("GETUSERS UUID " + uuidString);
 	            userFullDto = new UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1, identifiant, password, type);
                 userFullDtos.add(userFullDto);
                 if (resultset == null) {
@@ -120,6 +122,7 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        logger.debug ("GETUSERS BEFORE DISCONNECTION");
         DbConnect.closeConnection(connection);
         return userFullDtos;
     }
