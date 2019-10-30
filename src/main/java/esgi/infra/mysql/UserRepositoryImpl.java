@@ -95,6 +95,7 @@ public class UserRepositoryImpl implements UserRepository {
         mysqlConnection();
         List<UserFullDto> userFullDtos = new ArrayList<> ();
         UserFullDto userFullDto;
+        LocalDate dateEndSubscription= null;
         String getUsers = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
                 "FROM user " +
                 "WHERE subscription = " + 1;
@@ -107,11 +108,15 @@ public class UserRepositoryImpl implements UserRepository {
                 String name = resultset.getString("name");
                 String surname = resultset.getString("surname");
                 String mail = resultset.getString("mail");
-                String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
-                LocalDate dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);//, format);
-	            String identifiant = resultset.getString("identifiant");
+                String identifiant = resultset.getString("identifiant");
 	            String password = resultset.getString("password");
 	            String type = resultset.getString("type");
+                if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
+
+                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
+                    logger.debug ("dateEndSubscriptionString" + dateEndSubscriptionString);
+                    dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
+                }
                 logger.debug ("GETUSERS UUID " + uuidString);
 	            userFullDto = new UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1, identifiant, password, type);
                 userFullDtos.add(userFullDto);
