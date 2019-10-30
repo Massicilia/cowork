@@ -95,7 +95,7 @@ public class UserRepositoryImpl implements UserRepository {
         mysqlConnection();
         List<UserFullDto> userFullDtos = new ArrayList<> ();
         UserFullDto userFullDto;
-        String getUsers = "SELECT name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
+        String getUsers = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
                 "FROM user " +
                 "WHERE subscription = " + 1;
         logger.debug ("GETUSERS BEFORE EXECUTION");
