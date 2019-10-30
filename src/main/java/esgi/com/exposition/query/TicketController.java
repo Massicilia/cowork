@@ -42,19 +42,19 @@ public class TicketController {
 	@PostMapping("/insertTicket")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public void insertTicket(@RequestBody TicketFullDto ticketDto) {
-		logger.debug ("TICKETINSERT" + ticketDto.getNameAssignee ().toString ());
+
 		esgi.infra.mysql.UserRepositoryImpl userRepository =new esgi.infra.mysql.UserRepositoryImpl ();
-		logger.debug ("TICKETINSERT USERREPO");
+
 		boolean assigneeEmployee = userRepository.isEmployee (ticketDto.getNameAssignee ());
 		boolean creatorEmployee = userRepository.isEmployee (ticketDto.getNameCreator ());
-		logger.debug ("assigneeEmployee" + assigneeEmployee);
-		logger.debug ("creatorEmployee" + creatorEmployee);
+
+
 		if(assigneeEmployee && creatorEmployee){
-			logger.debug ("TICKETINSERT isemployee");
+
 			TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
-			logger.debug ("TICKETINSERT TICKETREPO");
+
 			ticketDto	=	ticketRepository.generateUUID(ticketDto);
-			logger.debug ("TICKETINSERT GENERATEUUID");
+
 			ticketRepository.insertTicket(ticketDto);
 		}
 
@@ -77,10 +77,9 @@ public class TicketController {
 		return ticketRepository.getTicketsByCreatorUUID (uuid);
 	}
 
-	@GetMapping("/statuschange")
+	@PostMapping("/statuschange")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public void updateTicketStatus(@RequestBody esgi.common.dto.TicketDto ticket) {
-		logger.debug ("TICKETCONTROLLER UPDATESTATUS");
 		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
 		ticketRepository.updateTicketStatus ( ticket.getUuidTicket(), ticket.getStatus());
 	}

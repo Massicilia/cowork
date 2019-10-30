@@ -24,7 +24,7 @@ public class UserController {
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
 	List<UserFullDto> getUsers() {
-
+logger.debug ("GETUSERS");
 		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
 
 		return userRepository.getUsers();

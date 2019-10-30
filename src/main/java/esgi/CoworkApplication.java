@@ -14,5 +14,4 @@ public class CoworkApplication
 
 		SpringApplication.run(CoworkApplication.class, args);
 	}
-	//testgithub
 }

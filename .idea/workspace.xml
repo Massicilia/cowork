@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -72,11 +77,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CoworkApplication.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TicketRepositoryImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/TicketRepositoryImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#mysqlConnection#0;class#TicketRepositoryImpl#0" />
+                <element signature="method#getTicket#0;class#TicketRepositoryImpl#0" />
+                <element signature="method#getTicketsByCreatorUUID#0;class#TicketRepositoryImpl#0" />
+                <element signature="method#getTicketsByAssigneeUUID#0;class#TicketRepositoryImpl#0" />
+                <element signature="method#insertTicket#0;class#TicketRepositoryImpl#0" />
+                <element signature="method#generateUUID#0;class#TicketRepositoryImpl#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoworkApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+            <state relative-caret-position="68">
+              <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -84,107 +107,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicketFullDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/TicketFullDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+            <state relative-caret-position="267">
+              <caret line="56" column="80" selection-start-line="56" selection-start-column="80" selection-end-line="56" selection-end-column="80" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#dataSource#0;class#WebSecurityConfig#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoanController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquipmentRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1099">
-              <caret line="68" selection-start-line="64" selection-start-column="16" selection-end-line="68" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#mysqlConnection#0;class#EquipmentRepositoryImpl#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoanRequestDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanRequestDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TicketController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="TicketController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-409">
-              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="187">
+              <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#getTickets#0;class#TicketController#0" />
                 <element signature="method#getTicket#0;class#TicketController#0" />
                 <element signature="method#insertTicket#0;class#TicketController#0" />
+                <element signature="method#getTicketByAssigneeUuid#0;class#TicketController#0" />
                 <element signature="method#getTicketByCreatorUuid#0;class#TicketController#0" />
                 <element signature="method#updateTicketStatus#0;class#TicketController#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
-                <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
-                <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
-                <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
-                <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
-                <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquipmentController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="8" column="74" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="15" selection-start-line="15" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -213,7 +161,6 @@
       <find>TICKETCONTROLLER STEP</find>
       <find>TICKETCONTROLLER S</find>
       <find>TICKETDTO GETUUIDTICKET</find>
-      <find>TICKETCONTROLLER UPDATESTATUS</find>
       <find>GETTICKET AFTER EXECUTE</find>
       <find>resultset</find>
       <find>RESULTSET</find>
@@ -223,7 +170,6 @@
       <find>uuidTICKET</find>
       <find>TICKETREPOSITORYIMPL UPDATESTATUS</find>
       <find>TICKETREPOSITORYIMPL setNewStatusToTicket</find>
-      <find>TICKETINSERT</find>
       <find>TICKETINSERT USERREPO</find>
       <find>TICKETINSERT isemployee</find>
       <find>creatorEmployee</find>
@@ -231,6 +177,8 @@
       <find>formatDateExpectedResolution</find>
       <find>if(</find>
       <find>GETUSERS BEFORE EXECUTION</find>
+      <find>TICKETINSERT</find>
+      <find>TICKETCONTROLLER UPDATESTATUS</find>
     </findStrings>
     <replaceStrings>
       <replace>ZonedDateTime</replace>
@@ -254,10 +202,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/ClientDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/ClientNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/ClientController.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
         <option value="$PROJECT_DIR$/src/main/resources/lombok.config" />
@@ -277,7 +223,6 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/AnyEquipmentFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/date" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/DateMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/use_case/LoanRepository.java" />
@@ -294,7 +239,6 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/AnyTicketFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/LoanRepositoryImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/use_case/TicketRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/TicketDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/TicketFullDto.java" />
@@ -302,9 +246,13 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanRequestDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java" />
       </list>
     </option>
   </component>
@@ -388,6 +336,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="esgi" type="462c0819:PsiDirectoryNode" />
               <item name="exposition" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="esgi" type="462c0819:PsiDirectoryNode" />
+              <item name="exposition" type="462c0819:PsiDirectoryNode" />
               <item name="query" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -418,13 +376,6 @@
               <item name="esgi" type="462c0819:PsiDirectoryNode" />
               <item name="mysql" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -452,10 +403,12 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork" />
-      <recent name="C:\Users\manue\Downloads\cowork\src" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\config" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\query" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="esgi.common.dto" />
@@ -464,12 +417,10 @@
       <recent name="esgi.infra.mysql" />
       <recent name="esgi.com.exposition.query" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\query" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork" />
+      <recent name="C:\Users\manue\Downloads\cowork\src" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -577,7 +528,7 @@
       <workItem from="1572043741274" duration="27555000" />
       <workItem from="1572217540508" duration="958000" />
       <workItem from="1572388500709" duration="163000" />
-      <workItem from="1572390247375" duration="5069000" />
+      <workItem from="1572390247375" duration="15466000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -656,11 +607,18 @@
       <option name="project" value="LOCAL" />
       <updated>1572445647744</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="correct bugs authentification">
+      <created>1572447819414</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1572447819414</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="163887000" />
+    <option name="totallyTimeSpent" value="174284000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -684,7 +642,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.36467236" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.36467236" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27785236" />
@@ -703,10 +661,12 @@
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Database Console" order="0" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.3091168" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.36467236" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info id="Image Layers" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
@@ -714,17 +674,16 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.12108262" />
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info id="Image Layers" order="5" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="right" id="Maven Projects" order="9" weight="0.012751678" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657718" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.09259259" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27785236" />
       <window_info id="Learn" order="6" />
       <window_info anchor="right" id="Database" order="5" weight="0.14161074" />
       <window_info anchor="bottom" id="Message" order="1" />
@@ -733,9 +692,8 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.09259259" />
-      <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -751,7 +709,8 @@
     <MESSAGE value="use_case auth" />
     <MESSAGE value="correct crossorigin httprequest" />
     <MESSAGE value="correct bugs getusers" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct bugs getusers" />
+    <MESSAGE value="correct bugs authentification" />
+    <option name="LAST_COMMIT_MESSAGE" value="correct bugs authentification" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -759,23 +718,9 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/TestController.java" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/c454439c-e7c8-41f8-988e-bc83eebc5ca5/console.sql">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="21" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/cowork.iml">
       <provider selected="true" editor-type-id="text-editor" />
@@ -986,6 +931,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanRequestDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1099">
+          <caret line="68" selection-start-line="64" selection-start-column="16" selection-end-line="68" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#mysqlConnection#0;class#EquipmentRepositoryImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="25" column="21" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="34" lean-forward="true" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="246">
+          <caret line="161" column="66" selection-start-line="161" selection-start-column="66" selection-end-line="161" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUsers#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
+            <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
+            <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="25" />
+          <folding>
+            <element signature="method#getUsers#0;class#UserController#0" />
+            <element signature="method#getUser#0;class#UserController#0" />
+            <element signature="method#insertUser#0;class#UserController#0" />
+            <element signature="method#getUserAuth#0;class#UserController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/TicketDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -1003,25 +1024,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/TicketRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1826">
-          <caret line="218" column="47" selection-start-line="218" selection-start-column="23" selection-end-line="218" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#mysqlConnection#0;class#TicketRepositoryImpl#0" />
-            <element signature="method#getTicket#0;class#TicketRepositoryImpl#0" />
-            <element signature="method#getTicketsByCreatorUUID#0;class#TicketRepositoryImpl#0" />
-            <element signature="method#getTicketsByAssigneeUUID#0;class#TicketRepositoryImpl#0" />
-            <element signature="method#updateTicketStatus#0;class#TicketRepositoryImpl#0" />
-            <element signature="method#generateUUID#0;class#TicketRepositoryImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/TicketFullDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
+        <state relative-caret-position="-418">
           <caret line="26" column="28" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1029,89 +1034,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanRequestDto.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="26" column="61" selection-start-line="26" selection-start-column="61" selection-end-line="26" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1099">
-          <caret line="68" selection-start-line="64" selection-start-column="16" selection-end-line="68" />
+        <state relative-caret-position="267">
+          <caret line="56" column="80" selection-start-line="56" selection-start-column="80" selection-end-line="56" selection-end-column="80" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#mysqlConnection#0;class#EquipmentRepositoryImpl#0" />
+            <element signature="method#dataSource#0;class#WebSecurityConfig#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/TicketRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="74" selection-start-line="8" selection-start-column="57" selection-end-line="8" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="97" column="44" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
+        <state relative-caret-position="286">
+          <caret line="199" lean-forward="true" selection-start-line="199" selection-end-line="199" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
-            <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
-            <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
-            <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
-            <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
-            <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#mysqlConnection#0;class#TicketRepositoryImpl#0" />
+            <element signature="method#getTicket#0;class#TicketRepositoryImpl#0" />
+            <element signature="method#getTicketsByCreatorUUID#0;class#TicketRepositoryImpl#0" />
+            <element signature="method#getTicketsByAssigneeUUID#0;class#TicketRepositoryImpl#0" />
+            <element signature="method#insertTicket#0;class#TicketRepositoryImpl#0" />
+            <element signature="method#generateUUID#0;class#TicketRepositoryImpl#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-409">
-          <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getTickets#0;class#TicketController#0" />
-            <element signature="method#getTicket#0;class#TicketController#0" />
-            <element signature="method#insertTicket#0;class#TicketController#0" />
-            <element signature="method#getTicketByCreatorUuid#0;class#TicketController#0" />
-            <element signature="method#updateTicketStatus#0;class#TicketController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="15" selection-start-line="15" selection-end-line="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+        <state relative-caret-position="68">
+          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+          <folding>
+            <element signature="method#getTickets#0;class#TicketController#0" />
+            <element signature="method#getTicket#0;class#TicketController#0" />
+            <element signature="method#insertTicket#0;class#TicketController#0" />
+            <element signature="method#getTicketByAssigneeUuid#0;class#TicketController#0" />
+            <element signature="method#getTicketByCreatorUuid#0;class#TicketController#0" />
+            <element signature="method#updateTicketStatus#0;class#TicketController#0" />
           </folding>
         </state>
       </provider>
