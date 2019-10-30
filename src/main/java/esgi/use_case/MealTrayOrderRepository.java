@@ -11,5 +11,6 @@ public interface MealTrayOrderRepository {
     List<MealTrayOrderDto> getOrderOfTheDay(LocalDate dateOrder);
     java.util.List<esgi.common.dto.MealTrayOrderDto> getOrders();
     void saveOrder(UUID uuid_order, UUID UuidUser, String status);
+    void updateStatusOrder(UUID uuid, String status);
 
 }

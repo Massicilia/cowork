@@ -24,7 +24,7 @@ public class MealTrayOrderController {
     public void MealTrayOrderRegistration(@RequestBody MealTrayOrderDto mealTrayOrderDto){
 
         MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
-        mealTrayOrderRepository.saveOrder(mealTrayOrderDto.getUuid(), mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus());
+        mealTrayOrderRepository.saveOrder( mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus(), mealTrayOrderDto.getDate());
     }
 
 
@@ -39,9 +39,9 @@ public class MealTrayOrderController {
     @GetMapping("/updatestatus/{status}")
     @ResponseStatus(HttpStatus.OK)
     public @ResponseBody
-    List<MealTrayOrderDto> getMealTrayOrder(@RequestBody MealTrayOrderDto mealTrayOrderDto) {
+    List<MealTrayOrderDto> updateMealTrayOrder(@RequestBody MealTrayOrderDto mealTrayOrderDto) {
         MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
-        return mealTrayOrderRepository.UpdateStatusOrder(mealTrayOrderDto.getUserUuid(), mealTrayOrderDto.getStatus(), mealTrayOrderDto.dateOrder);
+        return mealTrayOrderRepository.updateStatusOrder(mealTrayOrderDto.getUuid(), mealTrayOrderDto.getStatus());
     }
 
     @GetMapping("/orders")

@@ -96,15 +96,32 @@ public class MealTrayOrderRepositoryImpl implements MealTrayOrderRepository {
     }
 
     @Override
-    public void saveOrder( UUID Uuid, UUID UuidUser, String status, LocalDate dateOrder ){
+    public void updateStatusOrder(UUID uuid, String status){
+        mysqlConnection();
+
+
+        String setNewStatusToOrder = "UPDATE mealtrayorder SET status ='" + status + "' WHERE UUID = '" + uuid.toString () + "'";
+
+        try {
+            statement.executeUpdate (setNewStatusToOrder);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void saveOrder(UUID UuidUser, String status, LocalDate dateOrder ){
             mysqlConnection();
 
             MealTrayOrderDto mealTrayOrderDto = new MealTrayOrderDto ();
 
             String formatDateOrder = dateOrder.toString ();
 
-            String postMealTrayOrder = "INSERT INTO mealtrayorder (userUUID, status, dayOrder, monthOrder, yearOrder)" +
-                    " VALUES ( '" + UuidUser.toString() + "', '" +
+            String postMealTrayOrder = "INSERT INTO mealtrayorder (UUID, userUUID, status, dayOrder, monthOrder, yearOrder)" +
+                    " VALUES ( '" + generateUUID().toString() + "', '" +
+                    UuidUser.toString() + "', '" +
                     status + "', '" +
                     Integer.parseInt(formatDateOrder.substring (8, 10)) + "', '" +
                     Integer.parseInt(formatDateOrder.substring (5, 7)) + "', '" +
@@ -119,6 +136,19 @@ public class MealTrayOrderRepositoryImpl implements MealTrayOrderRepository {
             DbConnect.closeConnection(connection);
         }
 
+    }
+
+    public UUID generateUUID() {
+        boolean uuidExist = true;
+        UUID uuidOrder = UUID.randomUUID();
+        while (uuidExist) {
+            uuidOrder = UUID.randomUUID();
+            List<MealTrayOrderDto> mealTrayOrderDtos = this.getOrders();
+            uuidExist = mealTrayOrderDtosDtos.stream()
+                    .map(MealTrayOrderDto::getUuid)
+                    .anyMatch(uuidMealTrayOrder::equals);
+        }
+        return uuidOrder;
     }
 
 
