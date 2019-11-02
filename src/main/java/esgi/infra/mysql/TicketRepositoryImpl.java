@@ -4,6 +4,7 @@ import esgi.common.dto.TicketFullDto;
 import esgi.use_case.TicketRepository;
 import esgi.common.exceptions.TicketNotFoundException;
 import esgi.common.exceptions.AnyTicketFoundException;
+import  esgi.infra.DateFormat;
 import java.util.UUID;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class TicketRepositoryImpl implements TicketRepository {
     public Statement statement = null;
     Connection connection;
+    DateFormat dateFormat = new esgi.infra.DateFormat ();
 	Logger logger = LoggerFactory.getLogger(esgi.infra.mysql.TicketRepositoryImpl.class);
 
     void mysqlConnection() {
@@ -30,8 +32,10 @@ public class TicketRepositoryImpl implements TicketRepository {
         }
     }
 
+
+
     @Override
-    public TicketFullDto getTicket (java.util.UUID uuid_ticket){
+    public esgi.common.dto.TicketCreationDto getTicket (java.util.UUID uuid_ticket){
         mysqlConnection();
 
         String uuidCreatorString = null;
@@ -43,12 +47,12 @@ public class TicketRepositoryImpl implements TicketRepository {
         LocalDate dateExpectedResolution = null;
 
 
-        String getTicket = "SELECT UUID, creatorUUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution FROM ticket WHERE UUID = '" + uuid_ticket.toString() + "' ";
+        String getTicket = "SELECT creatorUUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution FROM ticket WHERE UUID = '" + uuid_ticket.toString() + "' ";
 
 
         try {
             ResultSet resultset = statement.executeQuery(getTicket);
-            logger.debug ("GETTICKET AFTER EXECUTE");
+
             if (resultset.next()) {
                 status = resultset.getString("status");
                 uuidCreatorString = resultset.getString ("creatorUUID");
@@ -59,22 +63,17 @@ public class TicketRepositoryImpl implements TicketRepository {
 
                 if(resultset.getInt ("yearticketcreation") != 0 || resultset.getInt ("monthticketcreation")!= 0 || resultset.getInt ("dayticketcreation") != 0){
 
-                    String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + resultset.getInt ("monthticketcreation") + "-" + resultset.getInt ("dayticketcreation");
+                    String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthticketcreation")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayticketcreation"));
                     logger.debug ("dateEndSubscriptionString" + dateTicketCreationString);
                     dateTicketCreation = LocalDate.parse(dateTicketCreationString);
                 }
 
                 if(resultset.getInt ("yearexpectedresolution") != 0 || resultset.getInt ("monthexpectedresolution")!= 0 || resultset.getInt ("dayexpectedresolution") != 0){
 
-                    String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + resultset.getInt ("monthexpectedresolution") + "-" + resultset.getInt ("dayexpectedresolution");
+                    String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthexpectedresolution")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayexpectedresolution"));
                     logger.debug ("dateEndSubscriptionString" + dateExpectedResolutionString);
                     dateExpectedResolution = LocalDate.parse(dateExpectedResolutionString);
                 }
-
-
-
-
-
 
             } else {
                 throw new TicketNotFoundException ();
@@ -82,38 +81,50 @@ public class TicketRepositoryImpl implements TicketRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        TicketFullDto ticketDto = new TicketFullDto (uuid_ticket, uuidCreator, uuidAssigned, status, dateTicketCreation, dateExpectedResolution);
 
+        //get name & surname of the users
+        UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+        esgi.common.dto.UserFullDto creator = userRepository.getUser (uuidCreator);
+        esgi.common.dto.UserFullDto assigned = userRepository.getUser (uuidAssigned);
+
+        esgi.common.dto.TicketCreationDto ticketDto = new esgi.common.dto.TicketCreationDto (creator.getName (), creator.getSurname (), assigned.getName (), assigned.getSurname (), status, dateTicketCreation, dateExpectedResolution);
         DbConnect.closeConnection(connection);
         return ticketDto;
     }
 
+    //with names & surnames
     @Override
-    public List<TicketFullDto> getTickets (){
+    public List<esgi.common.dto.TicketFullDto> getTickets (){
         mysqlConnection();
 
 
-        List<TicketFullDto> ticketDtos = new ArrayList<> ();
-        TicketFullDto ticketDto;
+        List<esgi.common.dto.TicketFullDto> tickets = new ArrayList<> ();
+        esgi.common.dto.TicketFullDto ticket;
         String getTickets = "SELECT UUID, creatorUUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution " +
                 "FROM ticket ";
         try {
             ResultSet resultset = statement.executeQuery(getTickets);
             while (resultset.next()) {
-
-                String uuidString = resultset.getString("UUID");
+                String uuidString = resultset.getString ("UUID");
                 String status = resultset.getString("status");
                 String uuidCreator = resultset.getString ("creatorUUID");
-                String uuidAssignedString = resultset.getString ("assignedUUID");
-                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + resultset.getInt ("monthticketcreation") + "-" + resultset.getInt ("dayticketcreation");
-                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + resultset.getInt ("monthexpectedresolution") + "-" + resultset.getInt ("dayexpectedresolution");
+                String uuidAssigned = resultset.getString ("assignedUUID");
+                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + dateFormat.getFormatTwoChar(resultset.getInt ("monthticketcreation")) + "-" + dateFormat.getFormatTwoChar(resultset.getInt ("dayticketcreation"));
+                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + dateFormat.getFormatTwoChar(resultset.getInt ("monthexpectedresolution")) + "-" + dateFormat.getFormatTwoChar(resultset.getInt ("monthexpectedresolution"));
 
                 LocalDate dateTicketCreation = LocalDate.parse(dateTicketCreationString);
                 LocalDate dateExpectedResolution = LocalDate.parse(dateExpectedResolutionString);
 
-                ticketDto = new TicketFullDto (UUID.fromString(uuidString), UUID.fromString(uuidCreator), UUID.fromString(uuidAssignedString), status, dateTicketCreation, dateExpectedResolution);
+                //get name & surname of the users
+                UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+                esgi.common.dto.UserFullDto creator = userRepository.getUser (UUID.fromString(uuidCreator));
+                esgi.common.dto.UserFullDto assigned = userRepository.getUser (UUID.fromString(uuidAssigned));
 
-                ticketDtos.add(ticketDto);
+
+                ticket = new esgi.common.dto.TicketFullDto (UUID.fromString(uuidString), UUID.fromString(uuidCreator),
+                        UUID.fromString(uuidAssigned), status, dateTicketCreation, dateExpectedResolution);
+
+                tickets.add(ticket);
                 if (resultset == null) {
                     throw new AnyTicketFoundException ();
                 }
@@ -122,30 +133,37 @@ public class TicketRepositoryImpl implements TicketRepository {
             e.printStackTrace();
         }
         DbConnect.closeConnection(connection);
-        return ticketDtos;
+        return tickets;
     }
 
+
+    //with names & surnames
     @Override
-    public List<TicketFullDto> getTicketsByCreatorUUID (java.util.UUID uuidCreator){
+    public List<esgi.common.dto.TicketCreationDto> getTicketsByCreatorUUID (java.util.UUID uuidCreator){
         mysqlConnection();
-        List<TicketFullDto> ticketDtos = new ArrayList<> ();
-        TicketFullDto ticketDto;
-        String getTicketsByCreatorUUID = "SELECT UUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution " +
+        List<esgi.common.dto.TicketCreationDto> ticketDtos = new ArrayList<> ();
+        esgi.common.dto.TicketCreationDto ticketDto;
+        String getTicketsByCreatorUUID = "SELECT assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution " +
         "FROM ticket WHERE creatorUUID = " + "'" + uuidCreator.toString() + "'";
         try {
             ResultSet resultset = statement.executeQuery(getTicketsByCreatorUUID);
             while (resultset.next()) {
 
-                String uuidString = resultset.getString("UUID");
                 String status = resultset.getString("status");
                 String uuidAssignedString = resultset.getString ("assignedUUID");
-                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + resultset.getInt ("monthticketcreation") + "-" + resultset.getInt ("dayticketcreation");
-                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + resultset.getInt ("monthexpectedresolution") + "-" + resultset.getInt ("dayexpectedresolution");
+                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthticketcreation")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayticketcreation"));
+                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthexpectedresolution")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayexpectedresolution"));
 
                 LocalDate dateTicketCreation = LocalDate.parse(dateTicketCreationString);
                 LocalDate dateExpectedResolution = LocalDate.parse(dateExpectedResolutionString);
 
-                ticketDto = new TicketFullDto (UUID.fromString(uuidString), uuidCreator, UUID.fromString(uuidAssignedString), status, dateTicketCreation, dateExpectedResolution);
+
+                //get name & surname of the users
+                UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+                esgi.common.dto.UserFullDto creator = userRepository.getUser (uuidCreator);
+                esgi.common.dto.UserFullDto assigned = userRepository.getUser (UUID.fromString(uuidAssignedString));
+
+                ticketDto = new esgi.common.dto.TicketCreationDto (creator.getName (), creator.getSurname (), assigned.getName (), assigned.getSurname (), status, dateTicketCreation, dateExpectedResolution);
                 ticketDtos.add(ticketDto);
                 if (resultset == null) {
                     throw new AnyTicketFoundException ();
@@ -158,27 +176,34 @@ public class TicketRepositoryImpl implements TicketRepository {
         return ticketDtos;
     }
 
+    //with names & surnames
     @Override
-    public List<TicketFullDto> getTicketsByAssigneeUUID (java.util.UUID uuidAssignee){
+    public List<esgi.common.dto.TicketCreationDto> getTicketsByAssigneeUUID (java.util.UUID uuidAssignee){
         mysqlConnection();
-        List<TicketFullDto> ticketDtos = new ArrayList<> ();
-        TicketFullDto ticketDto;
-        String getTicketsByAssigneeUUID = "SELECT UUID, creatorUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution " +
-                "FROM ticket WHERE creatorUUID = " + "'" + uuidAssignee.toString() + "'";
+        List<esgi.common.dto.TicketCreationDto> ticketDtos = new ArrayList<> ();
+        esgi.common.dto.TicketCreationDto ticketDto;
+        String getTicketsByAssigneeUUID = "SELECT creatorUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution " +
+                "FROM ticket WHERE assignedUUID = " + "'" + uuidAssignee.toString() + "'";
+
         try {
             ResultSet resultset = statement.executeQuery(getTicketsByAssigneeUUID);
             while (resultset.next()) {
 
-                String uuidString = resultset.getString("UUID");
                 String status = resultset.getString("status");
                 String uuidCreatorString = resultset.getString ("creatorUUID");
-                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + resultset.getInt ("monthticketcreation") + "-" + resultset.getInt ("dayticketcreation");
-                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + resultset.getInt ("monthexpectedresolution") + "-" + resultset.getInt ("dayexpectedresolution");
+                String dateTicketCreationString = resultset.getInt ("yearticketcreation") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthticketcreation")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayticketcreation"));
+                String dateExpectedResolutionString = resultset.getInt ("yearexpectedresolution") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthexpectedresolution")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayexpectedresolution"));
 
                 LocalDate dateTicketCreation = LocalDate.parse(dateTicketCreationString);
                 LocalDate dateExpectedResolution = LocalDate.parse(dateExpectedResolutionString);
 
-                ticketDto = new TicketFullDto (UUID.fromString(uuidString), UUID.fromString(uuidCreatorString), uuidAssignee, status, dateTicketCreation, dateExpectedResolution);
+                //get name & surname of the users
+                UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+                esgi.common.dto.UserFullDto creator = userRepository.getUser (uuidAssignee);
+                esgi.common.dto.UserFullDto assigned = userRepository.getUser (UUID.fromString(uuidCreatorString));
+
+                ticketDto = new esgi.common.dto.TicketCreationDto (creator.getName (), creator.getSurname (), assigned.getName (), assigned.getSurname (), status, dateTicketCreation, dateExpectedResolution);
+
                 ticketDtos.add(ticketDto);
                 if (resultset == null) {
                     throw new AnyTicketFoundException ();
@@ -208,30 +233,20 @@ public class TicketRepositoryImpl implements TicketRepository {
     }
 
     @Override
-    public void insertTicket(TicketFullDto ticketDto){
+    public void insertTicket(esgi.common.dto.TicketCreationDto ticketDto, TicketFullDto ticket,
+                             java.util.UUID uuidCreator, java.util.UUID uuidAssigned){
 
         mysqlConnection();
 
+        ticket.setUuidCreator (uuidCreator);
+        ticket.setUuidAssignee (uuidAssigned);
+        ticket.setStatus (ticketDto.getStatus ());
+        ticket.setDateTicketCreation (ticketDto.getDateTicketCreation ());
+        ticket.setDateExpectedResolution (ticketDto.getDateExpectedResolution ());
+        String formatDateTicketCreation = ticket.getDateTicketCreation ().toString ();
+        String formatDateExpectedResolution = ticket.getDateExpectedResolution ().toString ();
 
-        String formatDateTicketCreation = ticketDto.getDateTicketCreation ().toString ();
-        String formatDateExpectedResolution = ticketDto.getDateExpectedResolution ().toString ();
-
-        logger.debug ("formatDateTicketCreation " + formatDateTicketCreation);
-        logger.debug ("formatDateExpectedResolution " + formatDateExpectedResolution);
-        logger.debug ("DAY " + formatDateTicketCreation.substring (8, 10));
-        logger.debug ("MONTH " + formatDateTicketCreation.substring (5, 7));
-        logger.debug ("YEAR " + formatDateTicketCreation.substring (0, 4));
-
-        String insertTicket = "INSERT INTO ticket (UUID, creatorUUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution)" +
-                " VALUES ( '" + ticketDto.getUuidTicket ().toString() + "', '" + ticketDto.getNameCreator ().toString() + "', '" + ticketDto.getNameAssignee ().toString() + "', '" +
-                ticketDto.getStatus() + "', '" +
-                Integer.parseInt(formatDateTicketCreation.substring (8, 10)) + "', '" +
-                Integer.parseInt(formatDateTicketCreation.substring (5, 7)) + "', '" +
-                Integer.parseInt(formatDateTicketCreation.substring (0, 4)) + "', '" +
-                Integer.parseInt(formatDateExpectedResolution.substring (8, 10)) + "', '" +
-                Integer.parseInt(formatDateExpectedResolution.substring (5, 7)) + "', '" +
-                Integer.parseInt(formatDateExpectedResolution.substring (0, 4)) + "')";
-
+        String insertTicket = "INSERT INTO ticket (UUID, creatorUUID, assignedUUID, status, dayticketcreation, monthticketcreation, yearticketcreation, dayexpectedresolution, monthexpectedresolution, yearexpectedresolution) VALUES ( '" + ticket.getUuidTicket ().toString() + "', '" + ticket.getUuidCreator ().toString() + "', '" + ticket.getUuidAssignee ().toString() + "', '" + ticket.getStatus() + "', '" + Integer.parseInt(formatDateTicketCreation.substring (8, 10)) + "', '" + Integer.parseInt(formatDateTicketCreation.substring (5, 7)) + "', '" + Integer.parseInt(formatDateTicketCreation.substring (0, 4)) + "', '" + Integer.parseInt(formatDateExpectedResolution.substring (8, 10)) + "', '" + Integer.parseInt(formatDateExpectedResolution.substring (5, 7)) + "', '" + Integer.parseInt(formatDateExpectedResolution.substring (0, 4)) + "')";
 
         try {
             statement.execute(insertTicket);

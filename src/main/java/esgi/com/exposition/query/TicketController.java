@@ -32,30 +32,29 @@ public class TicketController {
 	@GetMapping("/{uuid}")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
-	TicketFullDto getTicket(@PathVariable UUID uuid) {
-		logger.debug ("uuidTICKET"+uuid);
+	esgi.common.dto.TicketCreationDto getTicket(@PathVariable UUID uuid) {
 		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
 		return ticketRepository.getTicket(uuid);
 	}
 
-
 	@PostMapping("/insertTicket")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
-	public void insertTicket(@RequestBody TicketFullDto ticketDto) {
-
+	public void insertTicket(@RequestBody esgi.common.dto.TicketCreationDto ticketDto) {
+		logger.debug ("TICKET INSERT CONTROLLER");
 		esgi.infra.mysql.UserRepositoryImpl userRepository =new esgi.infra.mysql.UserRepositoryImpl ();
 
-		boolean assigneeEmployee = userRepository.isEmployee (ticketDto.getNameAssignee ());
-		boolean creatorEmployee = userRepository.isEmployee (ticketDto.getNameCreator ());
+		UUID uuidAssigned = userRepository.getUuidUserByNameAndSurname (ticketDto.getNameAssignee (), ticketDto.getSurnameAssignee ());
+		UUID uuidCreator = userRepository.getUuidUserByNameAndSurname (ticketDto.getNameCreator (), ticketDto.getSurnameCreator () );
 
-
+		boolean assigneeEmployee = userRepository.isEmployee (uuidAssigned);
+		boolean creatorEmployee = userRepository.isEmployee (uuidCreator);
+		TicketFullDto ticket = new esgi.common.dto.TicketFullDto();
+		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
+		ticket = ticketRepository.generateUUID (ticket);
+		logger.debug ("GET USERS TYPE ");
 		if(assigneeEmployee && creatorEmployee){
-
-			TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
-
-			ticketDto	=	ticketRepository.generateUUID(ticketDto);
-
-			ticketRepository.insertTicket(ticketDto);
+			logger.debug ("IF USERS EMPLOYEE ");
+			ticketRepository.insertTicket(ticketDto, ticket, uuidCreator, uuidAssigned);
 		}
 
 
@@ -64,7 +63,7 @@ public class TicketController {
 	@GetMapping("/assigned/{uuid}")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
-	List<TicketFullDto> getTicketByAssigneeUuid(@PathVariable UUID uuid) {
+	List<esgi.common.dto.TicketCreationDto> getTicketByAssigneeUuid(@PathVariable UUID uuid) {
 		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
 		return ticketRepository.getTicketsByAssigneeUUID (uuid);
 	}
@@ -72,7 +71,7 @@ public class TicketController {
 	@GetMapping("/creator/{uuid}")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
-	List<TicketFullDto> getTicketByCreatorUuid(@PathVariable UUID uuid) {
+	List<esgi.common.dto.TicketCreationDto> getTicketByCreatorUuid(@PathVariable UUID uuid) {
 		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
 		return ticketRepository.getTicketsByCreatorUUID (uuid);
 	}

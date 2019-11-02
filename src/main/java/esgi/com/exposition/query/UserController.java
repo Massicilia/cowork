@@ -40,15 +40,11 @@ logger.debug ("GETUSERS");
 
 	@PostMapping("/insert")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean insertUser(@RequestBody String name, String surname,
-	                                          String mail, int subscription) {
+	public @ResponseBody boolean insertUser(@RequestBody UserFullDto user){
+
 		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
-		UserFullDto user = new UserFullDto ();
 		user	=	userRepository.generateUUID(user);
-		user.setName (name);
-		user.setSurname (surname);
-		user.setMail (mail);
-		user.setSubscription (subscription);
+
 		return userRepository.insertUser(user);
 	}
 
@@ -61,7 +57,13 @@ logger.debug ("GETUSERS");
 		return type;
 	}
 
-
+	@GetMapping()
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	java.util.UUID getUUIDUserByNameAndSurname(@RequestBody UserFullDto user) {
+		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+		return userRepository.getUuidUserByNameAndSurname(user.getName (), user.getSurname ());
+	}
 
 
 

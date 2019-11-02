@@ -70,7 +70,7 @@ public class UserRepositoryImpl implements UserRepository {
                 logger.debug ("DATAS GETTING ");
 
                 if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
-
+                    logger.debug ("DATe non null ");
                     String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
                     logger.debug ("dateEndSubscriptionString" + dateEndSubscriptionString);
                     dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
@@ -78,6 +78,7 @@ public class UserRepositoryImpl implements UserRepository {
 
 
                 subscription = resultset.getInt("subscription");
+                logger.debug ("SUBSCRIPTION " + subscription);
             } else {
                 throw new UserNotFoundException ();
             }
@@ -204,18 +205,16 @@ public class UserRepositoryImpl implements UserRepository {
         String surname = userFullDto.getSurname ();
         String name = userFullDto.getName ();
         String mail = userFullDto.getMail();
-        java.time.LocalDate dateEndSubscription = userFullDto.getDateEndSubscription ();
-        int subscription = userFullDto.isSubscription ();
+        int subscription = userFullDto.getSubscription ();
 	    String identifiant = userFullDto.getIdentifiant();
 	    String password = userFullDto.getIdentifiant();
-	    String type = userFullDto.getType();
-	    String formatDateEndSubscription = dateEndSubscription.toString ();
-
+	    String type = userFullDto.getType ();
+	    String formatDateEndSubscription = userFullDto.getDateEndSubscriptionString ();
 
         int newIdUser = 0;
         ResultSet generatedKeys = null;
         String insertUser = "INSERT INTO user" +
-		        "(UUID, name, surname, mail, dateEndSubscription, subscription, identifiant, password, type)" +
+		        "(UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type)" +
 		        "VALUES (" + "'" + uuidUser + "', '" +
                 name + "', '" +
                 surname + "', '" +
@@ -274,4 +273,5 @@ public class UserRepositoryImpl implements UserRepository {
 
         return ok;
     }
+
 }

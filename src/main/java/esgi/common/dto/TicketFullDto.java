@@ -6,24 +6,17 @@ import java.time.LocalDate;
 public class TicketFullDto {
 
     private UUID uuidTicket;
-    private UUID nameCreator;
-    private UUID nameAssignee;
+    private UUID uuidCreator;
+    private UUID uuidAssignee;
     private String status;
     private LocalDate dateTicketCreation;
     private LocalDate dateExpectedResolution;
 
-    public TicketFullDto (final java.util.UUID uuidTicket, final java.util.UUID nameCreator, final java.util.UUID nameAssignee, final String status, final java.time.LocalDate dateTicketCreation, final java.time.LocalDate dateExpectedResolution) {
-        this.uuidTicket = uuidTicket;
-        this.nameCreator = nameCreator;
-        this.nameAssignee = nameAssignee;
-        this.status = status;
-        this.dateTicketCreation = dateTicketCreation;
-        this.dateExpectedResolution = dateExpectedResolution;
-    }
 
-    public TicketFullDto (final java.util.UUID nameCreator, final java.util.UUID nameAssignee, final String status, final java.time.LocalDate dateTicketCreation, final java.time.LocalDate dateExpectedResolution) {
-        this.nameCreator = nameCreator;
-        this.nameAssignee = nameAssignee;
+    public TicketFullDto (final java.util.UUID uuidTicket, final java.util.UUID uuidCreator, final java.util.UUID uuidAssignee, final String status, final java.time.LocalDate dateTicketCreation, final java.time.LocalDate dateExpectedResolution) {
+        this.uuidTicket = uuidTicket;
+        this.uuidCreator = uuidCreator;
+        this.uuidAssignee = uuidAssignee;
         this.status = status;
         this.dateTicketCreation = dateTicketCreation;
         this.dateExpectedResolution = dateExpectedResolution;
@@ -44,20 +37,20 @@ public class TicketFullDto {
         this.uuidTicket = uuidTicket;
     }
 
-    public java.util.UUID getNameCreator () {
-        return nameCreator;
+    public java.util.UUID getUuidCreator () {
+        return uuidCreator;
     }
 
-    public void setNameCreator (final java.util.UUID nameCreator) {
-        this.nameCreator = nameCreator;
+    public void setUuidCreator (final java.util.UUID uuidCreator) {
+        this.uuidCreator = uuidCreator;
     }
 
-    public java.util.UUID getNameAssignee () {
-        return nameAssignee;
+    public java.util.UUID getUuidAssignee () {
+        return uuidAssignee;
     }
 
-    public void setNameAssignee (final java.util.UUID nameAssignee) {
-        this.nameAssignee = nameAssignee;
+    public void setUuidAssignee (final java.util.UUID uuidAssignee) {
+        this.uuidAssignee = uuidAssignee;
     }
 
     public String getStatus () {
