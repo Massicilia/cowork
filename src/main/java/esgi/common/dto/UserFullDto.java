@@ -15,9 +15,10 @@ public class UserFullDto {
     private String type;
     private String identifiant;
     private String password;
+    private UUID uuidSpace;
 
 
-    public UserFullDto (final String name, final String surname, final String mail, final java.time.LocalDate dateEndSubscription, final int subscription, final String type, final String identifiant, final String password) {
+    public UserFullDto (final String name, final String surname, final String mail, final java.time.LocalDate dateEndSubscription, final int subscription, final String type, final String identifiant, final String password, final java.util.UUID uuidSpace) {
         this.name = name;
         this.surname = surname;
         this.mail = mail;
@@ -26,9 +27,10 @@ public class UserFullDto {
         this.type = type;
         this.identifiant = identifiant;
         this.password = password;
+        this.uuidSpace = uuidSpace;
     }
 
-    public UserFullDto (final java.util.UUID uuidUser, final String name, final String surname, final String mail, final java.time.LocalDate dateEndSubscription, final int subscription, final String type, final String identifiant, final String password) {
+    public UserFullDto (final java.util.UUID uuidUser, final String name, final String surname, final String mail, final java.time.LocalDate dateEndSubscription, final int subscription, final String type, final String identifiant, final String password, final java.util.UUID uuidSpace) {
         this.uuidUser = uuidUser;
         this.name = name;
         this.surname = surname;
@@ -38,9 +40,10 @@ public class UserFullDto {
         this.type = type;
         this.identifiant = identifiant;
         this.password = password;
+        this.uuidSpace = uuidSpace;
     }
 
-    public UserFullDto (final String name, final String surname, final String mail, final String dateEndSubscriptionString, final int subscription, final String type, final String identifiant, final String password) {
+    public UserFullDto (final String name, final String surname, final String mail, final String dateEndSubscriptionString, final int subscription, final String type, final String identifiant, final String password, final java.util.UUID uuidSpace) {
         this.name = name;
         this.surname = surname;
         this.mail = mail;
@@ -49,11 +52,15 @@ public class UserFullDto {
         this.type = type;
         this.identifiant = identifiant;
         this.password = password;
+        this.uuidSpace = uuidSpace;
     }
 
     public UserFullDto (final String name, final String surname) {
         this.name = name;
         this.surname = surname;
+    }
+
+    public UserFullDto () {
     }
 
     public java.util.UUID getUuidUser () {
@@ -134,5 +141,13 @@ public class UserFullDto {
 
     public void setPassword (final String password) {
         this.password = password;
+    }
+
+    public java.util.UUID getUuidSpace () {
+        return uuidSpace;
+    }
+
+    public void setUuidSpace (final java.util.UUID uuidSpace) {
+        this.uuidSpace = uuidSpace;
     }
 }

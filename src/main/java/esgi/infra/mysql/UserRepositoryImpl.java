@@ -4,6 +4,7 @@ import esgi.common.dto.UserFullDto;
 import esgi.use_case.UserRepository;
 import esgi.common.exceptions.UserNotFoundException;
 import esgi.common.exceptions.AnyUserFoundException;
+import esgi.infra.DateFormat;
 import java.util.UUID;
 import java.sql.SQLException;
 import java.sql.ResultSet;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 public class UserRepositoryImpl implements UserRepository {
     public Statement statement = null;
     Connection connection;
+    DateFormat dateFormat = new DateFormat ();
 	Logger logger = LoggerFactory.getLogger(esgi.infra.mysql.UserRepositoryImpl.class);
 
     void mysqlConnection() {
@@ -28,8 +30,6 @@ public class UserRepositoryImpl implements UserRepository {
             e.printStackTrace();
         }
     }
-
-
 
     @Override
     public UserFullDto getUser(UUID uuid_user) {
@@ -45,47 +45,42 @@ public class UserRepositoryImpl implements UserRepository {
         String identifiant = null;
         String password = null;
         String type = null;
+        String uuidSpaceString;
+        UUID uuidSpace = null;
 
 
-
-        String getUser = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type FROM user WHERE UUID = '" + uuid_user.toString() + "' ";
+        String getUser = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type, space FROM user WHERE UUID = '" + uuid_user.toString() + "' ";
 
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUser);
 
             if (resultset.next()) {
-                logger.debug ("RESULTSET TRUE " );
                 uuidString = resultset.getString("UUID");
-                logger.debug ("uuidString : " + uuidString);
                 uuid = UUID.fromString(uuidString);
-                logger.debug ("UUID : " + uuid);
-
+                uuidSpaceString = resultset.getString("space");
+                uuidSpace = UUID.fromString(uuidString);
                 surname = resultset.getString("surname");
                 name = resultset.getString("name");
                 mail = resultset.getString("mail");
                 identifiant = resultset.getString("identifiant");
                 password = resultset.getString("password");
                 type = resultset.getString("type");
-                logger.debug ("DATAS GETTING ");
 
                 if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
-                    logger.debug ("DATe non null ");
-                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
-                    logger.debug ("dateEndSubscriptionString" + dateEndSubscriptionString);
+
+                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthEndSubscription")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayEndSubscription"));
                     dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
                 }
 
-
                 subscription = resultset.getInt("subscription");
-                logger.debug ("SUBSCRIPTION " + subscription);
             } else {
                 throw new UserNotFoundException ();
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        UserFullDto userFullDto = new UserFullDto (uuid, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type);
+        UserFullDto userFullDto = new UserFullDto (uuid, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type, uuidSpace);
 
         DbConnect.closeConnection(connection);
         return userFullDto;
@@ -97,29 +92,31 @@ public class UserRepositoryImpl implements UserRepository {
         List<UserFullDto> userFullDtos = new ArrayList<> ();
         UserFullDto userFullDto;
         LocalDate dateEndSubscription= null;
-        String getUsers = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type " +
+        logger.debug ("USERREPOIMPL START");
+        String getUsers = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type, space " +
                 "FROM user " +
                 "WHERE subscription = " + 1;
-        logger.debug ("GETUSERS BEFORE EXECUTION");
+
+        logger.debug ("USERREPOIMPL getUsers " + getUsers);
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getUsers);
             while (resultset.next()) {
-                logger.debug ("GETUSERS AFTER EXECUTION");
                 String uuidString = resultset.getString("UUID");
+                String uuidSpaceString = resultset.getString("space");
                 String name = resultset.getString("name");
                 String surname = resultset.getString("surname");
                 String mail = resultset.getString("mail");
                 String identifiant = resultset.getString("identifiant");
 	            String password = resultset.getString("password");
 	            String type = resultset.getString("type");
+	            logger.debug ("GETDATAS");
                 if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
 
-                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + resultset.getInt ("monthEndSubscription") + "-" + resultset.getInt ("dayEndSubscription");
-                    logger.debug ("dateEndSubscriptionString" + dateEndSubscriptionString);
+                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthEndSubscription")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayEndSubscription"));
                     dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
                 }
-                logger.debug ("GETUSERS UUID " + uuidString);
-	            userFullDto = new UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1, identifiant, password, type);
+                logger.debug ("GETDATAS DATE");
+	            userFullDto = new UserFullDto (UUID.fromString(uuidString), name, surname, mail, dateEndSubscription, 1, identifiant, password, type, UUID.fromString(uuidSpaceString));
                 userFullDtos.add(userFullDto);
                 if (resultset == null) {
                     throw new AnyUserFoundException ();
@@ -128,7 +125,6 @@ public class UserRepositoryImpl implements UserRepository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        logger.debug ("GETUSERS BEFORE DISCONNECTION");
         DbConnect.closeConnection(connection);
         return userFullDtos;
     }
@@ -210,11 +206,14 @@ public class UserRepositoryImpl implements UserRepository {
 	    String password = userFullDto.getIdentifiant();
 	    String type = userFullDto.getType ();
 	    String formatDateEndSubscription = userFullDto.getDateEndSubscriptionString ();
-
+	    logger.debug ("INSERTUSER GETTING DATA ");
+	    UUID uuidSpace = userFullDto.getUuidSpace ();
+	    String space = userFullDto.getUuidSpace ().toString();
+		logger.debug ("INSERTUSER GETTING DATA Space " + space);
         int newIdUser = 0;
         ResultSet generatedKeys = null;
         String insertUser = "INSERT INTO user" +
-		        "(UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type)" +
+		        "(UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type, space)" +
 		        "VALUES (" + "'" + uuidUser + "', '" +
                 name + "', '" +
                 surname + "', '" +
@@ -222,9 +221,9 @@ public class UserRepositoryImpl implements UserRepository {
                 Integer.parseInt(formatDateEndSubscription.substring (8, 10)) + "', '" +
                 Integer.parseInt(formatDateEndSubscription.substring (5, 7)) + "', '" +
                 Integer.parseInt(formatDateEndSubscription.substring (0, 4)) + "', '" +
-                + subscription + "', '" + identifiant + "', '" + password + "', '" + type + "')";
+                + subscription + "', '" + identifiant + "', '" + password + "', '" + type + "', '" + space +"')";
 
-
+		logger.debug ("insertUser " + insertUser);
 	    try {
             statement.execute(insertUser, statement.RETURN_GENERATED_KEYS);
             generatedKeys = statement.getGeneratedKeys();

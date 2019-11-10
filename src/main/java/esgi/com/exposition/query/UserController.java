@@ -2,6 +2,7 @@ package esgi.com.exposition.query;
 
 import esgi.common.dto.UserFullDto;
 import esgi.infra.mysql.UserRepositoryImpl;
+import esgi.infra.DateFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +19,14 @@ import java.util.List;
 @RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class UserController {
 
+
 	Logger logger = LoggerFactory.getLogger(esgi.com.exposition.query.UserController.class);
 
 	@GetMapping("/users")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
 	List<UserFullDto> getUsers() {
-logger.debug ("GETUSERS");
+
 		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
 
 		return userRepository.getUsers();
@@ -42,13 +44,15 @@ logger.debug ("GETUSERS");
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody boolean insertUser(@RequestBody UserFullDto user){
 
+		logger.debug ("SPACE ");
+		logger.debug ("SPACE " + user.getUuidSpace ());
 		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
 		user	=	userRepository.generateUUID(user);
 
 		return userRepository.insertUser(user);
 	}
 
-	@org.springframework.web.bind.annotation.GetMapping ("/auth")
+	@GetMapping ("/auth")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public String getUserAuth(@RequestBody esgi.common.dto.UserDto user) {
 
@@ -57,7 +61,7 @@ logger.debug ("GETUSERS");
 		return type;
 	}
 
-	@GetMapping()
+	@GetMapping("/username")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody
 	java.util.UUID getUUIDUserByNameAndSurname(@RequestBody UserFullDto user) {

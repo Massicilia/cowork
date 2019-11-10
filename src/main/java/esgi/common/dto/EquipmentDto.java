@@ -10,18 +10,23 @@ public class EquipmentDto {
     private java.time.LocalDate dateAvailability;
     private java.util.UUID uuidLoanrequester;
     private String statut;
+    private java.util.UUID uuidSpace;
 
     public EquipmentDto(java.util.UUID uuidEquipment, String type, int available,
-                        java.time.LocalDate dateAvailability, java.util.UUID uuidLoanrequester, String statut){
+                        java.time.LocalDate dateAvailability, java.util.UUID uuidLoanrequester, String statut, java.util.UUID uuidSpace){
         this.uuidEquipment = uuidEquipment;
         this.type = type;
         this.available = available;
         this.dateAvailability = dateAvailability;
         this.uuidLoanrequester = uuidLoanrequester;
         this.statut = statut;
+        this.uuidSpace = uuidSpace;
     }
 
-    public java.util.UUID getUuidEquipment() {
+	public EquipmentDto () {
+	}
+
+	public java.util.UUID getUuidEquipment() {
         return uuidEquipment;
     }
 
@@ -29,4 +34,7 @@ public class EquipmentDto {
         return type;
     }
 
+    public java.util.UUID getUuidSpace () {
+        return uuidSpace;
+    }
 }

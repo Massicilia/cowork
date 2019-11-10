@@ -2,6 +2,7 @@ package esgi.infra.mysql;
 import esgi.use_case.EquipmentRepository;
 import esgi.common.dto.EquipmentDto;
 import esgi.common.exceptions.EquipmentNotFoundException;
+import esgi.infra.DateFormat;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Connection;
@@ -16,6 +17,7 @@ import static javax.swing.UIManager.getInt;
 public class EquipmentRepositoryImpl implements EquipmentRepository {
     public Statement statement = null;
     Connection connection;
+	DateFormat dateFormat = new DateFormat ();
 
     Logger logger = LoggerFactory.getLogger(esgi.infra.mysql.EquipmentRepositoryImpl.class);
 
@@ -32,41 +34,37 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
     public EquipmentDto getEquipment(UUID uuid_equipment){
         mysqlConnection();
         String uuidString;
+        String uuidSpaceString;
         String uuidLoanRequesterString;
         java.util.UUID uuidEquipment=null;
+        java.util.UUID uuidSpace=null;
         String type=null;
         int available=0;
         java.util.UUID uuidLoanRequester = null;
         String statut = null;
 
-        //AVAILABILITYDATE
-        int dayAvailability = 0;
-        int monthAvailability = 0;
-        int yearAvailability = 0;
 	    LocalDate dateAvailability = null;
 
 
-        String getEquipment = "SELECT equipment.UUID, equipment.type, equipment.available, equipment.dayAvailability, equipment.monthAvailability, equipment.yearAvailability, equipment.uuidLoanRequester, equipment.statut"+
-                            "FROM equipment" +
-                            "WHERE equipment.UUID = " + "'" + uuid_equipment.toString() + "' ";
+        String getEquipment = "SELECT UUID, type, available, dayAvailability, monthAvailability, yearAvailability, uuidLoanRequester, statut, space FROM equipment WHERE UUID = '" + uuid_equipment.toString() + "' ";
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getEquipment);
             if (resultset.next()) {
                 uuidString = resultset.getString("UUID");
                 uuidEquipment = java.util.UUID.fromString(uuidString);
+                uuidSpaceString = resultset.getString("space");
+                uuidSpace = java.util.UUID.fromString(uuidSpaceString);
                 type = resultset.getString("type");
                 available = resultset.getInt ("available");
-                uuidLoanRequesterString = resultset.getString ("uuidLoanRequester");
+                uuidLoanRequesterString = available==1?null : resultset.getString ("uuidLoanRequester");
                 uuidLoanRequester = java.util.UUID.fromString(uuidLoanRequesterString);
                 statut = resultset.getString ("statut");
-                dayAvailability =resultset.getInt("dayAvailability");
-                monthAvailability =resultset.getInt("monthAvailability");
-                yearAvailability =resultset.getInt("yearAvailability");
-                String dateString = yearAvailability + "-" + monthAvailability + "-" + dayAvailability; ;
-                //java.time.format.DateTimeFormatter format = java.time.format.DateTimeFormatter.ofPattern("yyyy-mm-dd");
-	            dateAvailability = java.time.LocalDate.parse(dateString);//, format);
+	            if(resultset.getInt ("yearAvailability") != 0 || resultset.getInt ("monthAvailability")!= 0 || resultset.getInt ("dayAvailability") != 0){
 
+		            String dateString = resultset.getInt ("yearAvailability") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthAvailability")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayAvailability"));
+		            dateAvailability = LocalDate.parse(dateString);
+	            }
             } else {
                 throw new EquipmentNotFoundException();
             }
@@ -74,7 +72,7 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
             e.printStackTrace();
         }
         EquipmentDto equipmentDto = new EquipmentDto(uuidEquipment, type, available, dateAvailability,
-                uuidLoanRequester, statut);
+                uuidLoanRequester, statut, uuidSpace);
 
         DbConnect.closeConnection(connection);
         return equipmentDto;
@@ -87,10 +85,10 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
         mysqlConnection();
         String uuidString;
         UUID uuidEquipment= new java.util.UUID (0, 0);
-
+logger.debug ("equipmentrepoimpl get available equipment");
 
         String getAvailableEquipmentByType = "SELECT UUID FROM equipment WHERE type = '" + typeEquipment + "' and available =" +1;
-
+	    logger.debug ("equipmentrepoimpl getAvailableEquipmentByType " + getAvailableEquipmentByType);
         try {
             ResultSet resultset = statement.executeQuery(getAvailableEquipmentByType);
             if (resultset.next()) {
