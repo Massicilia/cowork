@@ -1,7 +1,11 @@
 package esgi.common.dto;
 
+import java.time.LocalDate;
+
 public class TicketCreationDto {
 
+    private String title;
+    private String description;
     private String nameCreator;
     private String surnameCreator;
     private String nameAssignee;
@@ -13,7 +17,9 @@ public class TicketCreationDto {
     public TicketCreationDto () {
     }
 
-    public TicketCreationDto (final String nameCreator, final String surnameCreator, final String nameAssignee, final String surnameAssignee, final String status, final java.time.LocalDate dateTicketCreation, final java.time.LocalDate dateExpectedResolution) {
+    public TicketCreationDto(String title, String description, String nameCreator, String surnameCreator, String nameAssignee, String surnameAssignee, String status, LocalDate dateTicketCreation, LocalDate dateExpectedResolution) {
+        this.title = title;
+        this.description = description;
         this.nameCreator = nameCreator;
         this.surnameCreator = surnameCreator;
         this.nameAssignee = nameAssignee;
@@ -21,6 +27,22 @@ public class TicketCreationDto {
         this.status = status;
         this.dateTicketCreation = dateTicketCreation;
         this.dateExpectedResolution = dateExpectedResolution;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getNameCreator () {

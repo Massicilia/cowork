@@ -6,6 +6,8 @@ import java.time.LocalDate;
 public class TicketFullDto {
 
     private UUID uuidTicket;
+    private String title;
+    private String description;
     private UUID uuidCreator;
     private UUID uuidAssignee;
     private String status;
@@ -13,8 +15,10 @@ public class TicketFullDto {
     private LocalDate dateExpectedResolution;
 
 
-    public TicketFullDto (final java.util.UUID uuidTicket, final java.util.UUID uuidCreator, final java.util.UUID uuidAssignee, final String status, final java.time.LocalDate dateTicketCreation, final java.time.LocalDate dateExpectedResolution) {
+    public TicketFullDto(UUID uuidTicket, String title, String description, UUID uuidCreator, UUID uuidAssignee, String status, LocalDate dateTicketCreation, LocalDate dateExpectedResolution) {
         this.uuidTicket = uuidTicket;
+        this.title = title;
+        this.description = description;
         this.uuidCreator = uuidCreator;
         this.uuidAssignee = uuidAssignee;
         this.status = status;
@@ -27,6 +31,22 @@ public class TicketFullDto {
     }
 
     public TicketFullDto () {
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public java.util.UUID getUuidTicket () {
