@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/common/dto/MealTrayOrderDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/common/dto/OrderDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/AnyMealTrayOrderFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/MealTrayOrderRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/use_case/MealTrayOrderRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/UserRepositoryImpl.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -82,7 +74,7 @@
       <file leaf-file-name="CoworkApplication.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="14">
               <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -607,7 +599,7 @@
       <workItem from="1573584739758" duration="8361000" />
       <workItem from="1573650967942" duration="650000" />
       <workItem from="1573669828097" duration="929000" />
-      <workItem from="1573813480122" duration="3347000" />
+      <workItem from="1573813480122" duration="3638000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -714,15 +706,21 @@
       <option name="project" value="LOCAL" />
       <updated>1573416016273</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="MealTray USE_CASE">
+      <created>1574268272031</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1574268272031</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268854000" />
+    <option name="totallyTimeSpent" value="269145000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
@@ -742,10 +740,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.2735043" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.5099715" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25167784" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25167784" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info id="Learn" order="6" />
@@ -813,7 +811,8 @@
     <MESSAGE value="correct bugs SECURITY SPRING" />
     <MESSAGE value="correct bugs USE CASE TICKET" />
     <MESSAGE value="CORRECTION BUGS" />
-    <option name="LAST_COMMIT_MESSAGE" value="CORRECTION BUGS" />
+    <MESSAGE value="MealTray USE_CASE" />
+    <option name="LAST_COMMIT_MESSAGE" value="MealTray USE_CASE" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1181,7 +1180,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
+        <state relative-caret-position="14">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
