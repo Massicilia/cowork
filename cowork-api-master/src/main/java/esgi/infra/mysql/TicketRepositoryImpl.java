@@ -96,7 +96,6 @@ public class TicketRepositoryImpl implements TicketRepository {
         return ticketDto;
     }
 
-
     @Override
     public List<esgi.common.dto.TicketFullDto> getTickets (){
         mysqlConnection();
@@ -142,8 +141,6 @@ public class TicketRepositoryImpl implements TicketRepository {
         return tickets;
     }
 
-
-
     @Override
     public List<esgi.common.dto.TicketCreationDto> getTicketsByCreatorUUID (java.util.UUID uuidCreator){
         mysqlConnection();
@@ -184,7 +181,6 @@ public class TicketRepositoryImpl implements TicketRepository {
         return ticketDtos;
     }
 
-    //with names & surnames
     @Override
     public List<esgi.common.dto.TicketCreationDto> getTicketsByAssigneeUUID (java.util.UUID uuidAssignee){
         mysqlConnection();
