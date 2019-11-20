@@ -138,12 +138,14 @@ public class UserRepositoryImpl implements UserRepository {
         UUID uuidUser = null;
 
         String getUserByNameAndSurname = "SELECT UUID FROM user WHERE name  = " + "'" + name + "' AND surname = " + "'" + surname + "'";
-
+        logger.debug ("getUserByNameAndSurname = " + getUserByNameAndSurname);
         try {
             ResultSet resultset = statement.executeQuery(getUserByNameAndSurname);
             if (resultset.next()) {
+                logger.debug ("resultset next == true");
                 uuidString = resultset.getString("UUID");
                 uuidUser = UUID.fromString(uuidString);
+                logger.debug ("uuid USER = " + uuidString);
             } else {
                 throw new UserNotFoundException ();
             }
@@ -206,10 +208,9 @@ public class UserRepositoryImpl implements UserRepository {
 	    String password = userFullDto.getIdentifiant();
 	    String type = userFullDto.getType ();
 	    String formatDateEndSubscription = userFullDto.getDateEndSubscriptionString ();
-	    logger.debug ("INSERTUSER GETTING DATA ");
 	    UUID uuidSpace = userFullDto.getUuidSpace ();
 	    String space = userFullDto.getUuidSpace ().toString();
-		logger.debug ("INSERTUSER GETTING DATA Space " + space);
+
         int newIdUser = 0;
         ResultSet generatedKeys = null;
         String insertUser = "INSERT INTO user" +
