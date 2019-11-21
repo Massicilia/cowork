@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @org.springframework.web.bind.annotation.CrossOrigin ()
 //@org.springframework.web.bind.annotation.RequestMapping(method = {org.springframework.web.bind.annotation.RequestMethod.POST})
 public class LoanController {
-
+    // 1 request
     Logger logger = LoggerFactory.getLogger(esgi.com.exposition.LoanController.class);
 
     //@org.springframework.web.bind.annotation.RequestMapping ("/")

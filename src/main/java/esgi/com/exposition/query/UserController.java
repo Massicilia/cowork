@@ -19,7 +19,7 @@ import java.util.List;
 @RequestMapping(value = "/user", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class UserController {
 
-
+	//6 requests
 	Logger logger = LoggerFactory.getLogger(esgi.com.exposition.query.UserController.class);
 
 	@GetMapping("/users")
@@ -68,10 +68,10 @@ public class UserController {
 
 	@PostMapping("/update/{uuid}")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean updateClientSubscription(@PathVariable UUID uuid) {
-		UserRepositoryImpl userRepository = new userRepositoryImpl();
+	public void updateClientSubscription(@PathVariable UUID uuid) {
+		UserRepositoryImpl userRepository = new UserRepositoryImpl();
 		UserFullDto user = userRepository.getUser(uuid);
-		return userRepository.updateUser(user.getSubscription(), uuid);
+		userRepository.updateUser(user.getSubscription(), uuid);
 	}
 
 }

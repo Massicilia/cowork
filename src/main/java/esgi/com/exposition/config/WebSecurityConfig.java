@@ -61,6 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/equipment/{uuid}").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.POST, "/mealtrayorder/new").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/mealtrayorder/{date}").permitAll ()
+                .antMatchers (org.springframework.http.HttpMethod.POST, "/book").permitAll ()
+                .antMatchers (org.springframework.http.HttpMethod.POST, "/loanrequest").permitAll ()
                 .anyRequest ().authenticated ();
     }
 

@@ -274,7 +274,7 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
-    public boolean updateUser(int subscrip, UUID uuidUser) {
+    public void updateUser(int subscrip, UUID uuidUser) {
         mysqlConnection();
 
         String updateSubscription = "UPDATE user SET subscription ='" + (subscrip == 1 ? 0 : 1) + "' WHERE UUID = '" + uuidUser.toString () + "'";

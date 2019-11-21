@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping (value = "/ticket", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class TicketController {
-
+	//6 requests
 	Logger logger = LoggerFactory.getLogger(esgi.com.exposition.query.TicketController.class);
 
 	@GetMapping("/tickets")

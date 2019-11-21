@@ -1,6 +1,8 @@
 package esgi.infra.mysql;
 
+import esgi.use_case.BookingRepository;
 import esgi.common.dto.RoomDto;
+import esgi.common.dto.BookingDto;
 import esgi.common.exceptions.AnyRoomFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,22 +56,22 @@ public class BookingRepositoryImpl implements BookingRepository {
         return roomDto;
     }
 
-    public void saveNewBooking(RoomDto roomDto) {
+    public void saveNewBooking(RoomDto roomDto, UUID uuidUser, LocalDate dateStart, LocalDate dateEnd) {
         mysqlConnection();
 
 
 
-        String addBooking = "INSERT INTO booking ( uuid, uuiduser, type, space dateStart, dateEnd)" +
+        String addBooking = "INSERT INTO booking ( uuidRoom, uuiduser, type, space dateStart, dateEnd)" +
                 " VALUES ( '" + roomDto.getUuid().toString() + "', '" +
-                roomDto.getUuidUser().toString() + "', '" +
+                uuidUser.toString() + "', '" +
                 roomDto.getType() + "', '" +
                 roomDto.getSpace() + "', '" +
-                roomDto.getDateStart() + "', '" +
-                roomDto.getDateEnd() + "')";
+                dateStart + "', '" +
+                dateEnd + "')";
 
 
         try {
-            statement.execute(postLoanRequest);
+            statement.execute(addBooking);
         } catch (SQLException e) {
             e.printStackTrace();
         }

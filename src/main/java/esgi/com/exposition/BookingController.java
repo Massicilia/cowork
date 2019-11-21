@@ -1,6 +1,6 @@
 package esgi.com.exposition;
 
-import esgi.common.dto.LoanRequestDto;
+import esgi.common.dto.BookingDto;
 import esgi.infra.mysql.UserRepositoryImpl;
 import esgi.use_case.Booking;
 import esgi.use_case.LoanRegistration;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @org.springframework.web.bind.annotation.CrossOrigin ()
 public class BookingController {
-
+    //1 request
     Logger logger = LoggerFactory.getLogger(BookingController.class);
 
     @PostMapping ("/book")

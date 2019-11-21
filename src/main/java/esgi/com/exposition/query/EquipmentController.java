@@ -21,7 +21,7 @@ import java.util.List;
 
 @RequestMapping(value = "/equipment", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class EquipmentController {
-
+	//2 requests
 	Logger logger = LoggerFactory.getLogger(esgi.com.exposition.query.EquipmentController.class);
 
 	@GetMapping("/available/{type}")

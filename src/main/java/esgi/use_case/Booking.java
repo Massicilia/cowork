@@ -32,7 +32,7 @@ public class Booking {
 
         BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
         RoomDto roomDto = bookingRepository.getAvailableRoom(type, space, dateStart, dateEnd);
-        bookingRepository.saveNewBooking(roomDto, uuidUser);
+        bookingRepository.saveNewBooking(roomDto, uuidUser, dateStart, dateEnd);
     }
 
 }

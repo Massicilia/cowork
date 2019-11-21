@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequestMapping (value = "/mealtrayorder", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class MealTrayOrderController {
-
+    //2 requests
     Logger logger = LoggerFactory.getLogger(MealTrayOrderController.class);
 
     @PostMapping ("/new")

@@ -9,19 +9,29 @@ public class BookingDto {
     private UUID uuidRoom;
     private UUID uuidUser;
     private String type;
+    private String space;
     private LocalDate dateStart;
     private LocalDate dateEnd;
 
 
-    public BookingDto(UUID uuidRoom, UUID uuidUser, String type, LocalDate dateStart, LocalDate dateEnd) {
+    public BookingDto (final java.util.UUID uuidRoom, final java.util.UUID uuidUser, final String type, final String space, final java.time.LocalDate dateStart, final java.time.LocalDate dateEnd) {
         this.uuidRoom = uuidRoom;
         this.uuidUser = uuidUser;
         this.type = type;
+        this.space = space;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
     }
 
     public BookingDto() {
+    }
+
+    public String getSpace () {
+        return space;
+    }
+
+    public void setSpace (final String space) {
+        this.space = space;
     }
 
     public UUID getUuidRoom() {
