@@ -33,13 +33,11 @@ public class LoanRegistration {
 
     public void register() {
 
-        logger.debug ("LOANREGISTRATION REGISTER");
         EquipmentRepositoryImpl equipmentRepository = new EquipmentRepositoryImpl ();
         //avoir un equipment available de type x
         UUID uuidEquipment = equipmentRepository.getAvailableEquipmentByType(typeEquipment);
-        logger.debug ("LOANREGISTRATION REGISTER AFTER GETTING UUIDEQUIPMENT");
+
         LoanRepositoryImpl loanRepository = new LoanRepositoryImpl();
-        logger.debug ("LOANREGISTRATION REGISTER AFTER LOANRESPOSITORYIMPL CREATION");
         loanRepository.saveLoan( uuidEquipment, uuidUser, dateLoanBegin, dateLoanEnd);
     }
 

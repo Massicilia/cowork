@@ -2,6 +2,7 @@ package esgi.com.exposition.query;
 
 import esgi.common.dto.TicketFullDto;
 import esgi.infra.mysql.TicketRepositoryImpl;
+import esgi.infra.mysql.UserRepositoryImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,20 +41,20 @@ public class TicketController {
 	@PostMapping("/insertTicket")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public void insertTicket(@RequestBody esgi.common.dto.TicketCreationDto ticketDto) {
-		logger.debug ("TICKET INSERT CONTROLLER");
-		esgi.infra.mysql.UserRepositoryImpl userRepository =new esgi.infra.mysql.UserRepositoryImpl ();
+
+		UserRepositoryImpl userRepository =new UserRepositoryImpl ();
 
 		UUID uuidAssigned = userRepository.getUuidUserByNameAndSurname (ticketDto.getNameAssignee (), ticketDto.getSurnameAssignee ());
 		UUID uuidCreator = userRepository.getUuidUserByNameAndSurname (ticketDto.getNameCreator (), ticketDto.getSurnameCreator () );
 
 		boolean assigneeEmployee = userRepository.isEmployee (uuidAssigned);
 		boolean creatorEmployee = userRepository.isEmployee (uuidCreator);
-		TicketFullDto ticket = new esgi.common.dto.TicketFullDto();
+
+		TicketFullDto ticket = new TicketFullDto();
 		TicketRepositoryImpl ticketRepository = new TicketRepositoryImpl ();
 		ticket = ticketRepository.generateUUID (ticket);
-		logger.debug ("GET USERS TYPE ");
+
 		if(assigneeEmployee && creatorEmployee){
-			logger.debug ("IF USERS EMPLOYEE ");
 			ticketRepository.insertTicket(ticketDto, ticket, uuidCreator, uuidAssigned);
 		}
 

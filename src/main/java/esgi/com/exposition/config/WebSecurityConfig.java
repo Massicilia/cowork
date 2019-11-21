@@ -50,6 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers (org.springframework.http.HttpMethod.POST, "/user/insert").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/user/auth").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/user/username").permitAll ()
+                .antMatchers (org.springframework.http.HttpMethod.POST, "/user/update/{uuid}").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/tickets").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/{uuid}").permitAll ()
                 .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/assigned/{uuid}").permitAll ()
