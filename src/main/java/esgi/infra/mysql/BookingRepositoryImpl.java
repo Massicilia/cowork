@@ -32,10 +32,10 @@ public class BookingRepositoryImpl implements BookingRepository {
     }
 
     @Override
-    public RoomDto getAvailableRoom(String type, String space, LocalDate dateStart, LocalDate dateEnd) {
+    public RoomDto getAvailableRoom(String type, String space, String dateStart, String dateEnd) {
         mysqlConnection();
         UUID uuid = null;
-        String getRoom = "SELECT UUID FROM room INNER JOIN booking ON booking.type = type and booking.space = space and (booking.dateStart > dateEnd OR booking.dateEnd < dateStart)" ;
+        String getRnoom = "SELECT UUID FROM room INNER JOIN booking ON booking.type = type and booking.space = space and (booking.dateStart > dateEnd OR booking.dateEnd < dateStart)" ;
 
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getRoom);

@@ -1,6 +1,7 @@
 package esgi.com.exposition;
 
 import esgi.common.dto.BookingDto;
+import esgi.common.dto.BookingRequestDto;
 import esgi.infra.mysql.UserRepositoryImpl;
 import esgi.use_case.Booking;
 import esgi.use_case.LoanRegistration;
@@ -18,8 +19,10 @@ public class BookingController {
 
     @PostMapping ("/book")
     @ResponseStatus(org.springframework.http.HttpStatus.OK)
-    public void roomBooking(@RequestBody BookingDto bookingDto){
-        Booking booking = new Booking(bookingDto.getType(), bookingDto.getSpace(), bookingDto.getDateStart(), bookingDto.getDateEnd(), bookingDto.getUuidUser());
+    public void roomBooking(@RequestBody esgi.common.dto.BookingRequestDto bookingRequestDto){
+        logger.debug ("BOOKINGCONTROLLER roomBooking");
+
+        Booking booking = new Booking(bookingRequestDto.getType(), bookingRequestDto.getSpace(), bookingRequestDto.getDateStart(), bookingRequestDto.getDateEnd(), bookingRequestDto.getNameUser(), bookingRequestDto.getNameUser());
 
         booking.add();
     }

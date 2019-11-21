@@ -2,8 +2,7 @@ package esgi.use_case;
 
 import esgi.common.dto.RoomDto;
 import esgi.infra.mysql.BookingRepositoryImpl;
-import esgi.infra.mysql.EquipmentRepositoryImpl;
-import esgi.infra.mysql.LoanRepositoryImpl;
+import esgi.infra.mysql.UserRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,20 +17,25 @@ public class Booking {
     String space;
     LocalDate dateStart;
     LocalDate dateEnd;
-    UUID uuidUser;
+    String nameUser;
+    String surnameUser;
 
-    public Booking(String type, String space, LocalDate dateStart, LocalDate dateEnd, UUID uuidUser) {
+    public Booking ( final String type, final String space, final java.time.LocalDate dateStart, final java.time.LocalDate dateEnd, final String nameUser, final String surnameUser) {
+
         this.type = type;
         this.space = space;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-        this.uuidUser = uuidUser;
+        this.nameUser = nameUser;
+        this.surnameUser = surnameUser;
     }
 
     public void add() {
 
+        UserRepositoryImpl userRepoImpl =  new UserRepositoryImpl ();
+        UUID uuidUser = userRepoImpl.getUuidUserByNameAndSurname (nameUser,surnameUser );
         BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
-        RoomDto roomDto = bookingRepository.getAvailableRoom(type, space, dateStart, dateEnd);
+        RoomDto roomDto = bookingRepository.getAvailableRoom(type, space, dateStart.toString (), dateEnd.toString ());
         bookingRepository.saveNewBooking(roomDto, uuidUser, dateStart, dateEnd);
     }
 
