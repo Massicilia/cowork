@@ -22,7 +22,7 @@ public class BookingController {
     public void roomBooking(@RequestBody esgi.common.dto.BookingRequestDto bookingRequestDto){
         logger.debug ("BOOKINGCONTROLLER roomBooking");
 
-        Booking booking = new Booking(bookingRequestDto.getType(), bookingRequestDto.getSpace(), bookingRequestDto.getDateStart(), bookingRequestDto.getDateEnd(), bookingRequestDto.getNameUser(), bookingRequestDto.getNameUser());
+        Booking booking = new Booking(bookingRequestDto.getType(), bookingRequestDto.getSpace(), bookingRequestDto.getDateStart(), bookingRequestDto.getDateEnd(), bookingRequestDto.getNameUser(), bookingRequestDto.getSurnameUser());
 
         booking.add();
     }

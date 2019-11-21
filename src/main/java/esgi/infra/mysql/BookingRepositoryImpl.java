@@ -34,7 +34,7 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public RoomDto getAvailableRoom(String type, String space, String dateStart, String dateEnd) {
         mysqlConnection();
-        UUID uuid = null;
+        UUID uuid = null;//WHERE DATEDIFF(mydata,'2008-11-20') >=0;
         String getRnoom = "SELECT UUID FROM room INNER JOIN booking ON booking.type = type and booking.space = space and (booking.dateStart > dateEnd OR booking.dateEnd < dateStart)" ;
 
         try {
@@ -56,7 +56,7 @@ public class BookingRepositoryImpl implements BookingRepository {
         return roomDto;
     }
 
-    public void saveNewBooking(RoomDto roomDto, UUID uuidUser, LocalDate dateStart, LocalDate dateEnd) {
+    public void saveNewBooking(RoomDto roomDto, UUID uuidUser, String dateStart, String dateEnd) {
         mysqlConnection();
 
 

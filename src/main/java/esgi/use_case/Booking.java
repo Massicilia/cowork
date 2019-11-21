@@ -36,7 +36,7 @@ public class Booking {
         UUID uuidUser = userRepoImpl.getUuidUserByNameAndSurname (nameUser,surnameUser );
         BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
         RoomDto roomDto = bookingRepository.getAvailableRoom(type, space, dateStart.toString (), dateEnd.toString ());
-        bookingRepository.saveNewBooking(roomDto, uuidUser, dateStart, dateEnd);
+        bookingRepository.saveNewBooking(roomDto, uuidUser, dateStart.toString (), dateEnd.toString ());
     }
 
 }
