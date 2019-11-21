@@ -60,6 +60,8 @@ public class UserFullDto {
         this.surname = surname;
     }
 
+
+
     public UserFullDto () {
     }
 

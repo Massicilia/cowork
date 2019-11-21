@@ -43,9 +43,6 @@ public class UserController {
 	@PostMapping("/insert")
 	@ResponseStatus(HttpStatus.OK)
 	public @ResponseBody boolean insertUser(@RequestBody UserFullDto user){
-
-		logger.debug ("SPACE ");
-		logger.debug ("SPACE " + user.getUuidSpace ());
 		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
 		user	=	userRepository.generateUUID(user);
 
@@ -69,13 +66,12 @@ public class UserController {
 		return userRepository.getUuidUserByNameAndSurname(user.getName (), user.getSurname ());
 	}
 
-
-
-	/*@PutMapping("/update")
+	@PostMapping("/update/{uuid}")
 	@ResponseStatus(HttpStatus.OK)
-	public @ResponseBody boolean updateClientSubscription(@RequestBody UserFullDto client) {
-		CandidateRepositoryImpl candidateRepository = new CandidateRepositoryImpl();
-		return candidateRepository.updateCandidate(candidate);
-	}*/
+	public @ResponseBody boolean updateClientSubscription(@PathVariable UUID uuid) {
+		UserRepositoryImpl userRepository = new userRepositoryImpl();
+		UserFullDto user = userRepository.getUser(uuid);
+		return userRepository.updateUser(user.getSubscription(), uuid);
+	}
 
 }

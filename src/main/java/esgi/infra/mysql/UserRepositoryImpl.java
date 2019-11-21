@@ -178,7 +178,6 @@ public class UserRepositoryImpl implements UserRepository {
 	    return type;
     }
 
-
     public UserFullDto generateUUID(UserFullDto user) {
         boolean uuidExist = true;
         UUID uuidUser = UUID.randomUUID();
@@ -193,7 +192,7 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
-
+    @Override
     public boolean insertUser(UserFullDto userFullDto) {
         mysqlConnection();
         boolean ok = false;
@@ -240,7 +239,7 @@ public class UserRepositoryImpl implements UserRepository {
         return ok;
     }
 
-
+    @Override
     public boolean isEmployee(java.util.UUID uuid){
 
         mysqlConnection();
@@ -271,6 +270,20 @@ public class UserRepositoryImpl implements UserRepository {
 
 
         return ok;
+    }
+
+    @Override
+    public boolean updateUser(int subscrip, UUID uuidUser) {
+        mysqlConnection();
+
+        String updateSubscription = "UPDATE user SET subscription ='" + (subscrip == 1 ? 0 : 1) + "' WHERE UUID = '" + uuidUser.toString () + "'";
+
+        try {
+            statement.executeUpdate (updateSubscription);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

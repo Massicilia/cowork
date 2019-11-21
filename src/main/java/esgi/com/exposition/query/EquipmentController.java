@@ -28,7 +28,6 @@ public class EquipmentController {
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public @ResponseBody
 	UUID getAvailableEquipmentByType(@PathVariable String type) {
-logger.debug ("EQUIPMENTCONTROLLER");
 		EquipmentRepositoryImpl equipmentRepository = new EquipmentRepositoryImpl();
 
 		return equipmentRepository.getAvailableEquipmentByType (type);

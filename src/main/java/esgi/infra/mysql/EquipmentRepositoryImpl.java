@@ -1,4 +1,5 @@
 package esgi.infra.mysql;
+import esgi.common.exceptions.AnyEquipmentFoundException;
 import esgi.use_case.EquipmentRepository;
 import esgi.common.dto.EquipmentDto;
 import esgi.common.exceptions.EquipmentNotFoundException;
@@ -85,7 +86,6 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
         mysqlConnection();
         String uuidString;
         UUID uuidEquipment= new java.util.UUID (0, 0);
-logger.debug ("equipmentrepoimpl get available equipment");
 
         String getAvailableEquipmentByType = "SELECT UUID FROM equipment WHERE type = '" + typeEquipment + "' and available =" +1;
 	    logger.debug ("equipmentrepoimpl getAvailableEquipmentByType " + getAvailableEquipmentByType);
@@ -96,7 +96,7 @@ logger.debug ("equipmentrepoimpl get available equipment");
                 uuidEquipment = UUID.fromString(uuidString);
 
             } else {
-                throw new EquipmentNotFoundException();
+                throw new AnyEquipmentFoundException();
             }
         } catch (SQLException e) {
             e.printStackTrace();
