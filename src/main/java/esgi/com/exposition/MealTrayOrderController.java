@@ -39,14 +39,13 @@ public class MealTrayOrderController {
         mealTrayOrderRepository.saveOrder( uuid, uuidUser, "new", orderDto.getDate());
     }
 
-
     @GetMapping ("/{date}")
     @ResponseStatus (org.springframework.http.HttpStatus.OK)
     public @ResponseBody
-    List<MealTrayOrderDto> getMealTrayOrder(@PathVariable("dateOrder") String dateOrder) {
+    List<MealTrayOrderDto> getMealTrayOrder(@PathVariable String date) {
         MealTrayOrderRepositoryImpl mealTrayOrderRepository = new MealTrayOrderRepositoryImpl ();
         logger.debug ("MEALTRAYORDERCONTROLLER GETMEALTRAYORDER");
-        return mealTrayOrderRepository.getOrderOfTheDay(dateOrder);
+        return mealTrayOrderRepository.getOrderOfTheDay(date);
     }
 
   /*  @org.springframework.web.bind.annotation.GetMapping ("/updatestatus/{status}")

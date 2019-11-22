@@ -15,13 +15,12 @@ public class Booking {
 
     String type;
     String space;
-    LocalDate dateStart;
-    LocalDate dateEnd;
+    java.time.LocalDateTime dateStart;
+    java.time.LocalDateTime dateEnd;
     String nameUser;
     String surnameUser;
 
-    public Booking ( final String type, final String space, final java.time.LocalDate dateStart, final java.time.LocalDate dateEnd, final String nameUser, final String surnameUser) {
-
+    public Booking (final String type, final String space, final java.time.LocalDateTime dateStart, final java.time.LocalDateTime dateEnd, final String nameUser, final String surnameUser) {
         this.type = type;
         this.space = space;
         this.dateStart = dateStart;
@@ -31,11 +30,13 @@ public class Booking {
     }
 
     public void add() {
-
+        logger.debug ("USE CASE BOOKING");
         UserRepositoryImpl userRepoImpl =  new UserRepositoryImpl ();
         UUID uuidUser = userRepoImpl.getUuidUserByNameAndSurname (nameUser,surnameUser );
+        logger.debug ("USE CASE BOOKING UUID USER : " + uuidUser);
         BookingRepositoryImpl bookingRepository = new BookingRepositoryImpl();
         RoomDto roomDto = bookingRepository.getAvailableRoom(type, space, dateStart.toString (), dateEnd.toString ());
+        logger.debug ("USE CASE BOOKING ROOM UUID : " + roomDto.getUuid () );
         bookingRepository.saveNewBooking(roomDto, uuidUser, dateStart.toString (), dateEnd.toString ());
     }
 

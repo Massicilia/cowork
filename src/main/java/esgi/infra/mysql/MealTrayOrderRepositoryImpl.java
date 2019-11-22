@@ -44,14 +44,14 @@ public class MealTrayOrderRepositoryImpl implements MealTrayOrderRepository {
 
         String formatDateOrder = dateOrder.toString ();
 
-        String getOrder ="SELECT UUID, uuidUser, status, dayOrder, monthOrder, yearOrder type FROM mealtray WHERE dayOrder = '" + Integer.parseInt(formatDateOrder.substring (8, 10)) + "' and monthOrder = '" + Integer.parseInt(formatDateOrder.substring (5, 7)) + "' and yearOrder = '" + Integer.parseInt(formatDateOrder.substring (0, 4)) + "'";
+        String getOrder ="SELECT UUID, uuiduser, status, dayorder, monthorder, yearorder type FROM mealtray WHERE dayorder = '" + Integer.parseInt(formatDateOrder.substring (8, 10)) + "' and monthorder = '" + Integer.parseInt(formatDateOrder.substring (5, 7)) + "' and yearorder = '" + Integer.parseInt(formatDateOrder.substring (0, 4)) + "'";
 
         try {
             ResultSet resultset = statement.executeQuery(getOrder);
             while (resultset.next()) {
                 uuidString = resultset.getString("UUID");
                 uuid = java.util.UUID.fromString(uuidString);
-                uuidUserString = resultset.getString("userUUID");
+                uuidUserString = resultset.getString("uuiduser");
                 uuidUser = java.util.UUID.fromString(uuidUserString);
                 status = resultset.getString("status");
                 MealTrayOrderDto mealTrayOrderDto = new MealTrayOrderDto(uuid, uuidUser, status, dateOrder );
@@ -83,10 +83,10 @@ public class MealTrayOrderRepositoryImpl implements MealTrayOrderRepository {
             while (resultset.next()) {
 
                 String uuid = resultset.getString("UUID");
-                String uuiduser = resultset.getString("userUUID");
+                String uuiduser = resultset.getString("uuiduser");
                 String status = resultset.getString("status");
 
-                java.time.LocalDate dateOrder = java.time.LocalDate.of(resultset.getInt ("yearOrder"), resultset.getInt ("monthOrder"), (resultset.getInt ("dayOrder")));
+                java.time.LocalDate dateOrder = java.time.LocalDate.of(resultset.getInt ("yearorder"), resultset.getInt ("monthorder"), (resultset.getInt ("dayorder")));
 
 
                 mealTrayOrderDto = new MealTrayOrderDto (java.util.UUID.fromString(uuid), java.util.UUID.fromString(uuiduser), status, dateOrder);
@@ -125,7 +125,7 @@ public class MealTrayOrderRepositoryImpl implements MealTrayOrderRepository {
             esgi.common.dto.MealTrayOrderDto mealTrayOrderDto = new esgi.common.dto.MealTrayOrderDto ();
 
 
-            String postMealTrayOrder = "INSERT INTO mealtray (UUID, uuiduser, status, dayOrder, monthOrder, yearOrder)" +
+            String postMealTrayOrder = "INSERT INTO mealtray (UUID, uuiduser, status, dayorder, monthorder, yearorder)" +
                     " VALUES ( '" + uuid.toString() + "', '" +
                     UuidUser.toString() + "', '" +
                     status + "', '" +

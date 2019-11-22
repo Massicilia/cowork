@@ -34,15 +34,17 @@ public class BookingRepositoryImpl implements BookingRepository {
     @Override
     public RoomDto getAvailableRoom(String type, String space, String dateStart, String dateEnd) {
         mysqlConnection();
+        logger.debug("BOOKINGREPOIMPL GET AVAIBLABLE ROOM");
         UUID uuid = null;//WHERE DATEDIFF(mydata,'2008-11-20') >=0;
-        String getRnoom = "SELECT UUID FROM room INNER JOIN booking ON booking.type = type and booking.space = space and (booking.dateStart > dateEnd OR booking.dateEnd < dateStart)" ;
-
+        String getRoom= "SELECT r.UUID FROM room r, booking b WHERE r.UUID = b.uuidroom AND r.type = '" + type + "' AND r.space = '" + space + "' AND (b.datestart > '" + dateEnd + "' OR b.dateend < '" + dateStart + "')";
+        logger.debug("BOOKINGREPOIMPL GET AVAIBLABLE ROOM getroom : " + getRoom );
         try {
             java.sql.ResultSet resultset = statement.executeQuery(getRoom);
             if (resultset.next()) {
                 String uuidString = resultset.getString("UUID");
                 uuid = java.util.UUID.fromString(uuidString);
-
+                logger.debug("BOOKINGREPOIMPL GET AVAIBLABLE ROOM after request");
+                logger.debug("BOOKINGREPOIMPL GET AVAIBLABLE ROOM uuid room : " + uuidString);
             }else{
                 throw new AnyRoomFoundException();
             }
@@ -61,11 +63,9 @@ public class BookingRepositoryImpl implements BookingRepository {
 
 
 
-        String addBooking = "INSERT INTO booking ( uuidRoom, uuiduser, type, space dateStart, dateEnd)" +
+        String addBooking = "INSERT INTO booking ( uuidRoom, uuiduser, dateStart, dateEnd)" +
                 " VALUES ( '" + roomDto.getUuid().toString() + "', '" +
                 uuidUser.toString() + "', '" +
-                roomDto.getType() + "', '" +
-                roomDto.getSpace() + "', '" +
                 dateStart + "', '" +
                 dateEnd + "')";
 

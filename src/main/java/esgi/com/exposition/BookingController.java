@@ -19,7 +19,7 @@ public class BookingController {
 
     @PostMapping ("/book")
     @ResponseStatus(org.springframework.http.HttpStatus.OK)
-    public void roomBooking(@RequestBody esgi.common.dto.BookingRequestDto bookingRequestDto){
+    public void roomBooking(@RequestBody BookingRequestDto bookingRequestDto){
         logger.debug ("BOOKINGCONTROLLER roomBooking");
 
         Booking booking = new Booking(bookingRequestDto.getType(), bookingRequestDto.getSpace(), bookingRequestDto.getDateStart(), bookingRequestDto.getDateEnd(), bookingRequestDto.getNameUser(), bookingRequestDto.getSurnameUser());

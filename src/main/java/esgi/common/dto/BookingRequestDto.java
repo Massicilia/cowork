@@ -7,19 +7,19 @@ public class BookingRequestDto {
     private String surnameUser;
     private String type;
     private String space;
-    private java.time.LocalDate dateStart;
-    private java.time.LocalDate dateEnd;
+    private java.time.LocalDateTime dateStart;
+    private java.time.LocalDateTime dateEnd;
 
-    public BookingRequestDto (final String nameUser, final String surnameUser, final String type, final String space, final java.time.LocalDate dateStart, final java.time.LocalDate dateEnd) {
+    public BookingRequestDto () {
+    }
+
+    public BookingRequestDto (final String nameUser, final String surnameUser, final String type, final String space, final java.time.LocalDateTime dateStart, final java.time.LocalDateTime dateEnd) {
         this.nameUser = nameUser;
         this.surnameUser = surnameUser;
         this.type = type;
         this.space = space;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
-    }
-
-    public BookingRequestDto () {
     }
 
     public String getNameUser () {
@@ -54,19 +54,19 @@ public class BookingRequestDto {
         this.space = space;
     }
 
-    public java.time.LocalDate getDateStart () {
+    public java.time.LocalDateTime getDateStart () {
         return dateStart;
     }
 
-    public void setDateStart (final java.time.LocalDate dateStart) {
+    public void setDateStart (final java.time.LocalDateTime dateStart) {
         this.dateStart = dateStart;
     }
 
-    public java.time.LocalDate getDateEnd () {
+    public java.time.LocalDateTime getDateEnd () {
         return dateEnd;
     }
 
-    public void setDateEnd (final java.time.LocalDate dateEnd) {
+    public void setDateEnd (final java.time.LocalDateTime dateEnd) {
         this.dateEnd = dateEnd;
     }
 }

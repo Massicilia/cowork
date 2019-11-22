@@ -58,8 +58,11 @@ public class EquipmentRepositoryImpl implements EquipmentRepository {
                 uuidSpace = java.util.UUID.fromString(uuidSpaceString);
                 type = resultset.getString("type");
                 available = resultset.getInt ("available");
-                uuidLoanRequesterString = available==1?null : resultset.getString ("uuidLoanRequester");
-                uuidLoanRequester = java.util.UUID.fromString(uuidLoanRequesterString);
+
+                if(available == 0){
+                    uuidLoanRequesterString = resultset.getString ("uuidLoanRequester");
+                    uuidLoanRequester = java.util.UUID.fromString(uuidLoanRequesterString);
+                }else{uuidLoanRequesterString = null;}
                 statut = resultset.getString ("statut");
 	            if(resultset.getInt ("yearAvailability") != 0 || resultset.getInt ("monthAvailability")!= 0 || resultset.getInt ("dayAvailability") != 0){
 

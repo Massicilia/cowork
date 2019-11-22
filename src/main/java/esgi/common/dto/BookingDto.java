@@ -8,17 +8,12 @@ public class BookingDto {
 
     private UUID uuidRoom;
     private UUID uuidUser;
-    private String type;
-    private String space;
-    private LocalDate dateStart;
-    private LocalDate dateEnd;
+    private java.time.LocalDateTime dateStart;
+    private java.time.LocalDateTime dateEnd;
 
-
-    public BookingDto (final java.util.UUID uuidRoom, final java.util.UUID uuidUser, final String type, final String space, final java.time.LocalDate dateStart, final java.time.LocalDate dateEnd) {
+    public BookingDto (final java.util.UUID uuidRoom, final java.util.UUID uuidUser, final java.time.LocalDateTime dateStart, final java.time.LocalDateTime dateEnd) {
         this.uuidRoom = uuidRoom;
         this.uuidUser = uuidUser;
-        this.type = type;
-        this.space = space;
         this.dateStart = dateStart;
         this.dateEnd = dateEnd;
     }
@@ -26,51 +21,35 @@ public class BookingDto {
     public BookingDto() {
     }
 
-    public String getSpace () {
-        return space;
-    }
-
-    public void setSpace (final String space) {
-        this.space = space;
-    }
-
-    public UUID getUuidRoom() {
+    public java.util.UUID getUuidRoom () {
         return uuidRoom;
     }
 
-    public void setUuidRoom(UUID uuidRoom) {
+    public void setUuidRoom (final java.util.UUID uuidRoom) {
         this.uuidRoom = uuidRoom;
     }
 
-    public UUID getUuidUser() {
+    public java.util.UUID getUuidUser () {
         return uuidUser;
     }
 
-    public void setUuidUser(UUID uuidUser) {
+    public void setUuidUser (final java.util.UUID uuidUser) {
         this.uuidUser = uuidUser;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public LocalDate getDateStart() {
+    public java.time.LocalDateTime getDateStart () {
         return dateStart;
     }
 
-    public void setDateStart(LocalDate dateStart) {
+    public void setDateStart (final java.time.LocalDateTime dateStart) {
         this.dateStart = dateStart;
     }
 
-    public LocalDate getDateEnd() {
+    public java.time.LocalDateTime getDateEnd () {
         return dateEnd;
     }
 
-    public void setDateEnd(LocalDate dateEnd) {
+    public void setDateEnd (final java.time.LocalDateTime dateEnd) {
         this.dateEnd = dateEnd;
     }
 }
