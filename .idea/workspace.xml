@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/common/dto/AvailableRoomDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/BookingRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/BookingRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/MealTrayOrderRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/MealTrayOrderRepositoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/use_case/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/use_case/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/MealTrayOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/MealTrayOrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/BookingRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/BookingRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/EquipmentRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/EquipmentRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/MealTrayOrderRepositoryImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/MealTrayOrderRepositoryImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/Booking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/use_case/Booking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/BookingRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/use_case/BookingRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingRequestDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingRequestDto.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -89,7 +79,7 @@
       <file leaf-file-name="CoworkApplication.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="96">
               <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -101,11 +91,38 @@
       <file leaf-file-name="BookingRepositoryImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/BookingRepositoryImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+            <state relative-caret-position="218">
+              <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#getAvailableRoom#0;class#BookingRepositoryImpl#0" />
+                <element signature="method#saveNewBooking#0;class#BookingRepositoryImpl#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoanController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="259">
+              <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+              <folding>
+                <element signature="e#1579#1580#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EquipmentController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="34" lean-forward="true" selection-start-line="26" selection-end-line="34" />
+              <folding>
+                <element signature="method#getAvailableEquipmentByType#0;class#EquipmentController#0" />
+                <element signature="method#getEquipment#0;class#EquipmentController#0" />
               </folding>
             </state>
           </provider>
@@ -114,9 +131,10 @@
       <file leaf-file-name="BookingDto.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingDto.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+            <state relative-caret-position="305">
+              <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
               <folding>
+                <element signature="e#637#638#0" expanded="true" />
                 <element signature="e#668#669#0" expanded="true" />
                 <element signature="e#731#732#0" expanded="true" />
                 <element signature="e#771#772#0" expanded="true" />
@@ -137,11 +155,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BookingController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AvailableRoomDto.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/AvailableRoomDto.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+              <folding>
+                <element signature="e#556#557#0" expanded="true" />
+                <element signature="e#583#584#0" expanded="true" />
+                <element signature="e#630#631#0" expanded="true" />
+                <element signature="e#662#663#0" expanded="true" />
+                <element signature="e#695#696#0" expanded="true" />
+                <element signature="e#723#724#0" expanded="true" />
+                <element signature="e#772#773#0" expanded="true" />
+                <element signature="e#806#807#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#892#893#0" expanded="true" />
+                <element signature="e#966#967#0" expanded="true" />
+                <element signature="e#1008#1009#0" expanded="true" />
+                <element signature="e#1060#1061#0" expanded="true" />
+                <element signature="e#1090#1091#0" expanded="true" />
+                <element signature="e#1160#1161#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BookingController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="273">
+              <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="664">
+              <caret line="64" column="87" selection-start-line="64" selection-start-column="87" selection-end-line="64" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -153,8 +210,9 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingRequestDto.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="349">
-              <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+              <caret line="24" selection-start-line="24" selection-end-line="25" />
               <folding>
+                <element signature="e#743#744#0" expanded="true" />
                 <element signature="e#774#775#0" expanded="true" />
                 <element signature="e#829#830#0" expanded="true" />
                 <element signature="e#869#870#0" expanded="true" />
@@ -191,54 +249,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MealTrayOrderController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="46" column="63" selection-start-line="46" selection-start-column="23" selection-end-line="46" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#MealTrayOrderRegistration#0;class#MealTrayOrderController#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MealTrayOrderRepositoryImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/MealTrayOrderRepositoryImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="30" selection-start-line="30" selection-end-line="30" />
-              <folding>
-                <element signature="method#mysqlConnection#0;class#MealTrayOrderRepositoryImpl#0" />
-                <element signature="method#getOrderOfTheDay#0;class#MealTrayOrderRepositoryImpl#0" />
-                <element signature="method#getOrders#0;class#MealTrayOrderRepositoryImpl#0" />
-                <element signature="method#updateStatusOrder#0;class#MealTrayOrderRepositoryImpl#0" />
-                <element signature="method#saveOrder#0;class#MealTrayOrderRepositoryImpl#0" />
-                <element signature="method#generateUUID#0;class#MealTrayOrderRepositoryImpl#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EquipmentDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/EquipmentDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserFullDto.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/UserFullDto.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="968">
-              <caret line="45" column="248" selection-start-line="45" selection-start-column="248" selection-end-line="45" selection-end-column="248" />
             </state>
           </provider>
         </entry>
@@ -308,7 +318,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/ClientController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/AnyUserFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/EquipmentNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/exceptions/UserNotFoundException.java" />
@@ -349,7 +358,6 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/TicketController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/EquipmentRepositoryImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" />
@@ -358,7 +366,9 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingRequestDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/use_case/Booking.java" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/AvailableRoomDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
       </list>
     </option>
   </component>
@@ -528,12 +538,10 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork" />
+      <recent name="C:\Users\manue\Downloads\cowork\src" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="esgi.common.dto" />
@@ -542,10 +550,12 @@
       <recent name="esgi.infra.mysql" />
       <recent name="esgi.com.exposition.query" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork" />
-      <recent name="C:\Users\manue\Downloads\cowork\src" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -666,7 +676,7 @@
       <workItem from="1573650967942" duration="650000" />
       <workItem from="1573669828097" duration="929000" />
       <workItem from="1573813480122" duration="23721000" />
-      <workItem from="1574460084357" duration="1970000" />
+      <workItem from="1574460084357" duration="3591000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -780,11 +790,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574268272031</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="DATETIME FORMAT yyyy-mm-ddThh-mm-ss">
+      <created>1574464071581</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1574464071581</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291198000" />
+    <option name="totallyTimeSpent" value="292819000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -808,10 +825,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.37891737" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.41880342" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23221476" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23221476" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info id="Learn" order="6" />
@@ -880,7 +897,8 @@
     <MESSAGE value="correct bugs USE CASE TICKET" />
     <MESSAGE value="CORRECTION BUGS" />
     <MESSAGE value="MealTray USE_CASE" />
-    <option name="LAST_COMMIT_MESSAGE" value="MealTray USE_CASE" />
+    <MESSAGE value="DATETIME FORMAT yyyy-mm-ddThh-mm-ss" />
+    <option name="LAST_COMMIT_MESSAGE" value="DATETIME FORMAT yyyy-mm-ddThh-mm-ss" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -888,13 +906,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/use_case/EquipmentRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
@@ -1062,27 +1073,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="64" column="74" selection-start-line="64" selection-start-column="74" selection-end-line="64" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/RoomDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="10" column="25" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="10" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
         </state>
       </provider>
     </entry>
@@ -1150,13 +1144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/EquipmentDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -1214,13 +1201,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/BookingRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/use_case/Booking.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="65" column="24" selection-start-line="65" selection-start-column="24" selection-end-line="65" selection-end-column="24" />
+        <state relative-caret-position="63">
+          <caret line="22" column="189" selection-start-line="22" selection-start-column="189" selection-end-line="22" selection-end-column="189" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#getAvailableRoom#0;class#BookingRepositoryImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="34" lean-forward="true" selection-start-line="26" selection-end-line="34" />
+          <folding>
+            <element signature="method#getAvailableEquipmentByType#0;class#EquipmentController#0" />
+            <element signature="method#getEquipment#0;class#EquipmentController#0" />
           </folding>
         </state>
       </provider>
@@ -1228,8 +1225,9 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingRequestDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="349">
-          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <caret line="24" selection-start-line="24" selection-end-line="25" />
           <folding>
+            <element signature="e#743#744#0" expanded="true" />
             <element signature="e#774#775#0" expanded="true" />
             <element signature="e#829#830#0" expanded="true" />
             <element signature="e#869#870#0" expanded="true" />
@@ -1259,9 +1257,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/BookingDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
+        <state relative-caret-position="305">
+          <caret line="21" column="1" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
+            <element signature="e#637#638#0" expanded="true" />
             <element signature="e#668#669#0" expanded="true" />
             <element signature="e#731#732#0" expanded="true" />
             <element signature="e#771#772#0" expanded="true" />
@@ -1281,10 +1280,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/use_case/Booking.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/common/dto/AvailableRoomDto.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="22" column="189" selection-start-line="22" selection-start-column="189" selection-end-line="22" selection-end-column="189" />
+        <state relative-caret-position="209">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+          <folding>
+            <element signature="e#556#557#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#630#631#0" expanded="true" />
+            <element signature="e#662#663#0" expanded="true" />
+            <element signature="e#695#696#0" expanded="true" />
+            <element signature="e#723#724#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#966#967#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1060#1061#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="28" column="32" lean-forward="true" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1293,7 +1317,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/CoworkApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
+        <state relative-caret-position="96">
           <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1301,10 +1325,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/BookingRepositoryImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="218">
+          <caret line="34" column="27" lean-forward="true" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getAvailableRoom#0;class#BookingRepositoryImpl#0" />
+            <element signature="method#saveNewBooking#0;class#BookingRepositoryImpl#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="37" column="1" lean-forward="true" selection-start-line="37" selection-start-column="1" selection-end-line="37" selection-end-column="1" />
+          <folding>
+            <element signature="e#1579#1580#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="664">
+          <caret line="64" column="87" selection-start-line="64" selection-start-column="87" selection-end-line="64" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
