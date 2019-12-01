@@ -19,7 +19,7 @@ import java.util.UUID;
 import java.util.List;
 
 
-
+@org.springframework.web.bind.annotation.CrossOrigin ()
 @RestController
 @RequestMapping (value = "/mealtrayorder", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class MealTrayOrderController {

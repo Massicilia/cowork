@@ -16,9 +16,8 @@ import java.util.List;
 
 
 
-@CrossOrigin()
 @RestController
-
+@CrossOrigin()
 @RequestMapping(value = "/equipment", method = {RequestMethod.GET, RequestMethod.DELETE, RequestMethod.PUT, RequestMethod.POST})
 public class EquipmentController {
 	//2 requests

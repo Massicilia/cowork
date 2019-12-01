@@ -10,9 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 
-
+@CrossOrigin()
 @RestController
-@org.springframework.web.bind.annotation.CrossOrigin ()
 public class BookingController {
     //1 request
     Logger logger = LoggerFactory.getLogger(BookingController.class);
