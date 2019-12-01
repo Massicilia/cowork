@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/cors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/BookingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/BookingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/BookingController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/LoanController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/LoanController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/MealTrayOrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/MealTrayOrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/config/WebSecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/EquipmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/EquipmentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/UserController.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -609,7 +592,7 @@
       <workItem from="1574460084357" duration="6128000" />
       <workItem from="1574723708933" duration="1134000" />
       <workItem from="1574733314830" duration="19704000" />
-      <workItem from="1575074391216" duration="6280000" />
+      <workItem from="1575074391216" duration="7008000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -765,11 +748,18 @@
       <option name="project" value="LOCAL" />
       <updated>1574472386985</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="deployment">
+      <created>1575239995190</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1575239995190</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="322474000" />
+    <option name="totallyTimeSpent" value="323202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -793,7 +783,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.2777778" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.2777778" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20134228" />
@@ -1030,6 +1020,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="87" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="87" />
+          <folding>
+            <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUsers#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
+            <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
+            <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#isEmployee#0;class#UserRepositoryImpl#0" />
+            <element signature="method#updateUser#0;class#UserRepositoryImpl#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1125,6 +1126,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding>
+            <element signature="method#getAvailableEquipmentByType#0;class#EquipmentController#0" />
+            <element signature="method#getEquipment#0;class#EquipmentController#0" />
+          </folding>
         </state>
       </provider>
     </entry>
