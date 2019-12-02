@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Procfile" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,16 +85,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="47" selection-start-column="41" selection-end-column="47" />
+              <caret column="63" selection-start-column="63" selection-end-column="63" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbConnect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DbConnect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="308">
@@ -219,9 +218,9 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
+        <option value="$PROJECT_DIR$/Procfile" />
       </list>
     </option>
   </component>
@@ -491,7 +490,7 @@
       <workItem from="1575074391216" duration="7008000" />
       <workItem from="1575246775264" duration="7130000" />
       <workItem from="1575281722934" duration="6866000" />
-      <workItem from="1575298672937" duration="2699000" />
+      <workItem from="1575298672937" duration="3142000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -707,7 +706,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="339897000" />
+    <option name="totallyTimeSpent" value="340340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -1174,10 +1173,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Procfile">
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="47" selection-start-column="41" selection-end-column="47" />
+        <state relative-caret-position="308">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1188,10 +1187,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
+    <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state>
+          <caret column="63" selection-start-column="63" selection-end-column="63" />
         </state>
       </provider>
     </entry>
