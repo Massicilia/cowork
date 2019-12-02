@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-//@org.springframework.web.bind.annotation.CrossOrigin()
+@org.springframework.web.bind.annotation.CrossOrigin()
 @RestController
+@RequestMapping(value = "/", method = {org.springframework.web.bind.annotation.RequestMethod.GET, org.springframework.web.bind.annotation.RequestMethod.DELETE, org.springframework.web.bind.annotation.RequestMethod.PUT, org.springframework.web.bind.annotation.RequestMethod.POST})
 //@org.springframework.web.bind.annotation.CrossOrigin (allowCredentials = "true",methods = {org.springframework.web.bind.annotation.RequestMethod.GET, org.springframework.web.bind.annotation.RequestMethod.POST, org.springframework.web.bind.annotation.RequestMethod.PUT})
 //@org.springframework.web.bind.annotation.RequestMapping(method = {org.springframework.web.bind.annotation.RequestMethod.POST})
 public class LoanController {
@@ -22,17 +23,20 @@ public class LoanController {
     Logger logger = LoggerFactory.getLogger(esgi.com.exposition.LoanController.class);
 
     //@org.springframework.web.bind.annotation.RequestMapping ("/")
+    //@org.springframework.web.bind.annotation.CrossOrigin("http://localhost:4200/")
     @PostMapping ("/loanrequest")
     @ResponseStatus(org.springframework.http.HttpStatus.OK)
-    public void LoanRegistration(@RequestBody LoanRequestDto loanRequestDto){
-
+    public void LoanRegistration(@RequestBody LoanRequestDto loanRequestDto, javax.servlet.http.HttpServletResponse response){
+        //response.addHeader ("Access-Control-Allow-Origin", "http://localhost:4200/");
         UserRepositoryImpl userRepository = new UserRepositoryImpl ();
         LoanRegistration loan = new LoanRegistration(userRepository.getUuidUserByNameAndSurname(loanRequestDto.getNameUser (), loanRequestDto.getSurnameUser ()), loanRequestDto.getTypeEquipment (), loanRequestDto.getDateLoanBegin (), loanRequestDto.getDateLoanEnd () );
         loan.register();
     }
 
     @RequestMapping ("/")
-    public String home() {
+    @org.springframework.web.bind.annotation.ResponseBody
+    public String home(javax.servlet.http.HttpServletResponse response) {
+        //response.addHeader ("Access-Control-Allow-Origin", "http://localhost:4200/");
         return "Spring boot is working!";
     }
 }

@@ -1,4 +1,4 @@
-/* package esgi.com.exposition.config;
+package esgi.com.exposition.config;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -44,4 +44,4 @@ public class SimpleCORSFilter implements Filter {
 	public void destroy() {
 	}
 
-}*/
+}

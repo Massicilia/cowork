@@ -46,11 +46,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("test-user").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
     }*/
 
+    @Bean
+    public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
+        org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration ();
+        configuration.setAllowedOrigins(java.util.Arrays.asList("http://localhost:4200/"));
+        configuration.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(java.util.Arrays.asList("authorization", "content-type", "x-auth-token"));
+        configuration.setExposedHeaders(java.util.Arrays.asList("x-auth-token"));
+        org.springframework.web.cors.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.UrlBasedCorsConfigurationSource ();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 
     @Override
     public void configure (HttpSecurity http) throws Exception {
 
-                http.csrf ().disable ().authorizeRequests ()
+        http.csrf().disable();
+        /*http.csrf ().disable ().authorizeRequests ()
                         .antMatchers ("/").permitAll ()
                         .antMatchers (org.springframework.http.HttpMethod.GET, "/user/users").permitAll ()
                         .antMatchers (org.springframework.http.HttpMethod.GET, "/user/{uuid}").permitAll ()
@@ -71,22 +83,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers (org.springframework.http.HttpMethod.POST, "/book").permitAll ()
                         .antMatchers (org.springframework.http.HttpMethod.GET, "/room/available").permitAll ()
                         .antMatchers (org.springframework.http.HttpMethod.POST, "/loanrequest").permitAll ()
-                        .anyRequest ().authenticated ();
+                        .anyRequest ().authenticated ();*/
     }
-    /*@org.springframework.context.annotation.Bean
-        org.springframework.web.cors.reactive.CorsConfigurationSource corsConfigurationSource() {
-        org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration ();
-        configuration.setAllowedOrigins(java.util.Arrays.asList("*"));
-        configuration.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
-        configuration.setAllowedHeaders(java.util.Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
-        configuration.setAllowCredentials(true);
-        org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource source = new org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource ();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }*/
+
 
     //@Override
-    public void addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("http://localhost:4200");
-    }
+//    public void addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
+//        registry.addMapping("/**").allowedOrigins("http://localhost:4200/");
+//    }
 }
