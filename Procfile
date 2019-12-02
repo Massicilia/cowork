@@ -1,1 +1,1 @@
-web: java -jar $JAVA_OPTS -Dserver.port=$PORT target/cowork.jar
+java $JAVA_OPTS -jar target/cowork.jar --server.port=$PORT $JAR_OPTS
