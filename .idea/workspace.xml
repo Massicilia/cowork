@@ -371,10 +371,12 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork" />
-      <recent name="C:\Users\manue\Downloads\cowork\src" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="esgi.common.dto" />
@@ -383,12 +385,11 @@
       <recent name="esgi.infra.mysql" />
       <recent name="esgi.com.exposition.query" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\target" />
+      <recent name="C:\Users\manue\Downloads\cowork" />
+      <recent name="C:\Users\manue\Downloads\cowork\src" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
     </key>
   </component>
   <component name="RunDashboard">
