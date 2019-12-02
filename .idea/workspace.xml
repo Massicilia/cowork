@@ -6,7 +6,10 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="" />
+    <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,17 +80,26 @@
       <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="374">
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="47" selection-start-column="41" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbConnect.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -205,11 +217,11 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebConfig.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
       </list>
     </option>
   </component>
@@ -259,6 +271,53 @@
             <path>
               <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
               <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="esgi" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="esgi" type="462c0819:PsiDirectoryNode" />
+              <item name="infra" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="esgi" type="462c0819:PsiDirectoryNode" />
+              <item name="infra" type="462c0819:PsiDirectoryNode" />
+              <item name="mysql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cowork" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -287,12 +346,11 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.build.tools" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\target" />
+      <recent name="C:\Users\manue\Downloads\cowork" />
+      <recent name="C:\Users\manue\Downloads\cowork\src" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="esgi.common.dto" />
@@ -301,11 +359,12 @@
       <recent name="esgi.infra.mysql" />
       <recent name="esgi.com.exposition.query" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\target" />
-      <recent name="C:\Users\manue\Downloads\cowork" />
-      <recent name="C:\Users\manue\Downloads\cowork\src" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -432,7 +491,7 @@
       <workItem from="1575074391216" duration="7008000" />
       <workItem from="1575246775264" duration="7130000" />
       <workItem from="1575281722934" duration="6866000" />
-      <workItem from="1575298672937" duration="2121000" />
+      <workItem from="1575298672937" duration="2699000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -648,10 +707,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="339319000" />
+    <option name="totallyTimeSpent" value="339897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
@@ -894,6 +954,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="87" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="87" />
+          <folding>
+            <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUsers#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
+            <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
+            <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#isEmployee#0;class#UserRepositoryImpl#0" />
+            <element signature="method#updateUser#0;class#UserRepositoryImpl#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1016,13 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1110,17 +1174,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="47" selection-start-column="41" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1182,6 +1253,7 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
