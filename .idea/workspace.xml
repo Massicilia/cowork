@@ -7,8 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/target/cowork-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/cowork-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cowork-1.0-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/cowork-1.0-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -86,11 +85,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Procfile" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Procfile" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Procfile">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="42" selection-start-column="42" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="539">
+              <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+              <folding>
+                <element signature="n#dependencies#0;n#project#0;n#!!top" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -117,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>INSERT INTO ticket</find>
       <find>No operations allowed after statement closed.</find>
       <find>2019-1-14</find>
       <find>No message available</find>
@@ -147,6 +157,7 @@
       <find>Access-Control-Allow-Origin</find>
       <find>*</find>
       <find>http://localhost:4200</find>
+      <find>build</find>
     </findStrings>
     <replaceStrings>
       <replace>ZonedDateTime</replace>
@@ -215,13 +226,13 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/MealTrayOrderController.java" />
         <option value="$PROJECT_DIR$/cors.js" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebConfig.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
         <option value="$PROJECT_DIR$/Procfile" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -558,7 +569,7 @@
       <workItem from="1575246775264" duration="7130000" />
       <workItem from="1575281722934" duration="6866000" />
       <workItem from="1575298672937" duration="4351000" />
-      <workItem from="1575307379420" duration="3327000" />
+      <workItem from="1575307379420" duration="3655000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -774,10 +785,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344876000" />
+    <option name="totallyTimeSpent" value="345204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="Event Log" order="14" side_tool="true" />
@@ -796,7 +808,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.32478634" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32478634" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27315435" />
@@ -1149,13 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/query/EquipmentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1226,6 +1231,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="42" selection-start-column="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="61" column="21" lean-forward="true" selection-start-line="61" selection-start-column="21" selection-end-line="61" selection-end-column="21" />
+          <folding>
+            <element signature="n#dependencies#0;n#project#0;n#!!top" />
+          </folding>
         </state>
       </provider>
     </entry>
