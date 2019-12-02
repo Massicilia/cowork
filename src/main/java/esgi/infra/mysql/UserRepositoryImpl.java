@@ -158,6 +158,55 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
     @Override
+    public UserFullDto getUserUserByUsernameAndPassword(String identifiant, String password) {
+        mysqlConnection();
+
+        String uuidString;
+        UUID uuid = null;
+        String name=null;
+        String surname=null;
+        String mail=null;
+        java.time.LocalDate dateEndSubscription = null;
+        int subscription=0;
+        String type = null;
+        String uuidSpaceString;
+        UUID uuidSpace = null;
+
+        String getUserByUsernameAndPassword = "SELECT UUID, name, surname, mail, dayEndSubscription, monthEndSubscription, yearEndSubscription, subscription, identifiant, password, type, space FROM user WHERE identifiant = '" + identifiant + "' and password = '" + password + "'";
+
+        try {
+            ResultSet resultset = statement.executeQuery(getUserByUsernameAndPassword);
+            if (resultset.next()) {
+                uuidString = resultset.getString("UUID");
+                uuid = UUID.fromString(uuidString);
+                uuidSpaceString = resultset.getString("space");
+                uuidSpace = UUID.fromString(uuidString);
+                surname = resultset.getString("surname");
+                name = resultset.getString("name");
+                mail = resultset.getString("mail");
+                type = resultset.getString("type");
+
+                if(resultset.getInt ("yearEndSubscription") != 0 || resultset.getInt ("monthEndSubscription")!= 0 || resultset.getInt ("dayEndSubscription") != 0){
+
+                    String dateEndSubscriptionString = resultset.getInt ("yearEndSubscription") + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("monthEndSubscription")) + "-" + dateFormat.getFormatTwoChar (resultset.getInt ("dayEndSubscription"));
+                    dateEndSubscription = LocalDate.parse(dateEndSubscriptionString);
+                }
+
+                subscription = resultset.getInt("subscription");
+            } else {
+                throw new UserNotFoundException ();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        UserFullDto userFullDto = new UserFullDto (uuid, surname, name, mail, dateEndSubscription, subscription, identifiant, password, type, uuidSpace);
+
+        DbConnect.closeConnection(connection);
+        return userFullDto;
+    }
+
+
+    @Override
     public String getUserAuth(String identifiant, String password){
 	    mysqlConnection();
 

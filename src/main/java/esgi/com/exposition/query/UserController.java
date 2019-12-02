@@ -67,6 +67,14 @@ public class UserController {
 		return userRepository.getUuidUserByNameAndSurname(user.getName (), user.getSurname ());
 	}
 
+	@GetMapping("/userauth")
+	@ResponseStatus(HttpStatus.OK)
+	public @ResponseBody
+	UserFullDto getUserByIdentifiantAndPassword(@RequestBody esgi.common.dto.UserDto user) {
+		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+		return userRepository.getUserUserByUsernameAndPassword (user.getIdentifiant (), user.getPassword ());
+	}
+
 	@PostMapping("/update/{uuid}")
 	@ResponseStatus(HttpStatus.OK)
 	public void updateClientSubscription(@PathVariable UUID uuid) {

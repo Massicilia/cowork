@@ -10,5 +10,5 @@ public interface UserRepository {
     boolean insertUser(esgi.common.dto.UserFullDto userFullDto);
     boolean isEmployee(java.util.UUID uuid);
     void updateUser(int subscrip, java.util.UUID uuidUser);
-
+    esgi.common.dto.UserFullDto getUserUserByUsernameAndPassword(String identifiant, String password);
 }
