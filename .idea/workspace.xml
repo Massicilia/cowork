@@ -7,7 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,10 +76,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
+            <state relative-caret-position="224">
               <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
             </state>
           </provider>
@@ -106,11 +106,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbConnect.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DbConnect.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            <state relative-caret-position="112">
+              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -229,10 +229,10 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/SimpleCORSFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/LoanController.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
       </list>
     </option>
   </component>
@@ -569,7 +569,7 @@
       <workItem from="1575246775264" duration="7130000" />
       <workItem from="1575281722934" duration="6866000" />
       <workItem from="1575298672937" duration="4351000" />
-      <workItem from="1575307379420" duration="4346000" />
+      <workItem from="1575307379420" duration="4883000" />
     </task>
     <task id="LOCAL-00001" summary="test commit">
       <created>1571350327925</created>
@@ -785,7 +785,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345895000" />
+    <option name="totallyTimeSpent" value="346432000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -808,10 +808,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.2934473" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.43732193" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27315435" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27315435" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
       <window_info id="Web" order="7" side_tool="true" />
       <window_info id="Learn" order="6" />
@@ -1032,6 +1032,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
           <caret line="87" lean-forward="true" selection-start-line="33" selection-start-column="4" selection-end-line="87" />
+          <folding>
+            <element signature="method#mysqlConnection#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUsers#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUuidUserByNameAndSurname#0;class#UserRepositoryImpl#0" />
+            <element signature="method#getUserAuth#0;class#UserRepositoryImpl#0" />
+            <element signature="method#generateUUID#0;class#UserRepositoryImpl#0" />
+            <element signature="method#insertUser#0;class#UserRepositoryImpl#0" />
+            <element signature="method#isEmployee#0;class#UserRepositoryImpl#0" />
+            <element signature="method#updateUser#0;class#UserRepositoryImpl#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1213,13 +1224,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Procfile">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1239,8 +1243,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
+        <state relative-caret-position="224">
           <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
         </state>
       </provider>
     </entry>
