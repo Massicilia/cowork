@@ -14,8 +14,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 @Order(1000)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+    @org.springframework.beans.factory.annotation.Autowired
+    private javax.sql.DataSource dataSource;
 
-  /*  @Bean
+    /*  @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration ();
         configuration.setAllowedOrigins(java.util.Arrays.asList("*"));//http://localhost:4200/"));
@@ -31,10 +33,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.authorizeRequests()
+        /*http.authorizeRequests()
                 .anyRequest().authenticated()
                 .and().httpBasic();
-        /*http.csrf().disable().
+        http.csrf().disable().
 
                 authorizeRequests().antMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
                 .and().httpBasic();*/
@@ -44,6 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @org.springframework.beans.factory.annotation.Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("root").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
+        auth.jdbcAuthentication().dataSource(dataSource)
+                .withDefaultSchema()
+                .withUser("b78ab6ae03f754").password("358baaea").roles("USER");
     }
 
 }
