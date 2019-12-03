@@ -87,6 +87,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 
+    @org.springframework.beans.factory.annotation.Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("root").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
+    }
     //@Override
 //    public void addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
 //        registry.addMapping("/**").allowedOrigins("http://localhost:4200/");
