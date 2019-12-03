@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration ();
-        configuration.setAllowedOrigins(java.util.Arrays.asList("http://localhost:4200/"));
+        configuration.setAllowedOrigins(java.util.Arrays.asList("*"));//http://localhost:4200/"));
         configuration.setAllowedMethods(java.util.Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(java.util.Arrays.asList("authorization", "content-type", "x-auth-token"));
         configuration.setExposedHeaders(java.util.Arrays.asList("x-auth-token"));
