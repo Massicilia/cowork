@@ -205,7 +205,6 @@ public class UserRepositoryImpl implements UserRepository {
         return userFullDto;
     }
 
-
     @Override
     public String getUserAuth(String identifiant, String password){
 	    mysqlConnection();

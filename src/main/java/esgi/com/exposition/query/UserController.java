@@ -50,7 +50,17 @@ public class UserController {
 		return userRepository.insertUser(user);
 	}
 
-	@GetMapping ("/auth")
+
+	@PostMapping ("/auth")
+	@ResponseStatus(org.springframework.http.HttpStatus.OK)
+	public String userAuth(@RequestBody esgi.common.dto.UserDto user) {
+
+		UserRepositoryImpl userRepository = new UserRepositoryImpl ();
+		String type = userRepository.getUserAuth (user.getIdentifiant(), user.getPassword());
+		return type;
+	}
+
+	@GetMapping ("/getauth")
 	@ResponseStatus(org.springframework.http.HttpStatus.OK)
 	public String getUserAuth(@RequestBody esgi.common.dto.UserDto user) {
 
