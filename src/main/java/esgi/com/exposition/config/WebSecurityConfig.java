@@ -31,10 +31,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.csrf().disable().
+        /*http.csrf().disable().
 
                 authorizeRequests().antMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
-                .and().httpBasic();
+                .and().httpBasic();*/
     }
 
 
