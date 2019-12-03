@@ -61,29 +61,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure (HttpSecurity http) throws Exception {
 
-        http.csrf().disable();
-        /*http.csrf ().disable ().authorizeRequests ()
-                        .antMatchers ("/").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/user/users").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/user/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/user/insert").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/user/auth").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/user/username").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/user/update/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/tickets").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/assigned/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/ticket/creator/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/ticket/insertTicket").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/ticket/statuschange").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/equipment/available/{type}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/equipment/{uuid}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/mealtrayorder/new").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/mealtrayorder/{date}").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/book").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.GET, "/room/available").permitAll ()
-                        .antMatchers (org.springframework.http.HttpMethod.POST, "/loanrequest").permitAll ()
-                        .anyRequest ().authenticated ();*/
+        //http.csrf().disable();
+        http.csrf().disable().
+
+                authorizeRequests().antMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
+                .and().httpBasic();
     }
 
 
@@ -91,8 +73,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("root").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
     }
-    //@Override
-//    public void addCorsMappings(org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
-//        registry.addMapping("/**").allowedOrigins("http://localhost:4200/");
-//    }
+
 }
