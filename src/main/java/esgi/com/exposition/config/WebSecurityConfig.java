@@ -15,38 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Order(1000)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-  /*  public void configureGlobal (AuthenticationManagerBuilder authenticationMgr) throws Exception {
-
-        authenticationMgr.jdbcAuthentication ().dataSource (dataSource ())
-                .usersByUsernameQuery (
-                        "select email,password from user where email=? and statusenable=true")
-                .authoritiesByUsernameQuery (
-                        "select email,role from user where email=? and statusenable=true");
-
-        System.out.println (authenticationMgr.jdbcAuthentication ().dataSource (dataSource ())
-                .usersByUsernameQuery (
-                        "select email,password from user where email=? and statusenable=true")
-                .authoritiesByUsernameQuery (
-                        "select email,role from user where email=? and statusenable=true"));
-    }
-
-    @Bean (name = "dataSource")
-    public DriverManagerDataSource dataSource () {
-        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource ();
-        driverManagerDataSource.setDriverClassName ("com.mysql.cj.jdbc.Driver");
-        driverManagerDataSource.setUrl ("jdbc:mysql://localhost:3306/pal");
-        driverManagerDataSource.setUsername ("root");
-        driverManagerDataSource.setPassword ("");
-        return driverManagerDataSource;
-    }
-
-    @org.springframework.beans.factory.annotation.Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("test-user").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
-    }*/
-
-    @Bean
+  /*  @Bean
     public org.springframework.web.cors.CorsConfigurationSource corsConfigurationSource() {
         org.springframework.web.cors.CorsConfiguration configuration = new org.springframework.web.cors.CorsConfiguration ();
         configuration.setAllowedOrigins(java.util.Arrays.asList("*"));//http://localhost:4200/"));
@@ -57,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
-
+*/
     @Override
     public void configure (HttpSecurity http) throws Exception {
 
