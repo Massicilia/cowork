@@ -7,7 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/esgi/DatabaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -76,11 +77,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+            <state relative-caret-position="141">
+              <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseConfig.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/esgi/DatabaseConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+              <folding>
+                <element signature="e#397#423#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -188,7 +201,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/common/dto/LoanDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/use_case/LoanRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/use_case/LoanRegistration.java" />
@@ -239,6 +251,7 @@
         <option value="$PROJECT_DIR$/src/main/java/esgi/infra/mysql/DbConnect.java" />
         <option value="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/DatabaseConfig.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/esgi/DatabaseConfig.java" />
       </list>
     </option>
   </component>
@@ -308,70 +321,6 @@
             <path>
               <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
               <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="exposition" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="exposition" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="exposition" type="462c0819:PsiDirectoryNode" />
-              <item name="query" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="infra" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="infra" type="462c0819:PsiDirectoryNode" />
-              <item name="mysql" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="esgi" type="462c0819:PsiDirectoryNode" />
-              <item name="use_case" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cowork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cowork" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -401,11 +350,12 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\target" />
-      <recent name="C:\Users\manue\Downloads\cowork" />
-      <recent name="C:\Users\manue\Downloads\cowork\src" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="esgi.common.dto" />
@@ -414,12 +364,11 @@
       <recent name="esgi.infra.mysql" />
       <recent name="esgi.com.exposition.query" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto" />
-      <recent name="C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\manue\Downloads\cowork\target" />
+      <recent name="C:\Users\manue\Downloads\cowork" />
+      <recent name="C:\Users\manue\Downloads\cowork\src" />
+      <recent name="C:\Users\manue\Downloads\cowork\src\main" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -827,7 +776,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="367278000" />
+    <option name="totallyTimeSpent" value="367589000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -851,7 +800,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.2977208" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.21082622" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27651006" />
@@ -960,13 +909,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/model/UserType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" column="14" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/model/TicketStatus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1318,8 +1260,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="16" column="50" selection-start-line="16" selection-start-column="50" selection-end-line="16" selection-end-column="50" />
+        <state relative-caret-position="141">
+          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/esgi/DatabaseConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="9" column="83" selection-start-line="9" selection-start-column="83" selection-end-line="9" selection-end-column="83" />
+          <folding>
+            <element signature="e#397#423#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -11,6 +11,7 @@ esgi\use_case\UserRepository.class
 esgi\CoworkApplication.class
 esgi\common\dto\LoanRequestDto.class
 esgi\common\dto\RoomDto.class
+esgi\DatabaseConfig.class
 esgi\use_case\BookingRepository.class
 esgi\use_case\EquipmentRepository.class
 esgi\com\exposition\BookingController.class
