@@ -9,7 +9,7 @@ public class DbConnect {
     public static java.sql.Connection connection = null;
 
     public static java.sql.Connection getConnection() {
-        String url = "jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_bab9f081f17abbf?reconnect=true"; //jdbc:"+System.getenv( "DB_RDS");//"jdbc:mysql://localhost:3306/cowork?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String url = "jdbc:"+System.getenv( "JDBC_DATABSE_URL");//"jdbc:mysql://localhost:3306/cowork?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         //String url = "jdbc:mysql://localhost:3306/cowork?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         String username = System.getenv("JDBC_DATABSE_USERNAME");
         //String username = "root";

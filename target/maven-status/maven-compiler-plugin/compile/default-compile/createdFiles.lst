@@ -41,6 +41,7 @@ esgi\common\dto\UserDto.class
 esgi\common\dto\UserFullDto.class
 esgi\common\exceptions\AnyEquipmentFoundException.class
 esgi\common\dto\AvailableRoomDto.class
+esgi\com\exposition\config\SimpleCORSFilter.class
 esgi\common\exceptions\UserNotFoundException.class
 esgi\common\exceptions\AnyLoanFoundException.class
 esgi\common\dto\TicketFullDto.class

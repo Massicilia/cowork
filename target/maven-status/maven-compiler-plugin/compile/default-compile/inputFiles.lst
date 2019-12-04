@@ -33,6 +33,7 @@ C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\exceptions\AnyRoomFoun
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\DateFormat.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql\MealTrayOrderRepositoryImpl.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\model\EquipmentType.java
+C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\config\WebConfig.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\query\TicketController.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\MealTrayOrderDto.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\RoomDto.java
@@ -43,6 +44,7 @@ C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\AvailableRoomDto.j
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\TicketDto.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case\Booking.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\LoanDto.java
+C:\Users\manue\Downloads\cowork\src\main\java\esgi\com\exposition\config\SimpleCORSFilter.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\common\dto\UserDto.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\use_case\LoanRepository.java
 C:\Users\manue\Downloads\cowork\src\main\java\esgi\infra\mysql\UserRepositoryImpl.java

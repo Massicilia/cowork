@@ -11,7 +11,7 @@ public class CoworkApplication
 	public static void main( String[] args )
 	{
 		Logger logger = LoggerFactory.getLogger(CoworkApplication.class);
-logger.debug("datasource url : " + System.getenv("SPRING_DATASOURCE_URL"));
+
 		SpringApplication.run(CoworkApplication.class, args);
 	}
 }
