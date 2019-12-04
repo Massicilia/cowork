@@ -37,7 +37,6 @@ esgi\com\exposition\query\UserController.class
 esgi\common\dto\TicketDto.class
 esgi\infra\mysql\UserRepositoryImpl.class
 esgi\use_case\TicketRepository.class
-esgi\com\exposition\config\DatabaseConfig.class
 esgi\common\dto\UserDto.class
 esgi\common\dto\UserFullDto.class
 esgi\common\exceptions\AnyEquipmentFoundException.class
