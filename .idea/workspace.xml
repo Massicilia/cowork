@@ -8,6 +8,48 @@
   <component name="ChangeListManager">
     <list default="true" id="2e3ce563-2dc9-4b58-8f0f-0c7da23d91e2" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/CoworkApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/BookingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/LoanController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/MealTrayOrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/config/SimpleCORSFilter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/config/WebSecurityConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/EquipmentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/TicketController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/com/exposition/query/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/AvailableRoomDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/BookingRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/EquipmentDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/LoanDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/LoanRequestDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/MealTrayOrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/OrderDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/RoomDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/TicketCreationDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/TicketDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/TicketFullDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/UserDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/common/dto/UserFullDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/DateFormat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/BookingRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/DbConnect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/EquipmentRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/LoanRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/MealTrayOrderRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/TicketRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/infra/mysql/UserRepositoryImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/model/EquipmentType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/model/TicketStatus.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/model/UserType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/BookingRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/EquipmentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/LoanRegistration.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/LoanRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/MealTrayOrderRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/TicketRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/esgi/use_case/UserRepository.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -88,8 +130,8 @@
       <file leaf-file-name="WebSecurityConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="411">
-              <caret line="50" column="113" selection-start-line="50" selection-start-column="113" selection-end-line="50" selection-end-column="113" />
+            <state relative-caret-position="98">
+              <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
               <folding>
                 <element signature="method#corsConfigurationSource#0;class#WebSecurityConfig#0" />
               </folding>
@@ -860,7 +902,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="361160000" />
+    <option name="totallyTimeSpent" value="361547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -884,7 +926,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="13" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.06410257" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.22792023" />
       <window_info anchor="bottom" id="Spring" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32905984" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27651006" />
@@ -1347,8 +1389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/esgi/com/exposition/config/WebSecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="411">
-          <caret line="50" column="113" selection-start-line="50" selection-start-column="113" selection-end-line="50" selection-end-column="113" />
+        <state relative-caret-position="98">
+          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
           <folding>
             <element signature="method#corsConfigurationSource#0;class#WebSecurityConfig#0" />
           </folding>

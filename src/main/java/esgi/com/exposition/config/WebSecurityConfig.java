@@ -33,22 +33,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure (HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        /*http.authorizeRequests()
-                .anyRequest().authenticated()
-                .and().httpBasic();
-        http.csrf().disable().
-
-                authorizeRequests().antMatchers(org.springframework.http.HttpMethod.OPTIONS, "/**").permitAll().anyRequest().authenticated()
-                .and().httpBasic();*/
+        http.authorizeRequests()
+                .antMatchers("/h2-console/**")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin();
     }
 
 
     @org.springframework.beans.factory.annotation.Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("root").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
-        auth.jdbcAuthentication().dataSource(dataSource)
-                .withDefaultSchema()
-                .withUser(System.getenv("JDBC_DATABSE_USERNAME")).password(System.getenv("JDBC_DATABSE_PASSWORD")).roles("USER");
+
     }
 
 }
