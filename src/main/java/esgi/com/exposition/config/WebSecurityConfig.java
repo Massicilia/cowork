@@ -46,9 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @org.springframework.beans.factory.annotation.Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("root").password("{noop}"+System.getenv("SPRING_SECURITY_USER_PASSWORD")).roles("USER");
-        auth.jdbcAuthentication().dataSource(dataSource)
+        /*auth.jdbcAuthentication().dataSource(dataSource)
                 .withDefaultSchema()
-                .withUser("b78ab6ae03f754").password("358baaea").roles("USER");
+                .withUser("b78ab6ae03f754").password("358baaea").roles("USER");*/
     }
 
 }
